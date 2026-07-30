@@ -2,6 +2,17 @@
 
 All notable changes to this repository are documented here. Versioning follows [Semantic Versioning](https://semver.org/). The README and this file version in lockstep; prior versions are superseded, never silently overwritten.
 
+## v1.1.1 (2026-07-30)
+
+Patch release. Trademark rendering only.
+
+### Changed
+- Trademark rendering corrected to the canonical closed-up form GRCnext™. The retired spaced form "GRC next" is withdrawn from repository prose. One occurrence, in the grc line of the Part of the ecosystem section.
+- Header and footer version lines updated in lockstep.
+
+### Unchanged
+- The method, the fold vocabulary and the production-mirror instruction block.
+
 ## v1.1.0 (2026-07-14)
 
 First versioned release under the repository improvement program. The pre-existing README is treated as implicit v1.0.0.

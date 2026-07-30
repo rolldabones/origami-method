@@ -1,6 +1,6 @@
 # Origami Method
 
-**v1.1.0 · 14 July 2026 · Method reference and build kit for the "Origami Workflow Guide" custom GPT · License: [CC BY-NC-SA 4.0](LICENSE)**
+**v1.1.1 · 30 July 2026 · Method reference and build kit for the "Origami Workflow Guide" custom GPT · License: [CC BY-NC-SA 4.0](LICENSE)**
 
 ## What this is
 
@@ -274,12 +274,12 @@ This method is one component of a larger body of AI governance, risk management 
 
 Nearest neighbors:
 - [slow-ai-kitchen](https://github.com/rolldabones/slow-ai-kitchen): the 12-step governed AI methodology; Origami is the workflow-design discipline within that larger arc
-- [grc](https://github.com/rolldabones/grc): the GRC next primitives this method's vocabulary maps to, with creases as Tolerances, gates as Switches and folds as controlled change
+- [grc](https://github.com/rolldabones/grc): the GRCnext™ primitives this method's vocabulary maps to, with creases as Tolerances, gates as Switches and folds as controlled change
 - [AI-Impact-Assessment-Tool](https://github.com/rolldabones/AI-Impact-Assessment-Tool): the pre-deployment gate; run it on what Origami designs
 - [AI-Governance-Academy](https://github.com/rolldabones/AI-Governance-Academy): prompt templates for client-facing governance engagements built with this kind of method
 
 ---
 
-**v1.1.0 · 14 July 2026 · License: [CC BY-NC-SA 4.0](LICENSE) · Changes: [CHANGELOG.md](CHANGELOG.md)**
+**v1.1.1 · 30 July 2026 · License: [CC BY-NC-SA 4.0](LICENSE) · Changes: [CHANGELOG.md](CHANGELOG.md)**
 
 Final Liability rests with the Human.
