@@ -1,6 +1,6 @@
 # Origami Method
 
-**v1.1.1 · 30 July 2026 · Method reference and build kit for the "Origami Workflow Guide" custom GPT · License: [CC BY-NC-SA 4.0](LICENSE)**
+**v1.1.2 · 13 August 2026 · Method reference and build kit for the "Origami Workflow Guide" custom GPT · License: [CC BY-NC-SA 4.0](LICENSE)**
 
 ## What this is
 
