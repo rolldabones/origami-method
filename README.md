@@ -1,6 +1,6 @@
 # Origami Method
 
-**v1.1.2 · 13 August 2026 · Method reference and build kit for the "Origami Workflow Guide" custom GPT · License: [CC BY-NC-SA 4.0](LICENSE)**
+**v1.1.3 · 6 September 2026 · Method reference and build kit for the "Origami Workflow Guide" custom GPT · License: [CC BY-NC-SA 4.0](LICENSE)**
 
 ## What this is
 
@@ -272,6 +272,8 @@ This repository makes no regulatory or standards alignment claims. RACI, PII/PHI
 
 This method is one component of a larger body of AI governance, risk management and compliance work. The canonical map of all repositories is [ECOSYSTEM.md](https://github.com/rolldabones/rolldabones/blob/main/ECOSYSTEM.md) in the profile repository.
 
+The three doctrines are used in this repository as stated in [DOCTRINE.md](https://github.com/rolldabones/rolldabones/blob/main/DOCTRINE.md), the account's single normative statement. Where this repository restates a doctrine, it restates it at its own altitude and adds instruments, not doctrine (ECOSYSTEM.md protocol item 6).
+
 Nearest neighbors:
 - [slow-ai-kitchen](https://github.com/rolldabones/slow-ai-kitchen): the 12-step governed AI methodology; Origami is the workflow-design discipline within that larger arc
 - [grc](https://github.com/rolldabones/grc): the GRCnext™ primitives this method's vocabulary maps to, with creases as Tolerances, gates as Switches and folds as controlled change
@@ -280,6 +282,12 @@ Nearest neighbors:
 
 ---
 
-**v1.1.1 · 30 July 2026 · License: [CC BY-NC-SA 4.0](LICENSE) · Changes: [CHANGELOG.md](CHANGELOG.md)**
+**v1.1.3 · 6 September 2026 · License: [CC BY-NC-SA 4.0](LICENSE) · Changes: [CHANGELOG.md](CHANGELOG.md)**
 
 Final Liability rests with the Human.
+
+## How to Cite
+
+> Paik, Son-U Michael. *Origami Method*, v1.1.3. GRC Solutions Korea, 2026. https://github.com/rolldabones/origami-method
+
+A machine-readable citation is in [CITATION.cff](CITATION.cff).
