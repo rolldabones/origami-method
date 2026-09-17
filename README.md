@@ -1,6 +1,6 @@
 # Origami Method
 
-**v1.3.0 · 17 September 2026 · Method reference and build kit for the "Origami Workflow Guide" custom GPT · Deployed instructions last verified 17 September 2026 · License: [CC BY-NC-SA 4.0](LICENSE)**
+**v1.4.0 · 17 September 2026 · Method reference and build kit for the "Origami Workflow Guide" custom GPT · Deployed instructions last verified 17 September 2026 · License: [CC BY-NC-SA 4.0](LICENSE)**
 
 ## What this is
 
@@ -55,8 +55,8 @@ Approvals are recorded, not implied. There are four approvals of record (Risk an
 | [builder-packet-template.md](builder-packet-template.md) | The thirteen required fields of a Builder Packet, each tied to the stage that produces it; a copy-ready template; a completeness check; the mapping from packet to GPT Builder settings |
 | [worked-example.md](worked-example.md) | The whole method run on one fictional workflow, public meeting notes to a reviewed action list: every stage artifact, three Draft packets, a test that failed, the fold that fixed it, the re-test and Release Approval |
 | [risk-and-approval-rules.md](risk-and-approval-rules.md) | The risk matrix and its floors, which unknowns hold a gate, what an approval of record is, what changes invalidate which approvals and the Workflow Record template |
-| [regression-suite.md](regression-suite.md) | Thirteen cases with setup, expected behavior, pass criteria and basis, and the results log: Run 1 of 17 September 2026 (walk-through form, 11 of 13) and the three isolated re-runs that closed it at 13 of 13, with the share links as evidence |
-| [candidate-instructions.md](candidate-instructions.md) | The candidate mechanism: how an instruction change is cut, tested on the live configuration and only then mirrored. No candidate is pending; the file carries the deployed block, verified identical to the mirror by the check script, the two cuts of 17 September 2026 and their diffs, and the procedure for the next change |
+| [regression-suite.md](regression-suite.md) | Seventeen cases with setup, expected behavior, pass criteria and basis, and the results log: Run 1 of 17 September 2026 (walk-through form, 11 of 13), the three isolated re-runs that closed it at 13 of 13, and Run 2 the same evening with its re-runs (the four tool-invitation cases: three passed; RS-15 is open on the deployed configuration), with the share links as evidence |
+| [candidate-instructions.md](candidate-instructions.md) | The candidate mechanism: how an instruction change is cut, tested on the live configuration and only then mirrored. No candidate is pending; the file carries the deployed block, verified identical to the mirror by the check script, the four cuts of 17 September 2026 and their diffs, and the procedure for the next change |
 | [tools/check_release.py](tools/check_release.py) | Release consistency check, no dependencies beyond Python 3: version and date lockstep across README, CHANGELOG.md and CITATION.cff; each companion masthead naming a release that exists, and this release if the file changed since the last tag; internal links and anchors; the thirteen packet fields in the template and in every packet of the example; the deployed block's stated character count and SHA-256 against its bytes; the candidate block's size, and its identity with the mirror while no candidate is pending or its diff while one is |
 | [CHANGELOG.md](CHANGELOG.md), [CITATION.cff](CITATION.cff), [LICENSE](LICENSE) | Release history, citation metadata, CC BY-NC-SA 4.0 |
 
@@ -85,15 +85,15 @@ This section mirrors the deployed custom GPT as of 17 September 2026. If this se
 - **Name:** Origami Workflow Guide
 - **Description:** Guides users step-by-step through the Origami Method to design safe, repeatable AI workflows.
 - **Conversation starters:** none
-- **Capabilities enabled:** Web Search, Canvas, Image Generation, Code Interpreter & Data Analysis
+- **Capabilities enabled:** Web Search, Canvas, Code Interpreter & Data Analysis. Image Generation was enabled until 17 September 2026 and was disabled that evening after RS-15 of the regression suite showed the guide producing a marketing image on request. Canvas is enabled on the Configure page; in RS-17 the guide reported it as no longer available, and the cause is Unknown
 - **Actions:** none
-- **Model:** Thinking 5.6, as shown in GPT Builder on 17 September 2026 and reported by the maintainer; the regression runs below were made on it
-- **Instructions:** the fenced block below, verbatim, as pasted into GPT Builder on 17 September 2026 and tested the same day. It is 7,889 characters, SHA-256 `5767e843e77be50324b293236a91f57167396cab459e8c26f4dad7ecd7a5bdb2` (UTF-8 bytes between the fences, no trailing newline); `tools/check_release.py` fails if the bytes and either figure disagree, so that the mirror cannot change without the release noticing. The block this one replaced, supplied from GPT Builder on 14 July 2026, was 5,956 characters at SHA-256 `3b138bc70525d4865ea08fa0d4eac98860cfad7d1ecf0c9689eca361f25300a4` and is preserved in the previous tag.
+- **Model:** Thinking 5.6, as shown in GPT Builder on 17 September 2026 and reported by the maintainer; the regression runs below were made on it. One case is open against this setting: under Thinking 5.6 an image request is routed to image generation before the instructions apply, and the same block declined it with Thinking off (RS-15, the suite's Run 2)
+- **Instructions:** the fenced block below, verbatim, as pasted into GPT Builder on 17 September 2026 and tested the same evening. It is 7,890 characters, SHA-256 `951378a5d59dfd9fa80962ac4db80a9415fcd2bbe1a481a124ebfca258929d81` (UTF-8 bytes between the fences, no trailing newline); `tools/check_release.py` fails if the bytes and either figure disagree, so that the mirror cannot change without the release noticing. The block this one replaced, candidate v2 of the same day, was 7,889 characters at SHA-256 `5767e843e77be50324b293236a91f57167396cab459e8c26f4dad7ecd7a5bdb2` and is preserved in the previous tag; the block of 14 July 2026, 5,956 characters at SHA-256 `3b138bc70525d4865ea08fa0d4eac98860cfad7d1ecf0c9689eca361f25300a4`, is preserved in the tag before it.
 
 ### Instructions (as deployed)
 
 ```
-You are Origami Workflow Guide, a structured instructor that leads users through the Origami Method for AI workflow design only. You speak like a calm technical architect and process auditor. Your job is to teach disciplined workflow design—not to do the downstream content or execution work.
+You are Origami Workflow Guide, a structured instructor that leads users through the Origami Method for AI workflow design only. You speak like a calm technical architect and process auditor. Your job is to teach disciplined workflow design—not to do the downstream content or execution work. You never generate images.
 
 Core principle: “We are not trying to be clever. We are trying to be repeatable and safe.”
 
@@ -127,7 +127,7 @@ If anything is missing, write “Unknown / Insufficient data” and request it.
 
 No skipping. If asked to skip, explain the risk and return to the next valid stage.
 
-Scope hard stop. If asked to produce the deliverable itself or to do downstream execution work, decline in one sentence and return to the current stage.
+Scope hard stop. If asked to produce the deliverable itself, a sample of it or downstream execution work, decline in one sentence and return to the current stage.
 
 No asynchronous promises. Perform work only in-session.
 
@@ -143,7 +143,7 @@ Expert Mode
 
 If user says “Enable Expert Mode,” condense explanations but keep artifacts and confirmations. Use compact checklists and fewer reminders. To disable, user says “Disable Expert Mode.”
 
-Stages (0–9) — inputs → artifacts → confirmation
+Stages (0–9)
 
 0. Orientation — Explain method; ask two onboarding questions.
 1. Define the Target — Produce the one-sentence Target Statement.
@@ -295,15 +295,15 @@ Stage | Artifact versions | Approvals (Risk & RACI, Data, Design, Release) | Ope
 
 ## Rebuild guide
 
-To recreate the deployed GPT: open GPT Builder → Configure, set the name and description above, paste the Instructions block verbatim, enable the four listed capabilities and add no conversation starters or actions.
+To recreate the deployed GPT: open GPT Builder → Configure, set the name and description above, paste the Instructions block verbatim, enable the three listed capabilities, leave Image Generation off, and add no conversation starters or actions.
 
-After creation, run the [regression suite](regression-suite.md). Cases RS-01 to RS-03 are the former quick self-tests (a skip request, a deliverable request, Expert Mode) and take a few minutes; the full suite is what accepts a configuration, and its results log is where the run is recorded. The block above was accepted by that suite on 17 September 2026 at 13 of 13; the log says which cases were revised on the evidence and why.
+After creation, run the [regression suite](regression-suite.md). Cases RS-01 to RS-03 are the former quick self-tests (a skip request, a deliverable request, Expert Mode) and take a few minutes; the full suite is what accepts a configuration, and its results log is where the run is recorded. The block that preceded the one above, candidate v2, was accepted by that suite on 17 September 2026 at 13 of 13; the log says which cases were revised on the evidence and why. Run 2 the same evening added four tool-invitation cases, one per capability then enabled (RS-14 to RS-17), and the block above is the cut that followed. The deployed configuration stands at 16 of 17: RS-15 is open, attributed to the model setting rather than the text, and the suite's section 4 says how that was established and what re-test is due.
 
 ## Deployment notes and proposed folds
 
 Observations about the production configuration, recorded per the method's own discipline, each typed with the method's fold vocabulary. A fold is applied by changing production first, testing with the regression suite, then updating this file and the changelog; the mechanism is in [candidate-instructions.md](candidate-instructions.md).
 
-**Applied and deployed 17 September 2026**, all eight tested on the live configuration before the mirror above was refreshed:
+**Applied and deployed 17 September 2026**, each tested on the live configuration before the mirror above was refreshed:
 
 1. **Refactor.** Quick Start Stage 1 read "We want to use custom GPTs..." while the Stage 1 template read "We will use custom GPTs...". Aligned on "We will".
 2. **Lock.** Scope was carried by the role definition alone. An explicit scope hard stop now declines deliverable and execution requests in one sentence and returns to the current stage (RS-02).
@@ -313,17 +313,20 @@ Observations about the production configuration, recorded per the method's own d
 8. **Refactor.** The matrix rule and the data floor at Stage 3; the definition of an approval of record in the operating discipline (RS-08).
 9. **Refactor.** Single-workflow mode now asks which workflow comes first rather than choosing. Run 1 showed the guide choosing; the order is the Human's decision (RS-11).
 10. **Lock.** Any change or correction to an approved artifact (role, packet, crease or gate) is a fold, logged at Stage 9 before re-test, and reopens its stage. Run 1 showed a Producer correction being treated as outside the fold log (RS-07).
+11. **Lock.** A sample of the deliverable is the deliverable: the scope hard stop now names it, and the role definition ends "You never generate images." Cut after RS-15 showed the guide producing a marketing image on request; a heading trim paid for it. It holds where the model reads the block, which the Thinking-off run of RS-15 showed, and it did not reach the Thinking 5.6 routing, which is why Image Generation is also disabled and RS-15 stays open (RS-02, RS-15).
 
-**Still proposed**, neither of them instruction text:
+**Closed 17 September 2026**, neither of them instruction text:
 
-3. **Audit.** All four capabilities are enabled. Tool access can tempt drift into the execution work the instructions exclude. Test whether enabled tools trigger scope drift; disable what fails. Needs a test design of its own; see the regression suite's section 5.
-4. **Expose (optional).** No conversation starters are deployed. Starters such as "Start Stage 0." and "Enable Expert Mode." would make the entry points visible.
+3. **Audit.** Tool access can tempt drift into the execution work the instructions exclude. Tested by Run 2 of the regression suite, one invitation per capability then enabled as the first message of a fresh session (RS-14 to RS-17): Web Search, Code Interpreter and Canvas held; Image Generation did not, and the guide produced the deliverable. Image Generation was disabled the same evening, which removed the output and not the routing: under Thinking 5.6 the request still goes to image generation and returns a platform error, on the v2 block and on the two cuts that followed, while the same block with Thinking off declines and opens Stage 0. Closed as an audit; its finding is open as RS-15 against the model setting, with the residual stated in the suite.
+4. **Expose (optional).** Conversation starters such as "Start Stage 0." and "Enable Expert Mode." would make the entry points visible. Withdrawn by the maintainer on 17 September 2026: none are deployed and none will be added; the entry points stay in the instructions and in the rebuild guide above.
 
-Folds 5 to 8 came from an external review of the 6 September 2026 release, received 17 September 2026. Folds 9 and 10 came from Run 1 of the regression suite the same day. The deployed block is 7,889 characters against a GPT Builder ceiling reported at 8,000 and not found in official documentation; the check script warns at 7,900, so the next fold pays for itself in characters or does not enter.
+Nothing is proposed.
+
+Folds 5 to 8 came from an external review of the 6 September 2026 release, received 17 September 2026. Folds 9 and 10 came from Run 1 of the regression suite the same day, and fold 11 from Run 2 the same evening; folds 3 and 4 were closed that evening, one by Run 2 and one by decision. The deployed block is 7,890 characters against a GPT Builder ceiling reported at 8,000 and not found in official documentation; the check script warns at 7,900, so the next fold pays for itself in characters or does not enter.
 
 ## Maintenance and release checks
 
-Two things version separately in this repository. The **documentation release** is the version in the masthead, CHANGELOG.md and CITATION.cff, and moves with every change to any file. The **deployed instructions** carry their own "last verified" date in the masthead and the mirror's "as of" date, and move only when production changes and the mirror is refreshed. A release that touches the reference and not production leaves the second date alone; this release moved both, because production changed on 17 September 2026 and was verified the same day.
+Two things version separately in this repository. The **documentation release** is the version in the masthead, CHANGELOG.md and CITATION.cff, and moves with every change to any file. The **deployed instructions** carry their own "last verified" date in the masthead and the mirror's "as of" date, and move only when production changes and the mirror is refreshed. A release that touches the reference and not production leaves the second date alone; the previous release and this one refreshed both, because production changed on 17 September 2026, twice, and was verified the same day each time.
 
 Before every commit:
 
@@ -339,7 +342,7 @@ For a behavioral change: cut a candidate in [candidate-instructions.md](candidat
 
 ## Regulatory and standards note
 
-This repository makes no regulatory or standards alignment claims. RACI, PII/PHI and data-sensitivity vocabulary is used generically as workflow-design prompts, not as compliance representations. Reviewed 17 September 2026 (KST), covering the companion files added in the previous release and this release's changes; the worked example relies on no legal rule and says so at its Stage 2 boundaries.
+This repository makes no regulatory or standards alignment claims. RACI, PII/PHI and data-sensitivity vocabulary is used generically as workflow-design prompts, not as compliance representations. Reviewed 17 September 2026 (KST), covering the companion files added earlier that day and the changes of the two releases since; the worked example relies on no legal rule and says so at its Stage 2 boundaries, and the regression suite's fixtures are invented.
 
 ## Part of the ecosystem
 
@@ -355,12 +358,12 @@ Nearest neighbors:
 
 ---
 
-**v1.3.0 · 17 September 2026 · License: [CC BY-NC-SA 4.0](LICENSE) · Changes: [CHANGELOG.md](CHANGELOG.md)**
+**v1.4.0 · 17 September 2026 · License: [CC BY-NC-SA 4.0](LICENSE) · Changes: [CHANGELOG.md](CHANGELOG.md)**
 
 Final Liability rests with the Human.
 
 ## How to Cite
 
-> Paik, Son-U Michael. *Origami Method*, v1.3.0. GRC Solutions Korea, 2026. https://github.com/rolldabones/origami-method
+> Paik, Son-U Michael. *Origami Method*, v1.4.0. GRC Solutions Korea, 2026. https://github.com/rolldabones/origami-method
 
 A machine-readable citation is in [CITATION.cff](CITATION.cff).

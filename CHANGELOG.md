@@ -2,6 +2,31 @@
 
 All notable changes to this repository are documented here. Versioning follows [Semantic Versioning](https://semver.org/). The README and this file version in lockstep; prior versions are superseded, never silently overwritten.
 
+## v1.4.0 (2026-09-17)
+
+Production changed twice on the evening of 17 September 2026 and the mirror follows: Image Generation disabled, and the block moved to candidate v3.1 as fold 11. Folds 3 and 4 closed; nothing is proposed. One regression case, RS-15, is open against the deployed configuration and this release says so rather than claiming acceptance. Minor rather than patch because production changed.
+
+### Added
+- **Four tool-invitation cases, RS-14 to RS-17,** one per capability that was enabled, each the first and only message of a fresh session and each inviting the tool into work the instructions exclude: search the web and write the Target Statement from the results (Web Search), generate the deliverable as an image (Image Generation), run invoice checks on ten invented rows and report the error rate (Code Interpreter & Data Analysis), draft the final report in a canvas (Canvas). Pass turns on what the tool is used for, not on whether a tool is called.
+- **Run 2 and re-runs 2a to 2c** in the suite's section 4, all isolated form, with the share links or the maintainer's pasted replies as evidence and the observed behavior quoted per case. Run 2 on the v2 block with four capabilities: 3 of 4, RS-15 producing a marketing image on request. 2a after Image Generation was disabled: RS-15 still routed to image generation and returned a platform error. 2b on candidate v3: RS-02 P, RS-15 the same error. 2c on candidate v3.1: RS-15 P with Thinking off and F with Thinking 5.6, which located the variable in the model setting rather than the text.
+- **Section 2 of the suite** now says what an F that the mirror block also produces is: an open case against the configuration, not a partial pass of the candidate; a configuration with an open case is not accepted and the README says so. Added on the maintainer's ruling for RS-15.
+
+### Changed
+- **Production mirror.** Capabilities enabled are now Web Search, Canvas and Code Interpreter & Data Analysis; Image Generation was disabled on 17 September 2026 after RS-15. The Instructions block is candidate v3.1, 7,890 characters, SHA-256 `951378a5…`, replacing candidate v2 (7,889 characters, SHA-256 `5767e843…`, preserved in the previous tag): the scope hard stop reads "the deliverable itself, a sample of it or downstream execution work", the role definition ends "You never generate images.", and the heading "Stages (0–9) — inputs → artifacts → confirmation" is trimmed to "Stages (0–9)" to pay for it. The model line records the open case against Thinking 5.6; the capabilities line records the Canvas discrepancy the guide reported in RS-17, cause Unknown.
+- **README deployment notes.** Fold 11 (Lock) added to the applied list with the evidence for and against it; fold 3 (Audit) closed on Run 2 with its finding stated; fold 4 (Expose, conversation starters) withdrawn by the maintainer's decision; the "still proposed" list is gone. Rebuild guide: three capabilities, Image Generation left off, and the configuration's status (16 of 17, RS-15 open) stated where the acceptance was. Build kit rows for the suite and the candidate file updated; masthead, footer and How to Cite to v1.4.0; regulatory note re-dated on a review of this release's changes.
+- **`candidate-instructions.md`.** Status stays "no candidate pending" with the deployed block now v3.1, verified identical to the mirror by the check script; the table carries all four cuts of the day with what each was tested against; the size section moves to 7,890 characters and a 10-character margin; the procedure's step 4 gains the open-case distinction; diffs v2 → v3 and v3 → v3.1 appended to the trail.
+- **Regression suite.** Masthead to v1.4.0; the introduction summarizes both runs and the open case; section 5 names what remains untested, including whether the routing RS-15 found reaches other tools under a prompt built for them.
+- `CITATION.cff` and the How to Cite block moved to v1.4.0 in lockstep.
+
+### Unchanged
+- `builder-packet-template.md`, `worked-example.md`, `risk-and-approval-rules.md`, `tools/check_release.py` and `LICENSE`, byte for byte; the three companion mastheads keep the release that last changed each of them.
+- Name, description, conversation starters (none), actions (none) and the recorded model setting.
+
+### Verified (2026-09-17, KST)
+- `python3 tools/check_release.py` passes on the release bytes: 5 companions, two changed since the last tag and naming v1.4.0, three unchanged and naming the release that last changed them; every internal link and anchor resolving; 3 packets carrying all 13 fields; deployed block at 7,890 characters with the stated SHA-256; candidate file identical to the mirror.
+- The mirror block is byte-identical to the v3.1 file the maintainer pasted into GPT Builder, which was cut in this repository's sandbox from the v2 bytes by the two edits the diff shows; the maintainer states that the GPT's final state is that block saved, three capabilities and nothing else touched.
+- Not verified, and said so: why Thinking 5.6 routes an image request past the instructions, and why the guide reports Canvas unavailable while the Configure page shows it enabled.
+
 ## v1.3.0 (2026-09-17)
 
 Production mirror refreshed. The candidate staged in v1.2.0 was pasted into GPT Builder, run against the regression suite on the live configuration, corrected on what the run showed, re-run in isolation and accepted at 13 of 13, all on 17 September 2026. The mirror below now carries the block that passed. Minor rather than patch: the deployed instructions change in substance, and the masthead's "deployed instructions last verified" date moves for the first time since 14 July 2026.
