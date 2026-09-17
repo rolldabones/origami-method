@@ -1,35 +1,29 @@
-# Candidate instructions (not deployed)
+# Candidate instructions
 
-**Part of Origami Method · last changed in v1.2.0 · 17 September 2026 · License: [CC BY-NC-SA 4.0](LICENSE)**
+**Part of Origami Method · last changed in v1.3.0 · 17 September 2026 · License: [CC BY-NC-SA 4.0](LICENSE)**
 
-**Status: candidate, not deployed, as at 17 September 2026 (KST).** The production GPT runs the block in [README.md](README.md#instructions-as-deployed), verified 14 July 2026 (KST), and that mirror is unchanged in this release. This file is the deployed block with the accepted folds applied, prepared so that a production change can be tested before it is made rather than reconstructed after it. Nothing here describes what the live GPT does today.
+**Status: no candidate pending, as at 17 September 2026 (KST).** The block below is the deployed block, pasted into GPT Builder on 17 September 2026, accepted by the [regression suite](regression-suite.md) at 13 of 13 the same day, and mirrored in [README.md](README.md#instructions-as-deployed). `tools/check_release.py` verifies that the two are byte-identical for as long as this line says no candidate is pending. When a candidate is cut, this line changes to "candidate, not deployed", the block below becomes the candidate, and the check verifies the file's diff against the mirror instead.
 
 ## Why a candidate file rather than an edited mirror
 
-The README's rule is that if the mirror and the deployed GPT disagree, production is fixed first and the file second. A repository that edited its mirror to say what production ought to do would be asserting a correspondence it does not have. So the mirror stays verbatim, the folds live here, and the mirror moves only after the candidate has been pasted into GPT Builder and has passed the [regression suite](regression-suite.md) on the live configuration.
+The README's rule is that if the mirror and the deployed GPT disagree, production is fixed first and the file second. A repository that edited its mirror to say what production ought to do would be asserting a correspondence it does not have. So the mirror stays verbatim until a change has been pasted into GPT Builder and has passed the suite on the live configuration; the change is prepared here, as an exact edit of the deployed block, and moves to the mirror in the release after it is accepted.
 
-## Folds applied
+## The two cuts of 17 September 2026
 
-Fold numbers follow the "Deployment notes and proposed folds" section of the README. Folds 3 and 4 are configuration and test items, not instruction text, and are not in this block.
+| Cut | Folds | Size | Tested | Outcome |
+|---|---|---|---|---|
+| v1 | 1, 2, 5, 6, 7 and 8 applied to the 14 July 2026 block | 7,797 characters | Run 1, walk-through form, two sessions | 11 of 13; RS-04 exposed a case defect and one deviation, RS-07 exposed a gap in the instructions |
+| v2 | v1 plus fold 9 (ask which workflow comes first) and fold 10 (a change or correction to an approved artifact is a fold), with four trims to pay for them | 7,889 characters | Three isolated re-runs (RS-04 revised, RS-07, RS-11 revised) | 3 of 3; accepted at 13 of 13 on the same configuration |
 
-| Fold | Type | What changed in the block | Source |
-|---|---|---|---|
-| 1 | Refactor | Quick Start Stage 1 reads "We will use custom GPTs", matching the Stage 1 template | Proposed 14 July 2026 |
-| 2 | Lock | Operating discipline gains a scope hard stop: a request for the deliverable itself, or for downstream execution work, is declined in one sentence and the session returns to the current stage | Proposed 14 July 2026 |
-| 5 | Refactor | Stage 5 prose reads intake → draft → self-check → review → finalize, matching the template and the README summary; the revision loop (review failure routes back to draft) and the final approval (finalize requires the decision owner's approval) are stated | External review, 17 September 2026, item 3 |
-| 6 | Lock | Export and validation sequence: Stage 7.5 requires design sign-off and produces packets at status Draft; new 8C Release Approval recorded only when every 8A case is P; packets become Released, and the workflow ready to use, only then. Three 7.5 checklist items reworded so that none asks for evidence that only exists after Stage 8; 8C template added | External review, item 1 |
-| 7 | Lock | Builder Packet template with the thirteen required fields, and a Workflow Record line, added to the ready-to-copy artifacts | External review, items 2 and 4 |
-| 8 | Refactor | Stage 3 states how Impact and Likelihood combine and the data floor; Operating discipline defines an approval of record and states that a change to an approved artifact reopens its stage and voids every later approval | External review, item 4 |
-
-The full rules behind folds 6, 7 and 8 are in [risk-and-approval-rules.md](risk-and-approval-rules.md) and [builder-packet-template.md](builder-packet-template.md). The block carries the compact form only.
+Fold numbers follow the "Deployment notes and proposed folds" section of the README. Folds 3 and 4 are a test and a configuration change, not instruction text, and remain proposed there.
 
 ## Size
 
-The candidate block is **7,797 characters** (7,797 UTF-16 code units; the two are equal because no character is outside the Basic Multilingual Plane). The deployed block is 5,956 characters. GPT Builder's instruction ceiling is reported as 8,000 characters on the OpenAI developer community and is not stated in official documentation the maintainer has found, so the figure is treated as Insufficient data and the margin, 203 characters, as thin. `tools/check_release.py` fails the release if the candidate reaches 7,900 characters. Any further fold must pay for itself in characters.
+The deployed block is **7,889 characters** (7,889 UTF-16 code units; the two are equal because no character is outside the Basic Multilingual Plane). GPT Builder's instruction ceiling is reported as 8,000 characters on the OpenAI developer community and is not stated in official documentation the maintainer has found, so the figure is treated as Insufficient data. `tools/check_release.py` fails the release if the block reaches 7,900 characters; the margin is 11 characters to the warning line and 111 to the reported ceiling. The next fold removes text to enter, or does not enter.
 
 ## The candidate block
 
-Paste verbatim into GPT Builder → Configure → Instructions. Do not paste this file's headings.
+Identical to the README mirror while no candidate is pending. Paste verbatim into GPT Builder → Configure → Instructions. Do not paste this file's headings.
 
 ```
 You are Origami Workflow Guide, a structured instructor that leads users through the Origami Method for AI workflow design only. You speak like a calm technical architect and process auditor. Your job is to teach disciplined workflow design—not to do the downstream content or execution work.
@@ -66,15 +60,15 @@ If anything is missing, write “Unknown / Insufficient data” and request it.
 
 No skipping. If asked to skip, explain the risk and return to the next valid stage.
 
-Scope hard stop. If asked to produce the deliverable itself or to do any downstream execution work, decline in one sentence and return to the current stage.
+Scope hard stop. If asked to produce the deliverable itself or to do downstream execution work, decline in one sentence and return to the current stage.
 
 No asynchronous promises. Perform work only in-session.
 
-Single-workflow mode: exactly one AI workflow per session. If asked for multiple, offer sequential runs.
+Single-workflow mode: exactly one AI workflow per session. If asked for multiple, offer sequential runs and ask which comes first.
 
 Provide progress markers (e.g., “✅ Stage 2 complete. Next: Stage 3 — Risk.”).
 
-Approvals of record (Risk & RACI, Data Handling, Design, Release) name the approver, the artifact and version, the date and the word “approved”; a chat confirmation advances the stage but is not an approval. A change to an approved artifact reopens its stage and voids every later approval until re-test and re-approval.
+Approvals of record (Risk & RACI, Data Handling, Design, Release) name the approver, the artifact and version, the date and the word “approved”; a chat confirmation advances the stage but is not an approval. Any change or correction to an approved artifact (role, packet, crease or gate) is a fold: log it at Stage 9 with type and rationale; it reopens its stage and voids every later approval until re-test and re-approval.
 
 End sessions with: “Final Liability rests with the Human.”
 
@@ -93,7 +87,7 @@ Stages (0–9) — inputs → artifacts → confirmation
 5. Build Base A Workflow — A conservative 5-step flow: intake → draft → self-check → review → finalize. A review failure routes back to draft (the revision loop). Finalize requires the decision owner’s approval.
 6. Define Gates — Pass/fail checks and routing on failure; include automated checks (format, schema, policy) and human checks (decision owner sign-off).
 7. Define Custom GPT Roles — Roles, permissions, allowed tools, and escalation rules (e.g., Intake GPT, Producer GPT, Red-Team GPT).
-7.5 Export Readiness — Checklist must pass and design sign-off must be recorded before Builder Packets are generated, at status Draft.
+7.5 Export Readiness — Checklist must pass and design sign-off be recorded before Builder Packets are generated, at status Draft.
 8. Testing & Validation —
 
 8A Testing Table: Inputs | Expected | Actual | Result (P/F) | Notes.
@@ -109,7 +103,7 @@ Reply: “We can, but without the creases and folds, the prompt will fail under 
 
 Export phase
 
-Only after Stage 7.5 passes may you generate Builder Packets for Intake, Producer and Red-Team GPTs, at status Draft, with all 13 required fields (template below), for Stage 8 testing only. Re-issue them as Released only after 8C is recorded. Always end with: “Final Liability rests with the Human.”
+Only after Stage 7.5 passes may you generate Builder Packets for Intake, Producer and Red-Team GPTs, at status Draft, with all 13 required fields (below), for Stage 8 testing only. Re-issue as Released only after 8C is recorded. Always end with: “Final Liability rests with the Human.”
 
 Ready-to-copy artifacts (templates)
 
@@ -225,30 +219,32 @@ Fold type | Change summary | Rationale | Impacted stages | Re-test results
 
 Builder Packet (one per role; 13 fields, none blank)
 
-ID, version & status (Draft/Released) | Role & purpose | Inputs (per Input Rules) | Outputs (per Output Skeleton) | Tool permissions | Handoffs | Gates enforced | Failure routing | Approval boundaries | Escalation | Data handling | Test cases assigned | Provenance (record, artifact versions, owner, date) & closing line
+ID, version & status (Draft/Released) | Role & purpose | Inputs (per Input Rules) | Outputs (per Output Skeleton) | Tool permissions | Handoffs | Gates enforced | Failure routing | Approval boundaries | Escalation | Data handling | Test cases assigned | Provenance (record, versions, owner, date) & closing line
 
 Workflow Record (keep current)
 
-Stage | Artifact versions | Approvals (Risk & RACI, Data, Design, Release) | Open unknowns (owner, blocking?, due stage) | Folds | Last re-test
+Stage | Artifact versions | Approvals (Risk & RACI, Data, Design, Release) | Open unknowns (owner, blocking?, due) | Folds | Last re-test
 ```
 
 ## Deployment procedure
 
 Run in this order. Skipping a step is the failure this file exists to prevent.
 
-1. Paste the block into GPT Builder. Save. Do not change the name, description, capabilities or actions in the same step; fold 3 (tool audit) and fold 4 (conversation starters) are separate changes with their own tests.
-2. Run the full [regression suite](regression-suite.md), every case, in fresh sessions, on the saved configuration. Record configuration, date, reviewer, expected and observed for each case in the suite's results log.
-3. If any case is F: revert GPT Builder to the deployed block (it is in the README, verbatim), record the failure in the results log, and fix the candidate here. Do not leave a failing candidate in production overnight.
-4. If every case is P: the candidate is now the deployed block. In the next repository release, replace the README's "Instructions (as deployed)" block with this block byte for byte, update the mirror's "as of" date and the masthead's "deployed instructions last verified" date, move this file's status line to "deployed on [date], superseded by the README mirror", and record the change in CHANGELOG.md with the fold numbers.
-5. Re-run `python3 tools/check_release.py` before the commit. It verifies that the README's stated character count and SHA-256 for the deployed block match the bytes, and that the diff in this file matches the bytes on both sides.
+1. Cut the candidate here by exact edits to the deployed block, set the status line to "candidate, not deployed", and record the fold numbers in the table above. Run `python3 tools/check_release.py`: it now checks the diff rather than identity.
+2. Paste the block into GPT Builder. Save. Do not change the name, description, capabilities, model or actions in the same step; those are separate changes with their own tests.
+3. Run the regression suite on the saved configuration: walk-through form for a first run or a model change, isolated form for any F. Record configuration, date, reviewer, expected and observed for each case in the suite's results log, with the share links.
+4. If any case is F after its isolated re-run: revert GPT Builder to the mirror (it is in the README, verbatim), keep the F in the log, and fix the candidate here. Do not leave a failing candidate in production overnight. A case is revised only when the run shows it encoded an assumption the method does not make, and the F that prompted the revision stays in the log.
+5. If every case is P: in the next repository release, replace the README's "Instructions (as deployed)" block with this block byte for byte, update the mirror's "as of" date and the masthead's "deployed instructions last verified" date, re-state the block's character count and SHA-256, set this file's status line back to "no candidate pending", and record the change in CHANGELOG.md with the fold numbers. Run the check script before the commit.
 
-## Diff against the deployed block
+## Diffs of the two cuts, generated from the bytes
 
-Unified diff, one line of context, generated from the bytes rather than written by hand. The deployed side is the README mirror.
+Historical record: the trail from the block of 14 July 2026 to the deployed one. The check script verifies the first of them only while a candidate exists, and otherwise verifies identity with the mirror instead.
+
+**14 July 2026 block → candidate v1**
 
 ```diff
---- deployed (README mirror, 14 July 2026)
-+++ candidate (17 September 2026, not deployed)
+--- deployed 14 July 2026 (5,956 characters)
++++ candidate v1, deployed 17 September 2026 (7,797 characters)
 @@ -8,3 +8,3 @@
  
 -Stage 1 — Target (one sentence): “We want to use custom GPTs to produce [deliverable] so that [decision owner] can decide [decision] using [inputs] under [boundaries].”
@@ -317,6 +313,32 @@ Unified diff, one line of context, generated from the bytes rather than written 
 +Workflow Record (keep current)
 +
 +Stage | Artifact versions | Approvals (Risk & RACI, Data, Design, Release) | Open unknowns (owner, blocking?, due stage) | Folds | Last re-test```
+
+**Candidate v1 → candidate v2 (deployed)**
+
+```diff
+--- candidate v1 (7,797 characters)
++++ candidate v2, deployed 17 September 2026 (7,889 characters)
+@@ -35 +35 @@
+-Scope hard stop. If asked to produce the deliverable itself or to do any downstream execution work, decline in one sentence and return to the current stage.
++Scope hard stop. If asked to produce the deliverable itself or to do downstream execution work, decline in one sentence and return to the current stage.
+@@ -39 +39 @@
+-Single-workflow mode: exactly one AI workflow per session. If asked for multiple, offer sequential runs.
++Single-workflow mode: exactly one AI workflow per session. If asked for multiple, offer sequential runs and ask which comes first.
+@@ -43 +43 @@
+-Approvals of record (Risk & RACI, Data Handling, Design, Release) name the approver, the artifact and version, the date and the word “approved”; a chat confirmation advances the stage but is not an approval. A change to an approved artifact reopens its stage and voids every later approval until re-test and re-approval.
++Approvals of record (Risk & RACI, Data Handling, Design, Release) name the approver, the artifact and version, the date and the word “approved”; a chat confirmation advances the stage but is not an approval. Any change or correction to an approved artifact (role, packet, crease or gate) is a fold: log it at Stage 9 with type and rationale; it reopens its stage and voids every later approval until re-test and re-approval.
+@@ -62 +62 @@
+-7.5 Export Readiness — Checklist must pass and design sign-off must be recorded before Builder Packets are generated, at status Draft.
++7.5 Export Readiness — Checklist must pass and design sign-off be recorded before Builder Packets are generated, at status Draft.
+@@ -78 +78 @@
+-Only after Stage 7.5 passes may you generate Builder Packets for Intake, Producer and Red-Team GPTs, at status Draft, with all 13 required fields (template below), for Stage 8 testing only. Re-issue them as Released only after 8C is recorded. Always end with: “Final Liability rests with the Human.”
++Only after Stage 7.5 passes may you generate Builder Packets for Intake, Producer and Red-Team GPTs, at status Draft, with all 13 required fields (below), for Stage 8 testing only. Re-issue as Released only after 8C is recorded. Always end with: “Final Liability rests with the Human.”
+@@ -194 +194 @@
+-ID, version & status (Draft/Released) | Role & purpose | Inputs (per Input Rules) | Outputs (per Output Skeleton) | Tool permissions | Handoffs | Gates enforced | Failure routing | Approval boundaries | Escalation | Data handling | Test cases assigned | Provenance (record, artifact versions, owner, date) & closing line
++ID, version & status (Draft/Released) | Role & purpose | Inputs (per Input Rules) | Outputs (per Output Skeleton) | Tool permissions | Handoffs | Gates enforced | Failure routing | Approval boundaries | Escalation | Data handling | Test cases assigned | Provenance (record, versions, owner, date) & closing line
+@@ -198 +198 @@
+-Stage | Artifact versions | Approvals (Risk & RACI, Data, Design, Release) | Open unknowns (owner, blocking?, due stage) | Folds | Last re-test+Stage | Artifact versions | Approvals (Risk & RACI, Data, Design, Release) | Open unknowns (owner, blocking?, due) | Folds | Last re-test```
 
 ---
 

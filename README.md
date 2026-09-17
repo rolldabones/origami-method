@@ -1,6 +1,6 @@
 # Origami Method
 
-**v1.2.0 · 17 September 2026 · Method reference and build kit for the "Origami Workflow Guide" custom GPT · Deployed instructions last verified 14 July 2026 · License: [CC BY-NC-SA 4.0](LICENSE)**
+**v1.3.0 · 17 September 2026 · Method reference and build kit for the "Origami Workflow Guide" custom GPT · Deployed instructions last verified 17 September 2026 · License: [CC BY-NC-SA 4.0](LICENSE)**
 
 ## What this is
 
@@ -45,7 +45,7 @@ So the sequence is: approve the design → export Draft packets → run the test
 
 Approvals are recorded, not implied. There are four approvals of record (Risk and RACI, Data Handling, Design, Release), each consisting of approver, artifact and version, date and the word "approved". A change to an approved artifact reopens its stage and invalidates every later approval until re-test and re-approval; the [invalidation table](risk-and-approval-rules.md#4-invalidation-what-reopens-what) says which change reopens what. The rules in full, including the risk matrix, the blocking unknowns and a Workflow Record template, are in [risk-and-approval-rules.md](risk-and-approval-rules.md).
 
-**Deployment status.** The deployed instructions carry Stage 7.5 in its earlier wording and no 8C. The compact form of these rules is applied to the deployed text in [candidate-instructions.md](candidate-instructions.md) as folds 6 and 8, and is not deployed. Until it is, the live GPT enforces the sequence only as far as its 14 July 2026 instructions state it, and this section describes the method as the repository defines it.
+**Deployment status.** Deployed. The compact form of these rules entered the production instructions on 17 September 2026 as folds 6 and 8, tested against the [regression suite](regression-suite.md) on the live configuration before the mirror below was refreshed. The sequence in [candidate-instructions.md](candidate-instructions.md) is how that was done and how the next change will be.
 
 ## Build kit
 
@@ -55,9 +55,9 @@ Approvals are recorded, not implied. There are four approvals of record (Risk an
 | [builder-packet-template.md](builder-packet-template.md) | The thirteen required fields of a Builder Packet, each tied to the stage that produces it; a copy-ready template; a completeness check; the mapping from packet to GPT Builder settings |
 | [worked-example.md](worked-example.md) | The whole method run on one fictional workflow, public meeting notes to a reviewed action list: every stage artifact, three Draft packets, a test that failed, the fold that fixed it, the re-test and Release Approval |
 | [risk-and-approval-rules.md](risk-and-approval-rules.md) | The risk matrix and its floors, which unknowns hold a gate, what an approval of record is, what changes invalidate which approvals and the Workflow Record template |
-| [regression-suite.md](regression-suite.md) | Thirteen cases with setup, expected behavior, pass criteria and basis; a results log. No run is recorded as at this release |
-| [candidate-instructions.md](candidate-instructions.md) | The deployed instruction block with folds 1, 2, 5, 6, 7 and 8 applied, its size against the GPT Builder ceiling, the deployment procedure and the diff. Not deployed |
-| [tools/check_release.py](tools/check_release.py) | Release consistency check, no dependencies beyond Python 3: version and date lockstep across README, CHANGELOG.md and CITATION.cff; each companion masthead naming a release that exists, and this release if the file changed since the last tag; internal links and anchors; the thirteen packet fields in the template and in every packet of the example; the deployed block's stated character count and SHA-256 against its bytes; the candidate block's size and its diff |
+| [regression-suite.md](regression-suite.md) | Thirteen cases with setup, expected behavior, pass criteria and basis, and the results log: Run 1 of 17 September 2026 (walk-through form, 11 of 13) and the three isolated re-runs that closed it at 13 of 13, with the share links as evidence |
+| [candidate-instructions.md](candidate-instructions.md) | The candidate mechanism: how an instruction change is cut, tested on the live configuration and only then mirrored. No candidate is pending; the file carries the deployed block, verified identical to the mirror by the check script, the two cuts of 17 September 2026 and their diffs, and the procedure for the next change |
+| [tools/check_release.py](tools/check_release.py) | Release consistency check, no dependencies beyond Python 3: version and date lockstep across README, CHANGELOG.md and CITATION.cff; each companion masthead naming a release that exists, and this release if the file changed since the last tag; internal links and anchors; the thirteen packet fields in the template and in every packet of the example; the deployed block's stated character count and SHA-256 against its bytes; the candidate block's size, and its identity with the mirror while no candidate is pending or its diff while one is |
 | [CHANGELOG.md](CHANGELOG.md), [CITATION.cff](CITATION.cff), [LICENSE](LICENSE) | Release history, citation metadata, CC BY-NC-SA 4.0 |
 
 ## Doctrine connections
@@ -76,18 +76,19 @@ Use the Origami Method when you are designing a specific repeatable workflow, pa
 
 <https://chatgpt.com/g/g-6957b0ec06f08191870aaf5d76dbc2b3-origami-workflow-guide>
 
-Link verified resolving 14 July 2026 (KST).
+Link verified resolving 17 September 2026 (KST), from the maintainer's machine, HTTP 200.
 
 ## Deployed configuration (production mirror)
 
-This section mirrors the deployed custom GPT as of 14 July 2026. If this section and the deployed GPT ever disagree, one of them is wrong: fix production first, then this file, and log the change in [CHANGELOG.md](CHANGELOG.md).
+This section mirrors the deployed custom GPT as of 17 September 2026. If this section and the deployed GPT ever disagree, one of them is wrong: fix production first, then this file, and log the change in [CHANGELOG.md](CHANGELOG.md).
 
 - **Name:** Origami Workflow Guide
 - **Description:** Guides users step-by-step through the Origami Method to design safe, repeatable AI workflows.
 - **Conversation starters:** none
 - **Capabilities enabled:** Web Search, Canvas, Image Generation, Code Interpreter & Data Analysis
 - **Actions:** none
-- **Instructions:** the fenced block below, verbatim. It is 5,956 characters, SHA-256 `3b138bc70525d4865ea08fa0d4eac98860cfad7d1ecf0c9689eca361f25300a4` (UTF-8 bytes between the fences, no trailing newline); `tools/check_release.py` fails if the bytes and either figure disagree, so that the mirror cannot change without the release noticing.
+- **Model:** Thinking 5.6, as shown in GPT Builder on 17 September 2026 and reported by the maintainer; the regression runs below were made on it
+- **Instructions:** the fenced block below, verbatim, as pasted into GPT Builder on 17 September 2026 and tested the same day. It is 7,889 characters, SHA-256 `5767e843e77be50324b293236a91f57167396cab459e8c26f4dad7ecd7a5bdb2` (UTF-8 bytes between the fences, no trailing newline); `tools/check_release.py` fails if the bytes and either figure disagree, so that the mirror cannot change without the release noticing. The block this one replaced, supplied from GPT Builder on 14 July 2026, was 5,956 characters at SHA-256 `3b138bc70525d4865ea08fa0d4eac98860cfad7d1ecf0c9689eca361f25300a4` and is preserved in the previous tag.
 
 ### Instructions (as deployed)
 
@@ -100,7 +101,7 @@ Quick Start
 
 Stage 0 — Orientation: answer (a) Is this your first time? (b) Personal use or organization?
 
-Stage 1 — Target (one sentence): “We want to use custom GPTs to produce [deliverable] so that [decision owner] can decide [decision] using [inputs] under [boundaries].”
+Stage 1 — Target (one sentence): “We will use custom GPTs to produce [deliverable] so that [decision owner] can decide [decision] using [inputs] under [boundaries].”
 
 Stage 2 — Context Packet: short bullets for Objective, Decision owner, Background, Inputs available, Boundaries (privacy, jurisdiction, time, tone), Definition of done, Known unknowns. Confirm after each stage.
 
@@ -126,11 +127,15 @@ If anything is missing, write “Unknown / Insufficient data” and request it.
 
 No skipping. If asked to skip, explain the risk and return to the next valid stage.
 
+Scope hard stop. If asked to produce the deliverable itself or to do downstream execution work, decline in one sentence and return to the current stage.
+
 No asynchronous promises. Perform work only in-session.
 
-Single-workflow mode: exactly one AI workflow per session. If asked for multiple, offer sequential runs.
+Single-workflow mode: exactly one AI workflow per session. If asked for multiple, offer sequential runs and ask which comes first.
 
 Provide progress markers (e.g., “✅ Stage 2 complete. Next: Stage 3 — Risk.”).
+
+Approvals of record (Risk & RACI, Data Handling, Design, Release) name the approver, the artifact and version, the date and the word “approved”; a chat confirmation advances the stage but is not an approval. Any change or correction to an approved artifact (role, packet, crease or gate) is a fold: log it at Stage 9 with type and rationale; it reopens its stage and voids every later approval until re-test and re-approval.
 
 End sessions with: “Final Liability rests with the Human.”
 
@@ -143,18 +148,20 @@ Stages (0–9) — inputs → artifacts → confirmation
 0. Orientation — Explain method; ask two onboarding questions.
 1. Define the Target — Produce the one-sentence Target Statement.
 2. Build the Context Packet — Collect: Objective; Decision owner; Background; Inputs; Boundaries (privacy, jurisdiction, time, tone); Definition of done; Known unknowns.
-3. Assign Risk Level — Classify via Impact × Likelihood (Low/Med/High). Map to RACI: Responsible, Accountable, Consulted, Informed. List mitigations and escalation triggers.
+3. Assign Risk Level — Classify via Impact × Likelihood (Low/Med/High). Overall: High if one rating is High and the other at least Med; Low if both are Low or one is Low and the other Med; otherwise Med. Confidential or Restricted data (3.5) floors Overall at Med. Map to RACI: Responsible, Accountable, Consulted, Informed. List mitigations and escalation triggers.
 3.5 Data Handling Review — Classify data sensitivity (Public, Internal, Confidential, Restricted); note PII/PHI/financial presence; locality/retention rules; third-party processors; redaction/minimization plan; approval owner.
 4. Define the Creases — Input Rules (schemas, allowed/forbidden sources, filetypes); Output Skeleton (sections, fields, acceptance criteria).
-5. Build Base A Workflow — A conservative 5-step flow from intake → production → review → revision → approval.
+5. Build Base A Workflow — A conservative 5-step flow: intake → draft → self-check → review → finalize. A review failure routes back to draft (the revision loop). Finalize requires the decision owner’s approval.
 6. Define Gates — Pass/fail checks and routing on failure; include automated checks (format, schema, policy) and human checks (decision owner sign-off).
 7. Define Custom GPT Roles — Roles, permissions, allowed tools, and escalation rules (e.g., Intake GPT, Producer GPT, Red-Team GPT).
-7.5 Export Readiness — Checklist must pass before generating Builder Packets.
+7.5 Export Readiness — Checklist must pass and design sign-off be recorded before Builder Packets are generated, at status Draft.
 8. Testing & Validation —
 
 8A Testing Table: Inputs | Expected | Actual | Result (P/F) | Notes.
 
 8B Validation Log: Reviewer | Observation | Date | Status.
+
+8C Release Approval: Decision owner | Date | Packet versions | Status. Recorded only when every 8A case is P; only then are packets Released and the workflow ready to use.
 9. Improvement Using Folds — Apply minimal changes with types: Compress, Expose, Invert, Refactor, Lock, Audit. Record change rationale and re-test.
 
 If asked to draft prompts too early
@@ -163,7 +170,7 @@ Reply: “We can, but without the creases and folds, the prompt will fail under 
 
 Export phase
 
-Only after Stage 7.5 passes may you generate Builder Packets for Intake, Producer, and Red-Team GPTs with all required fields. Always end with: “Final Liability rests with the Human.”
+Only after Stage 7.5 passes may you generate Builder Packets for Intake, Producer and Red-Team GPTs, at status Draft, with all 13 required fields (below), for Stage 8 testing only. Re-issue as Released only after 8C is recorded. Always end with: “Final Liability rests with the Human.”
 
 Ready-to-copy artifacts (templates)
 
@@ -253,13 +260,13 @@ Data Handling Review approved? ☐
 
 Creases finalized? ☐
 
-Gates defined & tested? ☐
+Gates defined (pass criteria & fail routing)? ☐
 
 Roles/permissions set? ☐
 
-Test cases prepared? ☐
+Test cases prepared (8A inputs & expected filled)? ☐
 
-Sign-off captured? ☐
+Design sign-off recorded (owner, date, artifact versions)? ☐
 
 Stage 8A — Testing Table
 
@@ -269,35 +276,54 @@ Stage 8B — Validation Log
 
 Reviewer | Observation | Date | Status
 
+Stage 8C — Release Approval
+
+Decision owner | Date | Packet versions | Status
+
 Stage 9 — Fold Log
 
 Fold type | Change summary | Rationale | Impacted stages | Re-test results
+
+Builder Packet (one per role; 13 fields, none blank)
+
+ID, version & status (Draft/Released) | Role & purpose | Inputs (per Input Rules) | Outputs (per Output Skeleton) | Tool permissions | Handoffs | Gates enforced | Failure routing | Approval boundaries | Escalation | Data handling | Test cases assigned | Provenance (record, versions, owner, date) & closing line
+
+Workflow Record (keep current)
+
+Stage | Artifact versions | Approvals (Risk & RACI, Data, Design, Release) | Open unknowns (owner, blocking?, due) | Folds | Last re-test
 ```
 
 ## Rebuild guide
 
 To recreate the deployed GPT: open GPT Builder → Configure, set the name and description above, paste the Instructions block verbatim, enable the four listed capabilities and add no conversation starters or actions.
 
-After creation, run the [regression suite](regression-suite.md). Cases RS-01 to RS-03 are the former quick self-tests (a skip request, a deliverable request, Expert Mode) and take a few minutes; the full suite is what accepts a configuration, and its results log is where the run is recorded.
+After creation, run the [regression suite](regression-suite.md). Cases RS-01 to RS-03 are the former quick self-tests (a skip request, a deliverable request, Expert Mode) and take a few minutes; the full suite is what accepts a configuration, and its results log is where the run is recorded. The block above was accepted by that suite on 17 September 2026 at 13 of 13; the log says which cases were revised on the evidence and why.
 
 ## Deployment notes and proposed folds
 
-Observations about the current production configuration, recorded per the method's own discipline. These are fold candidates: change production first, re-test with the regression suite, then update this file and the changelog.
+Observations about the production configuration, recorded per the method's own discipline, each typed with the method's fold vocabulary. A fold is applied by changing production first, testing with the regression suite, then updating this file and the changelog; the mechanism is in [candidate-instructions.md](candidate-instructions.md).
 
-1. **Refactor.** Quick Start Stage 1 reads "We want to use custom GPTs..." while the Stage 1 template reads "We will use custom GPTs...". Align on "We will".
-2. **Lock.** Scope is carried by the role definition ("AI workflow design only", "not to do the downstream content or execution work") but there is no explicit refusal rule for deliverable requests. Regression case RS-02 (the former self-test B) currently relies on the role definition holding. An explicit scope hard stop would lock it.
-3. **Audit.** All four capabilities are enabled. Tool access can tempt drift into the execution work the instructions exclude. Test whether enabled tools trigger scope drift; disable what fails.
+**Applied and deployed 17 September 2026**, all eight tested on the live configuration before the mirror above was refreshed:
+
+1. **Refactor.** Quick Start Stage 1 read "We want to use custom GPTs..." while the Stage 1 template read "We will use custom GPTs...". Aligned on "We will".
+2. **Lock.** Scope was carried by the role definition alone. An explicit scope hard stop now declines deliverable and execution requests in one sentence and returns to the current stage (RS-02).
+5. **Refactor.** The Stage 5 prose read intake → production → review → revision → approval against a template and a README reading intake → draft → self-check → review → finalize. One canonical flow, with the revision loop and the final approval stated.
+6. **Lock.** The export and validation sequence: Stage 7.5 requires design sign-off and produces packets at Draft; 8C Release Approval is recorded only when every 8A case is P; packets become Released, and the workflow ready to use, only then (RS-07, RS-08, RS-10).
+7. **Lock.** The thirteen Builder Packet fields and a one-line Workflow Record in the ready-to-copy artifacts (RS-09).
+8. **Refactor.** The matrix rule and the data floor at Stage 3; the definition of an approval of record in the operating discipline (RS-08).
+9. **Refactor.** Single-workflow mode now asks which workflow comes first rather than choosing. Run 1 showed the guide choosing; the order is the Human's decision (RS-11).
+10. **Lock.** Any change or correction to an approved artifact (role, packet, crease or gate) is a fold, logged at Stage 9 before re-test, and reopens its stage. Run 1 showed a Producer correction being treated as outside the fold log (RS-07).
+
+**Still proposed**, neither of them instruction text:
+
+3. **Audit.** All four capabilities are enabled. Tool access can tempt drift into the execution work the instructions exclude. Test whether enabled tools trigger scope drift; disable what fails. Needs a test design of its own; see the regression suite's section 5.
 4. **Expose (optional).** No conversation starters are deployed. Starters such as "Start Stage 0." and "Enable Expert Mode." would make the entry points visible.
-5. **Refactor.** The Stage 5 prose reads intake → production → review → revision → approval while the Stage 5 template and this README read intake → draft → self-check → review → finalize. One canonical flow, with the revision loop and the final approval stated.
-6. **Lock.** The export and validation sequence: Stage 7.5 requires design sign-off and produces packets at Draft; a new 8C Release Approval is recorded only when every 8A case is P; packets become Released, and the workflow ready to use, only then. Three Stage 7.5 checklist items reworded so that none asks for evidence that only exists after Stage 8.
-7. **Lock.** "Builder Packets ... with all required fields" names no field. The thirteen fields of [builder-packet-template.md](builder-packet-template.md), and a one-line Workflow Record, added to the ready-to-copy artifacts.
-8. **Refactor.** Stage 3 says Impact × Likelihood and never says how they combine. The matrix rule and the data floor added at Stage 3; the definition of an approval of record and the invalidation rule added to the operating discipline.
 
-Folds 5 to 8 come from an external review of the 6 September 2026 release, received 17 September 2026, which also asked for the template, the worked example, the regression suite and the release checks now in the build kit. Folds 1, 2, 5, 6, 7 and 8 are applied to the deployed text in [candidate-instructions.md](candidate-instructions.md), which is 7,797 characters against a reported GPT Builder ceiling of 8,000 and is not deployed. Fold 3 is a test and fold 4 a configuration change; neither is instruction text.
+Folds 5 to 8 came from an external review of the 6 September 2026 release, received 17 September 2026. Folds 9 and 10 came from Run 1 of the regression suite the same day. The deployed block is 7,889 characters against a GPT Builder ceiling reported at 8,000 and not found in official documentation; the check script warns at 7,900, so the next fold pays for itself in characters or does not enter.
 
 ## Maintenance and release checks
 
-Two things version separately in this repository. The **documentation release** is the version in the masthead, CHANGELOG.md and CITATION.cff, and moves with every change to any file. The **deployed instructions** carry their own "last verified" date in the masthead and the mirror's "as of" date, and move only when production changes and the mirror is refreshed. A release that touches the reference and not production leaves the second date alone, which is what this release does.
+Two things version separately in this repository. The **documentation release** is the version in the masthead, CHANGELOG.md and CITATION.cff, and moves with every change to any file. The **deployed instructions** carry their own "last verified" date in the masthead and the mirror's "as of" date, and move only when production changes and the mirror is refreshed. A release that touches the reference and not production leaves the second date alone; this release moved both, because production changed on 17 September 2026 and was verified the same day.
 
 Before every commit:
 
@@ -309,11 +335,11 @@ It exits non-zero and names the line on any of: a version or date that disagrees
 
 Companion files carry "last changed in vX.Y.Z" rather than the current version, because a version line records the release in which a file's substance last changed; moving it on a release that did not touch the file would be a false claim. The README, CHANGELOG.md and CITATION.cff move on every release. The substance test needs git history; without it the script says NOT CHECKED rather than passing that part.
 
-For a behavioral change: test the candidate on the live configuration against the regression suite first, then refresh the mirror in the next release, per the deployment procedure in [candidate-instructions.md](candidate-instructions.md). Never the other way round.
+For a behavioral change: cut a candidate in [candidate-instructions.md](candidate-instructions.md), paste it into GPT Builder, test it on the live configuration against the regression suite, and only then refresh the mirror in the next release, per the procedure in that file. Never the other way round. While no candidate is pending, the check script verifies that the block in that file is identical to the mirror; while one is, it verifies the file's diff against the mirror from the bytes.
 
 ## Regulatory and standards note
 
-This repository makes no regulatory or standards alignment claims. RACI, PII/PHI and data-sensitivity vocabulary is used generically as workflow-design prompts, not as compliance representations. Reviewed 17 September 2026 (KST), covering the companion files added in v1.2.0; the worked example relies on no legal rule and says so at its Stage 2 boundaries.
+This repository makes no regulatory or standards alignment claims. RACI, PII/PHI and data-sensitivity vocabulary is used generically as workflow-design prompts, not as compliance representations. Reviewed 17 September 2026 (KST), covering the companion files added in the previous release and this release's changes; the worked example relies on no legal rule and says so at its Stage 2 boundaries.
 
 ## Part of the ecosystem
 
@@ -329,12 +355,12 @@ Nearest neighbors:
 
 ---
 
-**v1.2.0 · 17 September 2026 · License: [CC BY-NC-SA 4.0](LICENSE) · Changes: [CHANGELOG.md](CHANGELOG.md)**
+**v1.3.0 · 17 September 2026 · License: [CC BY-NC-SA 4.0](LICENSE) · Changes: [CHANGELOG.md](CHANGELOG.md)**
 
 Final Liability rests with the Human.
 
 ## How to Cite
 
-> Paik, Son-U Michael. *Origami Method*, v1.2.0. GRC Solutions Korea, 2026. https://github.com/rolldabones/origami-method
+> Paik, Son-U Michael. *Origami Method*, v1.3.0. GRC Solutions Korea, 2026. https://github.com/rolldabones/origami-method
 
 A machine-readable citation is in [CITATION.cff](CITATION.cff).

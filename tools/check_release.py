@@ -26,10 +26,12 @@ What it checks, and why each check exists:
   4. Mirror integrity. The README states the character count and the SHA-256 of the deployed
      instruction block. Both are recomputed from the bytes between the fences (UTF-8, no
      trailing newline). A mirror that changes without the stated figures changing fails.
-  5. Candidate size. The candidate block in candidate-instructions.md must be under the
-     warning ceiling of 7,900 characters, and the count the file states must equal the bytes.
-     The file's diff block must equal a freshly computed unified diff of deployed against
-     candidate, so the diff cannot go stale.
+  5. Candidate file. The block in candidate-instructions.md must be under the warning ceiling
+     of 7,900 characters, and the count the file states must equal the bytes. The file's status
+     line decides the second test: while it says no candidate is pending, the block must be
+     byte-identical to the README mirror; while it says a candidate is pending, the file's first
+     diff block must equal a freshly computed unified diff of the mirror against the candidate,
+     so the diff cannot go stale.
   6. Closing line. Every markdown file except LICENSE carries the closing line.
 
 A check that cannot find its input reports a failure, never a pass (a guard that cannot run
@@ -367,7 +369,7 @@ def main(root):
             if cn >= CANDIDATE_CEILING:
                 fail(f"candidate-instructions.md: candidate block is {cn} characters, at or above the "
                      f"{CANDIDATE_CEILING} warning ceiling")
-            stm = re.search(r"The candidate block is \*\*([\d,]+) characters\*\* \(([\d,]+) UTF-16 code units", ct)
+            stm = re.search(r"The (?:candidate|deployed) block is \*\*([\d,]+) characters\*\* \(([\d,]+) UTF-16 code units", ct)
             if not stm:
                 fail("candidate-instructions.md: stated size sentence not found")
             else:
@@ -375,18 +377,33 @@ def main(root):
                     fail(f"candidate-instructions.md: block is {cn} characters, file states {stm.group(1)}")
                 if int(stm.group(2).replace(",", "")) != cu:
                     fail(f"candidate-instructions.md: block is {cu} UTF-16 units, file states {stm.group(2)}")
-            if deployed is not None:
+            status = re.search(r"^\*\*Status: (no candidate pending|candidate, not deployed)", ct, re.M)
+            if not status:
+                fail("candidate-instructions.md: status line must begin '**Status: no candidate pending' "
+                     "or '**Status: candidate, not deployed'")
+            elif deployed is not None and status.group(1) == "no candidate pending":
+                # No candidate pending: the block in this file IS the deployed block, byte for byte.
+                if cand != deployed:
+                    fail("candidate-instructions.md: status says no candidate is pending but the block "
+                         "differs from the README mirror; either cut a candidate (change the status line) "
+                         "or restore the block")
+                else:
+                    notes.append("candidate file: no candidate pending; block identical to the mirror")
+            elif deployed is not None:
+                # A candidate is pending: the first diff block must be a fresh diff of mirror vs candidate.
                 dm = re.search(r"```diff\n(.*?)```", ct, re.S)
                 if not dm:
-                    fail("candidate-instructions.md: diff block not found")
+                    fail("candidate-instructions.md: a candidate is pending but no diff block was found")
                 else:
                     fresh = "".join(difflib.unified_diff(
                         deployed.splitlines(True), cand.splitlines(True),
-                        fromfile="deployed (README mirror, 14 July 2026)",
-                        tofile="candidate (17 September 2026, not deployed)", n=1))
+                        fromfile="deployed (README mirror)", tofile="candidate (not deployed)", n=1))
                     if dm.group(1) != fresh:
-                        fail("candidate-instructions.md: the diff block does not match a fresh diff of the "
-                             "deployed block against the candidate block; regenerate it")
+                        fail("candidate-instructions.md: the first diff block does not match a fresh diff of the "
+                             "README mirror against the candidate block (headers 'deployed (README mirror)' and "
+                             "'candidate (not deployed)', one line of context); regenerate it")
+                    else:
+                        notes.append("candidate file: candidate pending; diff against the mirror is fresh")
             pl = re.search(r"^Builder Packet \(one per role; (\d+) fields, none blank\)\n\n(.+)$", cand, re.M)
             if not pl:
                 fail("candidate-instructions.md: compact Builder Packet line not found in the candidate block")
