@@ -1,8 +1,8 @@
 # Risk and approval rules
 
-**Part of Origami Method · last changed in v1.4.3 · 17 October 2026 · License: [CC BY-NC-SA 4.0](LICENSE)**
+**Part of Origami Method · last changed in v1.5.0 · 18 October 2026 · License: [CC BY-NC-SA 4.0](LICENSE)**
 
-The deployed instructions classify risk as Impact × Likelihood, each Low, Med or High, and require approvals at Stage 3, Stage 3.5, Stage 7.5 and, from this version of the method, at release. They do not say how the two ratings combine, which unknowns hold a gate, what an approval consists of or what undoes one. This file says so. It is method reference; the compact form of the same rules is proposed for the instructions themselves in [candidate-instructions.md](candidate-instructions.md), folds 6 and 8, and is not deployed.
+The instructions ([instructions.md](instructions.md)) classify risk as Impact × Likelihood, each Low, Med or High, and require approvals at Stage 3, Stage 3.5, Stage 7.5 and, from this version of the method, at release. They do not say how the two ratings combine, which unknowns hold a gate, what an approval consists of or what undoes one. This file says so. It is method reference; the compact form of the same rules entered the instructions on 17 September 2026 as folds 6 and 8 (the cuts are in [candidate-instructions.md](candidate-instructions.md)).
 
 Thresholds and floors below are the author's judgment. They are stated so they can be disagreed with, not derived from any standard.
 

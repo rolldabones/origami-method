@@ -1,10 +1,10 @@
 # Worked example: public meeting notes to a reviewed action list
 
-**Part of Origami Method · last changed in v1.2.0 · 17 September 2026 · License: [CC BY-NC-SA 4.0](LICENSE)**
+**Part of Origami Method · last changed in v1.5.0 · 18 October 2026 · License: [CC BY-NC-SA 4.0](LICENSE)**
 
 Everything in this example is fictional: the municipality, the committee, the roster, the meeting, the dates and the people, who appear by role only. It exists to show every artifact of the method on one small workflow, from the Target Statement to Release Approval, including one test that failed and the fold that fixed it.
 
-It was worked by hand against the stage definitions in the deployed instructions and the rules in [risk-and-approval-rules.md](risk-and-approval-rules.md) and [builder-packet-template.md](builder-packet-template.md). It is not a transcript of the live GPT and makes no claim about what the live GPT would produce; that is what the [regression suite](regression-suite.md) is for.
+It was worked by hand against the stage definitions in the instructions ([instructions.md](instructions.md)) and the rules in [risk-and-approval-rules.md](risk-and-approval-rules.md) and [builder-packet-template.md](builder-packet-template.md). It is not a transcript of a run of the instructions and makes no claim about what a model running them would produce; that is what the [regression suite](regression-suite.md) is for.
 
 The workflow: the Parks Advisory Committee of the fictional town of Corvane publishes notes of its monthly meeting. A support assistant turns the notes into a list of actions with owners and due dates, which the Committee Clerk reviews and circulates. Twice this year, by hand, an action was circulated under the wrong member's name. The Clerk wants the extraction done by custom GPTs and wants it to stop misattributing.
 

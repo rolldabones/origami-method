@@ -1,6 +1,6 @@
 # Builder Packet template
 
-**Part of Origami Method · last changed in v1.2.0 · 17 September 2026 · License: [CC BY-NC-SA 4.0](LICENSE)**
+**Part of Origami Method · last changed in v1.5.0 · 18 October 2026 · License: [CC BY-NC-SA 4.0](LICENSE)**
 
 ## What a Builder Packet is
 
@@ -22,7 +22,7 @@ Every packet carries all thirteen. A field with nothing to put in it reads "Unkn
 | 6 | Handoffs | 5 | What the role receives, from whom, in what form; what it passes on, to whom, in what form; what triggers the handoff |
 | 7 | Gates enforced | 6 | The gates this role runs, each with its pass criteria and check type |
 | 8 | Failure routing | 6 | What the role does when a gate fails, when an input breaks a rule, when it meets an unknown |
-| 9 | Approval boundaries | 3 (RACI) and 6 (human checks) | What the role may decide alone; what requires a Human; which Human |
+| 9 | Approval boundaries | 3 (RACI) and 6 (human checks) | What the role may decide alone; what requires a human; which human |
 | 10 | Escalation | 3 | The triggers and the person they escalate to |
 | 11 | Data handling | 3.5 | Sensitivity class; redaction and minimization rules the role applies; retention rule for anything it keeps |
 | 12 | Test cases assigned | 8A | The case IDs this role must pass before the packet can be marked Tested |
@@ -102,23 +102,23 @@ Run before a packet is handed to a builder, at Draft and again at Released.
 - Field 5 lists at least one forbidden capability. A role with nothing forbidden has not been thought about.
 - Field 6 names a receiving party for every output. An output nobody receives is either a gap in Base A or a deliverable the role should not be producing.
 - Field 8 covers every gate in field 7. A gate with no fail routing is a gate that fails open.
-- Field 9 names a Human for everything the role may not decide alone, and the Human named appears in the Stage 3 RACI.
+- Field 9 names a human for everything the role may not decide alone, and the human named appears in the Stage 3 RACI.
 - Field 12 lists at least one case per gate in field 7.
 - Field 13 carries the closing line verbatim, and the artifact versions match the Workflow Record.
 
-## From packet to GPT Builder
+## From packet to an assistant's settings
 
-The packet is the specification. The GPT configuration is derived from it, not the other way round.
+The packet is the specification. The configuration of each role's assistant is derived from it, not the other way round. The mapping works for any assistant that takes a system prompt; GPT Builder, the platform on which the method's own guide ran until 1 October 2026, is kept as one historical example.
 
-| GPT Builder setting | Take from |
-|---|---|
-| Name | Field 2, role |
-| Description | Field 2, purpose |
-| Instructions | Fields 2 to 11 and the closing line in field 13, in that order. Field 8 and field 9 are the part builders most often drop; they are the part the method exists for |
-| Capabilities | Field 5. Enable only what is allowed; leave everything else off |
-| Knowledge | Only files field 3 names as accepted sources and field 11 permits at that sensitivity class |
-| Actions | None unless field 5 names a processor and field 11 permits it |
-| Conversation starters | Optional; if used, phrase them as the handoff in field 6 ("Paste the validated notes from Intake") |
+| Take from | System prompt or assistant setting | GPT Builder (historical example) |
+|---|---|---|
+| Field 2, role | Assistant name | Name |
+| Field 2, purpose | Description, where the platform has one | Description |
+| Fields 2 to 11 and the closing line in field 13, in that order | System prompt, or custom or project instructions. Field 8 and field 9 are the part builders most often drop; they are the part the method exists for | Instructions |
+| Field 5 | Tool settings. Enable only what is allowed; leave everything else off | Capabilities |
+| Fields 3 and 11 | Attached files or retrieval sources: only files field 3 names as accepted sources and field 11 permits at that sensitivity class | Knowledge |
+| Fields 5 and 11 | Connectors, tool calls or actions: none unless field 5 names a processor and field 11 permits it | Actions |
+| Field 6 | Suggested first prompts, optional; if used, phrase them as the handoff in field 6 ("Paste the validated notes from Intake") | Conversation starters |
 
 ## Version and status rules
 

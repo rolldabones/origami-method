@@ -1,12 +1,12 @@
 # Candidate instructions
 
-**Part of Origami Method · last changed in v1.4.3 · 17 October 2026 · License: [CC BY-NC-SA 4.0](LICENSE)**
+**Part of Origami Method · last changed in v1.5.0 · 18 October 2026 · License: [CC BY-NC-SA 4.0](LICENSE)**
 
-**Status: no candidate pending, as at 17 October 2026 (KST).** The block below is the deployed block, candidate v3.1, pasted into GPT Builder on 17 September 2026 and mirrored in [README.md](README.md#instructions-as-deployed). The [regression suite](regression-suite.md) records the deployed configuration at 16 of 17 with RS-15 open against the model setting, not the text; its section 4 has the runs. `tools/check_release.py` verifies that the two are byte-identical for as long as this line says no candidate is pending. When a candidate is cut, this line changes to "candidate, not deployed", the block below becomes the candidate, and the check verifies the file's diff against the mirror instead.
+**Status: no candidate pending, as at 18 October 2026 (KST).** The block below is the instrument (as last verified 17 September 2026), candidate v3.1, published as the text of record in [instructions.md](instructions.md). The [regression suite](regression-suite.md) records the GPT configuration, Locked on 1 October 2026, at 16 of 17 with RS-15 open against the model setting, not the text; its section 4 has the runs, and no run on the successor configuration is logged yet ([tests.md](tests.md)). `tools/check_release.py` verifies that the two blocks are byte-identical for as long as this line says no candidate is pending. When a candidate is cut, this line changes to "candidate, not released", the block below becomes the candidate and the check verifies the file's diff against instructions.md instead.
 
-## Why a candidate file rather than an edited mirror
+## Why a candidate file rather than an edited instrument
 
-The README's rule is that if the mirror and the deployed GPT disagree, production is fixed first and the file second. A repository that edited its mirror to say what production ought to do would be asserting a correspondence it does not have. So the mirror stays verbatim until a change has been pasted into GPT Builder and has passed the suite on the live configuration; the change is prepared here, as an exact edit of the deployed block, and moves to the mirror in the release after it is accepted.
+Until 1 October 2026 the README's rule was that if the mirror and the deployed GPT disagreed, production was fixed first and the file second, so the mirror stayed verbatim until a change had been pasted into GPT Builder and had passed the suite on the live configuration. The GPT configuration has been Locked since 1 October 2026, and [instructions.md](instructions.md) is now the instrument itself. The discipline carries over: a change is prepared here, as an exact edit of the block in instructions.md, run as a system prompt on a current frontier model against the suite with one logged run, and moves to instructions.md in the release after it is accepted. Editing instructions.md directly would publish an untested block as the text of record.
 
 ## The four cuts of 17 September 2026
 
@@ -17,15 +17,15 @@ The README's rule is that if the mirror and the deployed GPT disagree, productio
 | v3 | v2 plus fold 11 in its first form: the scope hard stop extended with "a sample of it" and a standalone rule "No image generation."; the heading "Stages (0–9) — inputs → artifacts → confirmation" trimmed to "Stages (0–9)" to pay for it | 7,885 characters | Two isolated runs (RS-15, RS-02), Thinking 5.6 | RS-02 P; RS-15 F, the same platform error as 2a |
 | v3.1 | v3 with the image rule moved into the role definition as "You never generate images." and the standalone line removed | 7,890 characters | RS-15 twice: Thinking off, then Thinking 5.6 | P with Thinking off; F with Thinking 5.6. Deployed on the maintainer's ruling with RS-15 open |
 
-Fold numbers follow the "Deployment notes and proposed folds" section of the README. Folds 3 and 4 were closed on 17 September 2026, one by Run 2 and one by decision; fold 11 came out of Run 2. The capability change (Image Generation disabled) preceded the v3 paste and was tested on its own, as the procedure below requires; each paste was then tested on its own.
+Fold numbers follow the "Fold history and proposed folds" section of the README. Folds 3 and 4 were closed on 17 September 2026, one by Run 2 and one by decision; fold 11 came out of Run 2. The capability change (Image Generation disabled) preceded the v3 paste and was tested on its own, as the procedure below requires; each paste was then tested on its own.
 
 ## Size
 
-The deployed block is **7,890 characters** (7,890 UTF-16 code units; the two are equal because no character is outside the Basic Multilingual Plane). GPT Builder's instruction ceiling is reported as 8,000 characters on the OpenAI developer community and is not stated in official documentation the maintainer has found, so the figure is treated as Insufficient data. `tools/check_release.py` fails the release if the block reaches 7,900 characters; the margin is 10 characters to the warning line and 110 to the reported ceiling. The next fold removes text to enter, or does not enter.
+The instrument block is **7,890 characters** (7,890 UTF-16 code units; the two are equal because no character is outside the Basic Multilingual Plane). GPT Builder's instruction ceiling was reported as 8,000 characters on the OpenAI developer community and was not stated in official documentation the maintainer found; it no longer binds, since the block now runs as a system prompt. `tools/check_release.py` still fails the release if the block reaches 7,900 characters, as this repository's size discipline; the margin is 10 characters. The next fold removes text to enter, or does not enter.
 
 ## The candidate block
 
-Identical to the README mirror while no candidate is pending. Paste verbatim into GPT Builder → Configure → Instructions. Do not paste this file's headings.
+Identical to the block in instructions.md while no candidate is pending. To run a candidate, paste it verbatim as the system prompt; do not paste this file's headings.
 
 ```
 You are Origami Workflow Guide, a structured instructor that leads users through the Origami Method for AI workflow design only. You speak like a calm technical architect and process auditor. Your job is to teach disciplined workflow design—not to do the downstream content or execution work. You never generate images.
@@ -228,19 +228,19 @@ Workflow Record (keep current)
 Stage | Artifact versions | Approvals (Risk & RACI, Data, Design, Release) | Open unknowns (owner, blocking?, due) | Folds | Last re-test
 ```
 
-## Deployment procedure
+## Release procedure
 
 Run in this order. Skipping a step is the failure this file exists to prevent.
 
-1. Cut the candidate here by exact edits to the deployed block, set the status line to "candidate, not deployed", and record the fold numbers in the table above. Run `python3 tools/check_release.py`: it now checks the diff rather than identity.
-2. Paste the block into GPT Builder. Save. Do not change the name, description, capabilities, model or actions in the same step; those are separate changes with their own tests.
-3. Run the regression suite on the saved configuration: walk-through form for a first run or a model change, isolated form for any F. Record configuration, date, reviewer, expected and observed for each case in the suite's results log, with the share links.
-4. If any case is F after its isolated re-run: revert GPT Builder to the mirror (it is in the README, verbatim), keep the F in the log, and fix the candidate here. Do not leave a failing candidate in production overnight. A case is revised only when the run shows it encoded an assumption the method does not make, and the F that prompted the revision stays in the log. An F that the mirror block produces on the same configuration is not the candidate's failure: the suite's section 2 treats it as an open case against the configuration, and the candidate is judged on what it changes (RS-15, 17 September 2026).
-5. If every case is P: in the next repository release, replace the README's "Instructions (as deployed)" block with this block byte for byte, update the mirror's "as of" date and the masthead's "deployed instructions last verified" date, re-state the block's character count and SHA-256, set this file's status line back to "no candidate pending", and record the change in CHANGELOG.md with the fold numbers. Run the check script before the commit.
+1. Cut the candidate here by exact edits to the block in instructions.md, set the status line to "candidate, not released" and record the fold numbers in the table above. Run `python3 tools/check_release.py`: it now checks the diff rather than identity.
+2. Run the block as the system prompt on a current frontier model, with no other instructions. Do not change the model or the interface in the same step; those are separate changes with their own runs.
+3. Run the regression suite on that configuration: walk-through form for a first run or a model change, isolated form for any F. Record the model string, the date, the interface, the reviewer, expected and observed for each case in the suite's results log, with the transcripts or a note that they are unpublished. This is the one logged run that ruling 9 of the 15 October 2026 review requires; record it in [tests.md](tests.md) under Last run.
+4. If any case is F after its isolated re-run: keep the F in the log and fix the candidate here; instructions.md is unchanged. A case is revised only when the run shows it encoded an assumption the method does not make, and the F that prompted the revision stays in the log. An F that the block in instructions.md produces on the same configuration is not the candidate's failure: the suite's section 2 treats it as an open case against the configuration, and the candidate is judged on what it changes (RS-15, 17 September 2026).
+5. If every case is P: in the next repository release, replace the block in instructions.md with this block byte for byte, update its status line, re-state the block's character count and SHA-256, set this file's status line back to "no candidate pending" and record the change in CHANGELOG.md with the fold numbers and each wording change, old to new. Run the check script before the commit.
 
 ## Diffs of the four cuts, generated from the bytes
 
-Historical record: the trail from the block of 14 July 2026 to the deployed one. The check script verifies the first of them only while a candidate exists, and otherwise verifies identity with the mirror instead.
+Historical record: the trail from the block of 14 July 2026 to the deployed one. The check script verifies the first of them only while a candidate exists, and otherwise verifies identity with instructions.md instead.
 
 **14 July 2026 block → candidate v1**
 

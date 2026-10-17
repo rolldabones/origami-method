@@ -3,6 +3,7 @@
 check_release.py: release consistency check for the origami-method repository.
 
 Run from anywhere:  python3 tools/check_release.py [repo-root]
+                    python3 tools/check_release.py --help
 Exit 0 when every check passes, 1 when any fails, 2 when a check could not run.
 It reads. It never writes.
 
@@ -23,20 +24,24 @@ What it checks, and why each check exists:
      numbered table. Every packet in worked-example.md must carry every one of them, by the
      same name, in the same order. The candidate instruction block's compact packet line must
      list the same number of fields.
-  4. Mirror integrity. The README states the character count and the SHA-256 of the deployed
-     instruction block. Both are recomputed from the bytes between the fences (UTF-8, no
-     trailing newline). A mirror that changes without the stated figures changing fails.
+  4. Instrument integrity. instructions.md states the character count and the SHA-256 of the
+     instruction block, the text of record since the GPT configuration was Locked on
+     1 October 2026. Both are recomputed from the bytes between the fences under '## The block'
+     (UTF-8, no trailing newline). A block that changes without the stated figures changing
+     fails. (Before v1.5.0 this check read the README's production mirror.)
   5. Candidate file. The block in candidate-instructions.md must be under the warning ceiling
      of 7,900 characters, and the count the file states must equal the bytes. The file's status
      line decides the second test: while it says no candidate is pending, the block must be
-     byte-identical to the README mirror; while it says a candidate is pending, the file's first
-     diff block must equal a freshly computed unified diff of the mirror against the candidate,
-     so the diff cannot go stale.
-  6. Closing line. Every markdown file except LICENSE carries the closing line.
+     byte-identical to the block in instructions.md; while it says a candidate is pending, the
+     file's first diff block must equal a freshly computed unified diff of that block against
+     the candidate, so the diff cannot go stale.
+  6. Closing line. Every markdown file carries the closing line as its last non-empty line
+     (LICENSE is not markdown and is not checked).
 
 A check that cannot find its input reports a failure, never a pass (a guard that cannot run
 must not report safety).
 """
+import argparse
 import difflib
 import hashlib
 import os
@@ -149,9 +154,9 @@ def main(root):
     rlines = readme.splitlines()
 
     # ---- 1. version and date lockstep ---------------------------------------------------
-    m = re.search(r"^\*\*v(\d+\.\d+\.\d+) · (\d{1,2}) (\w+) (\d{4}) · ", readme, re.M)
+    m = re.search(r"^\*\*(?:Version |v)(\d+\.\d+\.\d+) · (\d{1,2}) (\w+) (\d{4}) · ", readme, re.M)
     if not m:
-        fail("README.md: masthead not found in the form **vX.Y.Z · D Month YYYY · ...**")
+        fail("README.md: masthead not found in the form **Version X.Y.Z · D Month YYYY · ...**")
         ver, iso = None, None
     else:
         ver = m.group(1)
@@ -332,26 +337,31 @@ def main(root):
                      f"missing: {missing or 'none'}; unexpected: {extra or 'none'}")
         notes.append(f"packets checked in worked-example.md: {len(packets)}")
 
-    # ---- 4. mirror integrity ----------------------------------------------------------------
-    bm = re.search(r"### Instructions \(as deployed\)\n\n```\n(.*?)\n```", readme, re.S)
-    deployed = None
-    if not bm:
-        fail("README.md: deployed instruction block not found under '### Instructions (as deployed)'")
+    # ---- 4. instrument integrity ------------------------------------------------------------
+    ins_p = os.path.join(root, "instructions.md")
+    deployed = None  # the instrument block; the name is kept from the mirror era
+    if not os.path.exists(ins_p):
+        fail("instructions.md: missing; the instrument block cannot be checked")
     else:
-        deployed = bm.group(1)
-        n = len(deployed)
-        sha = hashlib.sha256(deployed.encode("utf-8")).hexdigest()
-        sm = re.search(r"It is ([\d,]+) characters, SHA-256 `([0-9a-f]{64})`", readme)
-        if not sm:
-            fail("README.md: stated character count and SHA-256 of the deployed block not found "
-                 "in the form 'It is N characters, SHA-256 `hex`'")
+        itext = read(ins_p)
+        bm = re.search(r"^## The block\n\n.*?\n\n```\n(.*?)\n```", itext, re.S | re.M)
+        if not bm:
+            fail("instructions.md: instruction block not found under '## The block'")
         else:
-            stated_n = int(sm.group(1).replace(",", ""))
-            if stated_n != n:
-                fail(f"README.md: deployed block is {n} characters, README states {stated_n}")
-            if sm.group(2) != sha:
-                fail(f"README.md: deployed block SHA-256 is {sha[:12]}..., README states {sm.group(2)[:12]}...")
-        notes.append(f"deployed block: {n} characters, sha256 {sha[:12]}...")
+            deployed = bm.group(1)
+            n = len(deployed)
+            sha = hashlib.sha256(deployed.encode("utf-8")).hexdigest()
+            sm = re.search(r"It is ([\d,]+) characters, SHA-256 `([0-9a-f]{64})`", itext)
+            if not sm:
+                fail("instructions.md: stated character count and SHA-256 of the block not found "
+                     "in the form 'It is N characters, SHA-256 `hex`'")
+            else:
+                stated_n = int(sm.group(1).replace(",", ""))
+                if stated_n != n:
+                    fail(f"instructions.md: block is {n} characters, the file states {stated_n}")
+                if sm.group(2) != sha:
+                    fail(f"instructions.md: block SHA-256 is {sha[:12]}..., the file states {sm.group(2)[:12]}...")
+            notes.append(f"instrument block (instructions.md): {n} characters, sha256 {sha[:12]}...")
 
     # ---- 5. candidate size and diff -------------------------------------------------------
     cand_p = os.path.join(root, "candidate-instructions.md")
@@ -369,7 +379,7 @@ def main(root):
             if cn >= CANDIDATE_CEILING:
                 fail(f"candidate-instructions.md: candidate block is {cn} characters, at or above the "
                      f"{CANDIDATE_CEILING} warning ceiling")
-            stm = re.search(r"The (?:candidate|deployed) block is \*\*([\d,]+) characters\*\* \(([\d,]+) UTF-16 code units", ct)
+            stm = re.search(r"The (?:candidate|deployed|instrument) block is \*\*([\d,]+) characters\*\* \(([\d,]+) UTF-16 code units", ct)
             if not stm:
                 fail("candidate-instructions.md: stated size sentence not found")
             else:
@@ -377,33 +387,33 @@ def main(root):
                     fail(f"candidate-instructions.md: block is {cn} characters, file states {stm.group(1)}")
                 if int(stm.group(2).replace(",", "")) != cu:
                     fail(f"candidate-instructions.md: block is {cu} UTF-16 units, file states {stm.group(2)}")
-            status = re.search(r"^\*\*Status: (no candidate pending|candidate, not deployed)", ct, re.M)
+            status = re.search(r"^\*\*Status: (no candidate pending|candidate, not released|candidate, not deployed)", ct, re.M)
             if not status:
                 fail("candidate-instructions.md: status line must begin '**Status: no candidate pending' "
-                     "or '**Status: candidate, not deployed'")
+                     "or '**Status: candidate, not released'")
             elif deployed is not None and status.group(1) == "no candidate pending":
-                # No candidate pending: the block in this file IS the deployed block, byte for byte.
+                # No candidate pending: the block in this file IS the instrument block, byte for byte.
                 if cand != deployed:
                     fail("candidate-instructions.md: status says no candidate is pending but the block "
-                         "differs from the README mirror; either cut a candidate (change the status line) "
+                         "differs from instructions.md; either cut a candidate (change the status line) "
                          "or restore the block")
                 else:
-                    notes.append("candidate file: no candidate pending; block identical to the mirror")
+                    notes.append("candidate file: no candidate pending; block identical to instructions.md")
             elif deployed is not None:
-                # A candidate is pending: the first diff block must be a fresh diff of mirror vs candidate.
+                # A candidate is pending: the first diff block must be a fresh diff of instrument vs candidate.
                 dm = re.search(r"```diff\n(.*?)```", ct, re.S)
                 if not dm:
                     fail("candidate-instructions.md: a candidate is pending but no diff block was found")
                 else:
                     fresh = "".join(difflib.unified_diff(
                         deployed.splitlines(True), cand.splitlines(True),
-                        fromfile="deployed (README mirror)", tofile="candidate (not deployed)", n=1))
+                        fromfile="instrument (instructions.md)", tofile="candidate (not released)", n=1))
                     if dm.group(1) != fresh:
                         fail("candidate-instructions.md: the first diff block does not match a fresh diff of the "
-                             "README mirror against the candidate block (headers 'deployed (README mirror)' and "
-                             "'candidate (not deployed)', one line of context); regenerate it")
+                             "block in instructions.md against the candidate block (headers 'instrument "
+                             "(instructions.md)' and 'candidate (not released)', one line of context); regenerate it")
                     else:
-                        notes.append("candidate file: candidate pending; diff against the mirror is fresh")
+                        notes.append("candidate file: candidate pending; diff against instructions.md is fresh")
             pl = re.search(r"^Builder Packet \(one per role; (\d+) fields, none blank\)\n\n(.+)$", cand, re.M)
             if not pl:
                 fail("candidate-instructions.md: compact Builder Packet line not found in the candidate block")
@@ -420,6 +430,11 @@ def main(root):
         text = read(p)
         if CLOSING not in text:
             fail(f"{os.path.relpath(p, root)}: closing line absent")
+        else:
+            nonempty = [l for l in text.splitlines() if l.strip()]
+            if not nonempty or nonempty[-1].strip().strip("*") != CLOSING:
+                fail(f"{os.path.relpath(p, root)}: closing line present but not the last line")
+    notes.append(f"closing line last: checked in {len(md_files)} markdown files")
 
     # ---- report ---------------------------------------------------------------------------
     for n in notes:
@@ -436,5 +451,7 @@ def main(root):
 if __name__ == "__main__":
     here = os.path.dirname(os.path.abspath(__file__))
     default_root = os.path.normpath(os.path.join(here, ".."))
-    root = sys.argv[1] if len(sys.argv) > 1 else default_root
-    sys.exit(main(root))
+    ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
+    ap.add_argument("root", nargs="?", default=default_root,
+                    help="repository root (default: the parent of this script's folder)")
+    sys.exit(main(ap.parse_args().root))
