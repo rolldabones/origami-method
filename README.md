@@ -1,6 +1,6 @@
 # Origami Method
 
-**v1.4.2 · 5 October 2026 · Method reference and build kit for the "Origami Workflow Guide" custom GPT, retiring 11 December 2026 · Deployed instructions last verified 17 September 2026 · License: [CC BY-NC-SA 4.0](LICENSE)**
+**v1.4.3 · 17 October 2026 · Method reference and build kit for the "Origami Workflow Guide" custom GPT, retiring 11 December 2026 · Deployed instructions last verified 17 September 2026 · License: [CC BY-NC-SA 4.0](LICENSE)**
 
 ## What this is
 
@@ -64,7 +64,7 @@ Approvals are recorded, not implied. There are four approvals of record (Risk an
 
 The method operationalizes the three doctrines that run through this account:
 
-- The stage gates and mandatory confirmations are **Informed Intent** in miniature: nothing proceeds without explicit authorization of scope and purpose.
+- The stage gates and mandatory confirmations are **Informed Intent** in miniature: nothing proceeds without prior authorization carrying the elements and conditions stated in [DOCTRINE.md](https://github.com/rolldabones/rolldabones/blob/main/DOCTRINE.md#8-short-forms).
 - The "Unknown / Insufficient data" rule is **Slow AI**: evidence over assurances, gaps declared rather than guessed.
 - The mandatory session closing line is the third doctrine verbatim: **Final Liability rests with the Human.**
 
@@ -359,15 +359,16 @@ Nearest neighbors:
 - [grc](https://github.com/rolldabones/grc): the GRCnext™ primitives this method's vocabulary maps to, with creases as Tolerances, gates as Switches and folds as controlled change
 - [AI-Impact-Assessment-Tool](https://github.com/rolldabones/AI-Impact-Assessment-Tool): the pre-deployment gate; run it on what Origami designs
 - [AI-Governance-Academy](https://github.com/rolldabones/AI-Governance-Academy): prompt templates for client-facing governance engagements built with this kind of method
-
----
-
-**v1.4.2 · 5 October 2026 · License: [CC BY-NC-SA 4.0](LICENSE) · Changes: [CHANGELOG.md](CHANGELOG.md)**
-
-Final Liability rests with the Human.
+- [computational-drafting](https://github.com/rolldabones/computational-drafting): the specification layer whose eight-element artifact the Context Packet and folds carry into a workflow
 
 ## How to Cite
 
-> Paik, Son-U Michael. *Origami Method*, v1.4.2. GRC Solutions Korea, 2026. https://github.com/rolldabones/origami-method
+> Paik, Son-U Michael. *Origami Method*, v1.4.3. GRC Solutions Korea, 2026. https://github.com/rolldabones/origami-method
 
 A machine-readable citation is in [CITATION.cff](CITATION.cff).
+
+---
+
+**v1.4.3 · 17 October 2026 · License: [CC BY-NC-SA 4.0](LICENSE) · Changes: [CHANGELOG.md](CHANGELOG.md)**
+
+Final Liability rests with the Human.

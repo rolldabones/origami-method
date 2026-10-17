@@ -1,6 +1,6 @@
 # Risk and approval rules
 
-**Part of Origami Method · last changed in v1.2.0 · 17 September 2026 · License: [CC BY-NC-SA 4.0](LICENSE)**
+**Part of Origami Method · last changed in v1.4.3 · 17 October 2026 · License: [CC BY-NC-SA 4.0](LICENSE)**
 
 The deployed instructions classify risk as Impact × Likelihood, each Low, Med or High, and require approvals at Stage 3, Stage 3.5, Stage 7.5 and, from this version of the method, at release. They do not say how the two ratings combine, which unknowns hold a gate, what an approval consists of or what undoes one. This file says so. It is method reference; the compact form of the same rules is proposed for the instructions themselves in [candidate-instructions.md](candidate-instructions.md), folds 6 and 8, and is not deployed.
 
@@ -39,7 +39,7 @@ Read across from Impact, down from Likelihood. The Overall rating is the cell.
 Two floors apply after the cell is read:
 
 - A workflow whose Stage 3.5 sensitivity class is Confidential or Restricted rates no lower than **Med** overall.
-- A workflow whose output is acted on without a Human reading it first rates no lower than **High** overall. The method assumes a Human reads; a design that removes the reader is a High design whatever the cell says.
+- A workflow whose output is acted on without a human reading it first rates no lower than **High** overall. The method assumes a human reads; a design that removes the reader is a High design whatever the cell says.
 
 ### 1.4 What the Overall rating requires
 
@@ -63,7 +63,7 @@ The method's rule is that a missing item is written as "Unknown / Insufficient d
 | 3.5 Data Handling | Sensitivity class; whether PII, PHI or financial data is present; approval owner | Retention period; the list of third-party processors, provided none is known to touch Restricted data |
 | 4 Creases | Acceptance criteria for the output | Optional sections of the skeleton |
 | 5 Base A | Which step carries the human review | Naming of the role at each step |
-| 6 Gates | Fail routing for any gate | Automation of a gate that a Human can run by hand in the meantime |
+| 6 Gates | Fail routing for any gate | Automation of a gate that a human can run by hand in the meantime |
 | 7 Roles | Permissions and forbidden tools for any role | Escalation contact's deputy |
 | 7.5 Export Readiness (design approval) | Any checklist item | None; the checklist is the gate |
 | 8 Testing | Expected value for any test case; the result of any test case | Notes |

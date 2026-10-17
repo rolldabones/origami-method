@@ -1,8 +1,8 @@
 # Candidate instructions
 
-**Part of Origami Method · last changed in v1.4.0 · 17 September 2026 · License: [CC BY-NC-SA 4.0](LICENSE)**
+**Part of Origami Method · last changed in v1.4.3 · 17 October 2026 · License: [CC BY-NC-SA 4.0](LICENSE)**
 
-**Status: no candidate pending, as at 17 September 2026 (KST).** The block below is the deployed block, candidate v3.1, pasted into GPT Builder on 17 September 2026 and mirrored in [README.md](README.md#instructions-as-deployed). The [regression suite](regression-suite.md) records the deployed configuration at 16 of 17 with RS-15 open against the model setting, not the text; its section 4 has the runs. `tools/check_release.py` verifies that the two are byte-identical for as long as this line says no candidate is pending. When a candidate is cut, this line changes to "candidate, not deployed", the block below becomes the candidate, and the check verifies the file's diff against the mirror instead.
+**Status: no candidate pending, as at 17 October 2026 (KST).** The block below is the deployed block, candidate v3.1, pasted into GPT Builder on 17 September 2026 and mirrored in [README.md](README.md#instructions-as-deployed). The [regression suite](regression-suite.md) records the deployed configuration at 16 of 17 with RS-15 open against the model setting, not the text; its section 4 has the runs. `tools/check_release.py` verifies that the two are byte-identical for as long as this line says no candidate is pending. When a candidate is cut, this line changes to "candidate, not deployed", the block below becomes the candidate, and the check verifies the file's diff against the mirror instead.
 
 ## Why a candidate file rather than an edited mirror
 
@@ -306,7 +306,9 @@ Historical record: the trail from the block of 14 July 2026 to the deployed one.
 +
  Stage 9 — Fold Log
  
--Fold type | Change summary | Rationale | Impacted stages | Re-test results+Fold type | Change summary | Rationale | Impacted stages | Re-test results
+-Fold type | Change summary | Rationale | Impacted stages | Re-test results
+\ No newline at end of file
++Fold type | Change summary | Rationale | Impacted stages | Re-test results
 +
 +Builder Packet (one per role; 13 fields, none blank)
 +
@@ -314,7 +316,9 @@ Historical record: the trail from the block of 14 July 2026 to the deployed one.
 +
 +Workflow Record (keep current)
 +
-+Stage | Artifact versions | Approvals (Risk & RACI, Data, Design, Release) | Open unknowns (owner, blocking?, due stage) | Folds | Last re-test```
++Stage | Artifact versions | Approvals (Risk & RACI, Data, Design, Release) | Open unknowns (owner, blocking?, due stage) | Folds | Last re-test
+\ No newline at end of file
+```
 
 **Candidate v1 → candidate v2 (deployed)**
 
@@ -340,7 +344,11 @@ Historical record: the trail from the block of 14 July 2026 to the deployed one.
 -ID, version & status (Draft/Released) | Role & purpose | Inputs (per Input Rules) | Outputs (per Output Skeleton) | Tool permissions | Handoffs | Gates enforced | Failure routing | Approval boundaries | Escalation | Data handling | Test cases assigned | Provenance (record, artifact versions, owner, date) & closing line
 +ID, version & status (Draft/Released) | Role & purpose | Inputs (per Input Rules) | Outputs (per Output Skeleton) | Tool permissions | Handoffs | Gates enforced | Failure routing | Approval boundaries | Escalation | Data handling | Test cases assigned | Provenance (record, versions, owner, date) & closing line
 @@ -198 +198 @@
--Stage | Artifact versions | Approvals (Risk & RACI, Data, Design, Release) | Open unknowns (owner, blocking?, due stage) | Folds | Last re-test+Stage | Artifact versions | Approvals (Risk & RACI, Data, Design, Release) | Open unknowns (owner, blocking?, due) | Folds | Last re-test```
+-Stage | Artifact versions | Approvals (Risk & RACI, Data, Design, Release) | Open unknowns (owner, blocking?, due stage) | Folds | Last re-test
+\ No newline at end of file
++Stage | Artifact versions | Approvals (Risk & RACI, Data, Design, Release) | Open unknowns (owner, blocking?, due) | Folds | Last re-test
+\ No newline at end of file
+```
 
 
 **Candidate v2 → candidate v3**

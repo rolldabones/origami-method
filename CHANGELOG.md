@@ -2,6 +2,16 @@
 
 All notable changes to this repository are documented here. Versioning follows [Semantic Versioning](https://semver.org/). The README and this file version in lockstep; prior versions are superseded, never silently overwritten.
 
+## v1.4.3 (2026-10-17)
+
+Doctrine pointer and mechanical corrections from the whole-account review of 15 October 2026 (doc sections 1 and 8; reviewer report 12, items A9, C3, C7 and C8), session T3. No change to the method, the deployed instructions, the mirror or the regression suite.
+
+- **`README.md`, Doctrine connections:** the Informed Intent line said "explicit authorization of scope and purpose", two of the four elements DOCTRINE.md states. It now points to the elements and conditions stated in DOCTRINE.md (section 8, Short forms) instead of compressing them.
+- **`README.md`, closing line last:** How to Cite moves above the footer, so the closing line is the file's last line. computational-drafting added as the fifth nearest neighbor, returning the pointer it gives this repository (ECOSYSTEM.md protocol item 9).
+- **`candidate-instructions.md`, status date and render fault:** the status line is re-dated to 17 October 2026, its substance unchanged (no candidate pending). The v0 to v1 and v1 to v2 diffs glued their closing fences and two changed lines to the last line of text, where the compared blocks end without a newline, so GitHub left the first diff block open. Each glued line is split and marked with the standard unified-diff line `\ No newline at end of file`. No diff line's text changes; the deployed block and its identity with the mirror are unchanged.
+- **`risk-and-approval-rules.md`:** *Human* as a common noun lowercased at two places (DOCTRINE.md section 6).
+- Companion mastheads of the two changed companions name this release. Masthead, footer, How to Cite and `CITATION.cff` move to v1.4.3 in lockstep. The retirement notice and the present-tense deployment wording are untouched here; they are session T4's.
+
 ## v1.4.2 (2026-10-05)
 
 Correction of substance to the retirement notice of the previous release. On 1 October 2026 the Origami Workflow Guide was converted to a private ChatGPT plugin, so the notice's statement that it would not be migrated was false.
