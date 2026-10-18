@@ -1,8 +1,8 @@
 # Candidate instructions
 
-**Part of Origami Method · last changed in v1.5.0 · 18 October 2026 · License: [CC BY-NC-SA 4.0](LICENSE)**
+**Part of Origami Method · last changed in v1.5.1 · 18 October 2026 · License: [CC BY-NC-SA 4.0](LICENSE)**
 
-**Status: no candidate pending, as at 18 October 2026 (KST).** The block below is the instrument (as last verified 17 September 2026), candidate v3.1, published as the text of record in [instructions.md](instructions.md). The [regression suite](regression-suite.md) records the GPT configuration, Locked on 1 October 2026, at 16 of 17 with RS-15 open against the model setting, not the text; its section 4 has the runs, and no run on the successor configuration is logged yet ([tests.md](tests.md)). `tools/check_release.py` verifies that the two blocks are byte-identical for as long as this line says no candidate is pending. When a candidate is cut, this line changes to "candidate, not released", the block below becomes the candidate and the check verifies the file's diff against instructions.md instead.
+**Status: no candidate pending, as at 18 October 2026 (KST).** The block below is the instrument (as last verified 17 September 2026), candidate v3.1, published as the text of record in [instructions.md](instructions.md). The [regression suite](regression-suite.md) records the GPT configuration, Locked on 1 October 2026, at 16 of 17 with RS-15 open against the model setting, not the text; its section 4 has the runs, and Run 3, on 18 October 2026 (KST) on `claude-opus-5-5`, is logged there and is not accepted ([tests.md](tests.md)). `tools/check_release.py` verifies that the two blocks are byte-identical for as long as this line says no candidate is pending. When a candidate is cut, this line changes to "candidate, not released", the block below becomes the candidate and the check verifies the file's diff against instructions.md instead.
 
 ## Why a candidate file rather than an edited instrument
 

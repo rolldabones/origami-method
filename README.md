@@ -1,6 +1,6 @@
 # Origami Method
 
-**Version 1.5.0 · 18 October 2026 · Instrument, formerly the Origami Workflow Guide custom GPT (retired 1 October 2026) · Instructions last verified against the GPT on 17 September 2026, before the conversion · License: [CC BY-NC-SA 4.0](LICENSE)**
+**Version 1.5.1 · 18 October 2026 · Instrument, formerly the Origami Workflow Guide custom GPT (retired 1 October 2026) · Instructions last verified against the GPT on 17 September 2026, before the conversion · License: [CC BY-NC-SA 4.0](LICENSE)**
 
 > **Retired 1 October 2026 (KST).** The Origami Workflow Guide custom GPT was retired on 1 October 2026 and converted to a private plug-in on the OpenAI platform. The instructions published in this repository are the text of record and suffice for anyone who wants to build their own. History and sources: [RETIREMENT.md](https://github.com/rolldabones/rolldabones/blob/main/RETIREMENT.md).
 
@@ -64,10 +64,11 @@ Approvals are recorded, not implied. There are four approvals of record (Risk an
 | [builder-packet-template.md](builder-packet-template.md) | The thirteen required fields of a Builder Packet, each tied to the stage that produces it; a copy-ready template; a completeness check; the mapping from packet to the settings of an assistant, with GPT Builder kept as a historical example |
 | [worked-example.md](worked-example.md) | The whole method run on one fictional workflow, public meeting notes to a reviewed action list: every stage artifact, three Draft packets, a test that failed, the fold that fixed it, the re-test and Release Approval |
 | [risk-and-approval-rules.md](risk-and-approval-rules.md) | The risk matrix and its floors, which unknowns hold a gate, what an approval of record is, what changes invalidate which approvals and the Workflow Record template |
-| [regression-suite.md](regression-suite.md) | Seventeen cases with setup, expected behavior, pass criteria and basis, and the results log: Run 1 of 17 September 2026 (walk-through form, 11 of 13), the three isolated re-runs that closed it at 13 of 13, and Run 2 the same evening with its re-runs (the four tool-invitation cases: three passed; RS-15 was open on the GPT configuration when it was Locked), with the share links as evidence where published |
+| [regression-suite.md](regression-suite.md) | Seventeen cases with setup, expected behavior, pass criteria and basis, and the results log: Run 1 of 17 September 2026 (walk-through form, 11 of 13), the three isolated re-runs that closed it at 13 of 13, and Run 2 the same evening with its re-runs (the four tool-invitation cases: three passed; RS-15 was open on the GPT configuration when it was Locked), with the share links as evidence where published; and Run 3 of 18 October 2026, the first on a successor configuration (`claude-opus-5-5`), not accepted |
+| [evidence/](evidence/transcripts-2026-10-18-T5/README.md) | Run transcripts copied byte for byte: Run 3 of 18 October 2026 in `transcripts-2026-10-18-T5/`, with the runner's summary and an index |
 | [tests.md](tests.md) | Pointer to the regression suite, the known defects and the Last run record for the successor configuration |
 | [candidate-instructions.md](candidate-instructions.md) | The candidate mechanism: how an instruction change is cut, run as a system prompt on a current frontier model against the regression suite with one logged run, and only then copied into instructions.md. No candidate is pending; the file carries the instrument block, verified identical to instructions.md by the check script, the four cuts of 17 September 2026 and their diffs, and the procedure for the next change |
-| [tools/check_release.py](tools/check_release.py) | Release consistency check, no dependencies beyond Python 3: version and date lockstep across README, CHANGELOG.md and CITATION.cff; each companion masthead naming a release that exists, and this release if the file changed since the last tag; internal links and anchors; the thirteen packet fields in the template and in every packet of the example; the instrument block's stated character count and SHA-256 in instructions.md against its bytes; the candidate block's size, and its identity with instructions.md while no candidate is pending or its diff while one is; the closing line as the last line of every markdown file |
+| [tools/check_release.py](tools/check_release.py) | Release consistency check, no dependencies beyond Python 3: version and date lockstep across README, CHANGELOG.md and CITATION.cff; each companion masthead naming a release that exists, and this release if the file changed since the last tag; internal links and anchors, outside the verbatim run records in evidence/; the thirteen packet fields in the template and in every packet of the example; the instrument block's stated character count and SHA-256 in instructions.md against its bytes; the candidate block's size, and its identity with instructions.md while no candidate is pending or its diff while one is; the closing line as the last line of every markdown file |
 | [CHANGELOG.md](CHANGELOG.md), [CITATION.cff](CITATION.cff), [LICENSE](LICENSE) | Release history, citation metadata, CC BY-NC-SA 4.0 |
 
 ## Doctrine connections
@@ -117,7 +118,7 @@ Before every commit:
 python3 tools/check_release.py
 ```
 
-It exits non-zero and names the line on any of: a version or date that disagrees across the README masthead, footer and How to Cite block, the newest CHANGELOG.md entry and CITATION.cff; a companion masthead naming a release that is not in the changelog, or naming an earlier release when the file has changed since the last tag; an internal link or heading anchor that does not resolve; a packet in the worked example missing any of the thirteen fields, or the template disagreeing with the example on what they are; an instruction block in instructions.md whose bytes disagree with the character count or SHA-256 stated there; a candidate block at or above 7,900 characters, or whose stated size or diff has gone stale; a markdown file whose last line is not the closing line. It reads; it never writes. It exists because this repository's changelog records the README's footer version lagging its masthead twice, both found by reading.
+It exits non-zero and names the line on any of: a version or date that disagrees across the README masthead, footer and How to Cite block, the newest CHANGELOG.md entry and CITATION.cff; a companion masthead naming a release that is not in the changelog, or naming an earlier release when the file has changed since the last tag; an internal link or heading anchor that does not resolve (the verbatim run records in evidence/ are not link-checked); a packet in the worked example missing any of the thirteen fields, or the template disagreeing with the example on what they are; an instruction block in instructions.md whose bytes disagree with the character count or SHA-256 stated there; a candidate block at or above 7,900 characters, or whose stated size or diff has gone stale; a markdown file whose last line is not the closing line. It reads; it never writes. It exists because this repository's changelog records the README's footer version lagging its masthead twice, both found by reading.
 
 Companion files carry "last changed in vX.Y.Z" rather than the current version, because a version line records the release in which a file's substance last changed; moving it on a release that did not touch the file would be a false claim. The README, CHANGELOG.md and CITATION.cff move on every release. The substance test needs git history; without it the script says NOT CHECKED rather than passing that part.
 
@@ -127,7 +128,7 @@ This repository makes no regulatory or standards alignment claims. RACI, PII/PHI
 
 ## Change control
 
-The GPT configuration is Locked as of 1 October 2026, Lock being the method's own fold type: it is archived in [CHANGELOG.md](CHANGELOG.md) under v1.5.0 and no longer changes. Changes are made in [instructions.md](instructions.md) under this repository's version rule: a change to the block is a minor release, as when production changed on 17 September 2026 (v1.4.0). A changed block is accepted only after one logged run of the published instructions as a system prompt on a current frontier model, recorded in [tests.md](tests.md) with the model string and date. The procedure is in [candidate-instructions.md](candidate-instructions.md): cut a candidate there, run it against the [regression suite](regression-suite.md), log the run and only then copy it into instructions.md in the next release. Never the other way round. While no candidate is pending, the check script verifies that the block in that file is identical to instructions.md; while one is, it verifies the file's diff against instructions.md from the bytes.
+The GPT configuration is Locked as of 1 October 2026, Lock being the method's own fold type: it is archived in [CHANGELOG.md](CHANGELOG.md) under the release that retired the GPT and no longer changes. Changes are made in [instructions.md](instructions.md) under this repository's version rule: a change to the block is a minor release, as when production changed on 17 September 2026. A changed block is accepted only after one logged run of the published instructions as a system prompt on a current frontier model, recorded in [tests.md](tests.md) with the model string and date. The procedure is in [candidate-instructions.md](candidate-instructions.md): cut a candidate there, run it against the [regression suite](regression-suite.md), log the run and only then copy it into instructions.md in the next release. Never the other way round. While no candidate is pending, the check script verifies that the block in that file is identical to instructions.md; while one is, it verifies the file's diff against instructions.md from the bytes.
 
 ## Part of the ecosystem
 
@@ -144,7 +145,7 @@ Nearest neighbors:
 
 ## How to Cite
 
-> Paik, Son-U Michael. *Origami Method*, v1.5.0. GRC Solutions Korea, 2026. https://github.com/rolldabones/origami-method
+> Paik, Son-U Michael. *Origami Method*, v1.5.1. GRC Solutions Korea, 2026. https://github.com/rolldabones/origami-method
 
 A machine-readable citation is in [CITATION.cff](CITATION.cff).
 
@@ -154,6 +155,6 @@ Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International ([CC BY-
 
 ---
 
-**v1.5.0 · 18 October 2026 · License: [CC BY-NC-SA 4.0](LICENSE) · Changes: [CHANGELOG.md](CHANGELOG.md)**
+**v1.5.1 · 18 October 2026 · License: [CC BY-NC-SA 4.0](LICENSE) · Changes: [CHANGELOG.md](CHANGELOG.md)**
 
 Final Liability rests with the Human.

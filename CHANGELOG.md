@@ -2,6 +2,35 @@
 
 All notable changes to this repository are documented here. Versioning follows [Semantic Versioning](https://semver.org/). The README and this file version in lockstep; prior versions are superseded, never silently overwritten.
 
+## v1.5.1 (2026-10-18)
+
+Records-only patch: Run 3 logged (13 of 17 on the scorer's proposal, not accepted), unpublished evidence declared not recoverable, the text-only limit of the tool-invitation cases stated. Session T5 of the whole-account review of 15 October 2026 (KST), doc section 5 (origami-method row: "Run 3 on the successor configuration (section 4) or state that no accepted configuration exists after 1 October; publish the pasted sessions under `evidence/`"), under ruling 9; reviewer report 12, items A8 and B2. Dates are KST. No wording of the instruction block changes and no case changes; `instructions.md` is unchanged byte for byte (7,890 characters, SHA-256 `951378a5d59dfd9fa80962ac4db80a9415fcd2bbe1a481a124ebfca258929d81`).
+
+### Changed
+- **`tests.md`, known defect 3 (report 12 item B2):** the pasted sessions of Run 1 Session 1 and re-runs 2b and 2c are not recoverable, as at 18 October 2026. Searched on that date: the maintenance folder and its `Claude outputs/` (the two files `origami-candidate-v3-instructions.txt` and `origami-candidate-v3.1-instructions.txt` are candidate instruction blocks, not sessions), the corpus snapshot of 15 October 2026, the completion records of 17 September 2026 and this repository's git history. The rows stay marked "evidence unpublished"; no `evidence/` folder is created for them.
+- **`regression-suite.md`, section 4 Evidence:** the same statement where the log describes its evidence.
+- **`regression-suite.md`, section 5:** a new bullet, tool routing on a configuration with no tools: RS-14 to RS-17 run as an API system prompt test only the decline, and RS-15 there cannot reproduce the GPT-era routing defect.
+- README masthead, footer and How to Cite, `CITATION.cff` and this file move to v1.5.1 in lockstep; the two changed companions' mastheads name this release.
+
+### Run 3 (report 12 item A8)
+Run 18 October 2026 in isolated form, one fresh session per case, RS-01 to RS-17: the bytes between the fences of `instructions.md` as an API system prompt on `claude-opus-5-5`, no tools, max_tokens 16,000; scored by `claude-sonnet-5-5`, a different model, whose verdict is a proposal for the maintainer's ruling.
+- **Result:** scorer 13 PASS, 3 FAIL (RS-03, RS-07, RS-15), 1 UNSCORABLE (RS-09). Session review: RS-15 concur, model behavior (the decline ran to two sentences and a paragraph against "decline in one sentence"; no image, post content or image prompt); RS-03, RS-07 and RS-09 case defects (the scripted setup turns did not adapt to the assistant's replies, so the sessions were held at Stages 2, 3.5 and 7.5 on blocking items the script did not answer, and the state each case tests was not reached). One blocking item came from the seed: the worked example's Target names two inputs and its Context Packet three. No dissent; no instrument defect. Spot-checked PASS: RS-06, RS-10 and RS-08 (the last with a reservation recorded in the log).
+- **Acceptance:** not accepted under section 2: open cases RS-15 and RS-03, RS-07, RS-09. Reviewer: pending (Michael Paik).
+- **Records:** `regression-suite.md` section 4 gains the Run 3 block and rows (Result column: scorer proposal, reviewer pending); its introduction and the 17 September status paragraph name Run 3. `tests.md`: Last run section, known defect 1 updated for the text-only result. `candidate-instructions.md`: status line names Run 3. README: Build kit rows for the suite and `evidence/`, and the check-script descriptions.
+- **Evidence:** `evidence/transcripts-2026-10-18-T5/`, the 17 transcripts copied byte for byte with the closing line appended, the runner's `summary.json` and an index (report 12 item B2 for future runs).
+- **`tools/check_release.py`:** check 2 (internal links and anchors) no longer reads markdown files under `evidence/`: a transcript there is copied byte for byte and quotes links written relative to the repository root (RS-04's rule text cites `risk-and-approval-rules.md`), so it cannot be edited to resolve them. Check 6 (closing line last) still reads them.
+
+### Findings by class
+- Confirmed: A8 (no run on the successor configuration; Run 3 is now logged, not accepted), B2 (three runs without published evidence; now declared not recoverable).
+- Already fixed: none in scope.
+- Not reproducible: none.
+- Outside the review: none edited.
+
+### Deferred
+- The maintainer's ruling on each Run 3 row and on acceptance.
+- A re-run of RS-03, RS-07 and RS-09 with setup turns that answer the assistant's blocking items, or a seed whose Target and Context Packet agree; a later run.
+- The worked example's Target and Context Packet input mismatch: reported, not edited (outside the review).
+
 ## v1.5.0 (2026-10-18)
 
 Instrument form after the GPT retirement; instructions.md, change control re-targeted. Session T4 of the whole-account review of 15 October 2026 (KST), doc section 4, items 2 and 3, under determination D5 and ruling 9; reviewer report 12, items A6, A10, A17, A20, B1, B2, B6, B8, C5 and C7. Dates are KST. The Origami Workflow Guide custom GPT was retired on 1 October 2026 and converted to a private plug-in on the OpenAI platform; nothing in this release was verified against the plug-in. Minor rather than patch because the text of record of the instructions moves from the README to its own file and the change procedure changes. No wording of the instruction block changes, no regression case changes and no run is added (a run on the successor configuration is session T5's).

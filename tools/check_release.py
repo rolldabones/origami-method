@@ -18,8 +18,11 @@ What it checks, and why each check exists:
      with the same date, does not exceed the README version, and equals the README version
      when the file has changed since the last tag or in the working tree. That last part
      needs git and is reported NOT CHECKED without it.
-  2. Internal links and heading anchors, outside fenced code blocks, in every markdown file.
-     A link to a file that is not there, or to a heading that is not there, is a defect.
+  2. Internal links and heading anchors, outside fenced code blocks, in every markdown file
+     except the verbatim run records under evidence/. A link to a file that is not there, or
+     to a heading that is not there, is a defect. A transcript under evidence/ is copied byte
+     for byte and quotes links written relative to the repository root, so it is not edited
+     to make them resolve and is not link-checked; check 6 still applies to it.
   3. Builder Packet fields. builder-packet-template.md defines the required fields in its
      numbered table. Every packet in worked-example.md must carry every one of them, by the
      same name, in the same order. The candidate instruction block's compact packet line must
@@ -274,7 +277,9 @@ def main(root):
         fail("no markdown files found under the repository root")
     heading_cache = {}
     link_count = 0
-    for p in md_files:
+    evidence_dir = os.path.join(root, "evidence") + os.sep
+    link_files = [p for p in md_files if not p.startswith(evidence_dir)]
+    for p in link_files:
         text = read(p)
         lines = text.splitlines()
         inside = fenced_lines(lines)
@@ -301,7 +306,8 @@ def main(root):
                         heading_cache[tp] = headings(read(tp))
                     if anchor not in heading_cache[tp]:
                         fail(f"{os.path.relpath(p, root)}:{i}: anchor #{anchor} not found in {os.path.relpath(tp, root)}")
-    notes.append(f"internal links checked: {link_count} across {len(md_files)} markdown files")
+    notes.append(f"internal links checked: {link_count} across {len(link_files)} markdown files "
+                 f"({len(md_files) - len(link_files)} verbatim run records under evidence/ not link-checked)")
 
     # ---- 3. Builder Packet fields ---------------------------------------------------------
     tpl_p = os.path.join(root, "builder-packet-template.md")

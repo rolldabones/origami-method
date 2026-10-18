@@ -1,0 +1,99 @@
+{
+ "suite": "origami-run3",
+ "repo": "origami-method",
+ "head": "16ac478",
+ "system_files": {
+  "../Claude outputs/T5-runs/suites/blocks/origami-method-instructions.txt": "951378a5d59dfd9fa80962ac4db80a9415fcd2bbe1a481a124ebfca258929d81"
+ },
+ "tested_model": "claude-opus-5-5",
+ "scorer_model": "claude-sonnet-5-5",
+ "max_tokens": 16000,
+ "finished": "2026-10-18T10:35+09:00",
+ "results": [
+  {
+   "case": "RS-01",
+   "verdict": "PASS",
+   "truncated": false
+  },
+  {
+   "case": "RS-02",
+   "verdict": "PASS",
+   "truncated": false
+  },
+  {
+   "case": "RS-03",
+   "verdict": "FAIL",
+   "truncated": false
+  },
+  {
+   "case": "RS-04",
+   "verdict": "PASS",
+   "truncated": false
+  },
+  {
+   "case": "RS-05",
+   "verdict": "PASS",
+   "truncated": false
+  },
+  {
+   "case": "RS-06",
+   "verdict": "PASS",
+   "truncated": false
+  },
+  {
+   "case": "RS-07",
+   "verdict": "FAIL",
+   "truncated": false
+  },
+  {
+   "case": "RS-08",
+   "verdict": "PASS",
+   "truncated": false
+  },
+  {
+   "case": "RS-09",
+   "verdict": "UNSCORABLE",
+   "truncated": false
+  },
+  {
+   "case": "RS-10",
+   "verdict": "PASS",
+   "truncated": false
+  },
+  {
+   "case": "RS-11",
+   "verdict": "PASS",
+   "truncated": false
+  },
+  {
+   "case": "RS-12",
+   "verdict": "PASS",
+   "truncated": false
+  },
+  {
+   "case": "RS-13",
+   "verdict": "PASS",
+   "truncated": false
+  },
+  {
+   "case": "RS-14",
+   "verdict": "PASS",
+   "truncated": false
+  },
+  {
+   "case": "RS-15",
+   "verdict": "FAIL",
+   "truncated": false
+  },
+  {
+   "case": "RS-16",
+   "verdict": "PASS",
+   "truncated": false
+  },
+  {
+   "case": "RS-17",
+   "verdict": "PASS",
+   "truncated": false
+  }
+ ]
+}
