@@ -1,6 +1,6 @@
 # Origami Method
 
-**Version 1.5.1 · 18 October 2026 · Instrument, formerly the Origami Workflow Guide custom GPT (retired 1 October 2026) · Instructions last verified against the GPT on 17 September 2026, before the conversion · License: [CC BY-NC-SA 4.0](LICENSE)**
+**Version 1.5.2 · 18 October 2026 · Instrument, formerly the Origami Workflow Guide custom GPT (retired 1 October 2026) · Instructions last verified against the GPT on 17 September 2026, before the conversion · License: [CC BY-NC-SA 4.0](LICENSE)**
 
 > **Retired 1 October 2026 (KST).** The Origami Workflow Guide custom GPT was retired on 1 October 2026 and converted to a private plug-in on the OpenAI platform. The instructions published in this repository are the text of record and suffice for anyone who wants to build their own. History and sources: [RETIREMENT.md](https://github.com/rolldabones/rolldabones/blob/main/RETIREMENT.md).
 
@@ -49,7 +49,7 @@ Two states that earlier versions of this method left to inference are now named.
 
 **Ready to use** means Release Approval (8C) has been recorded: every 8A case is at P on the same built configuration in the same run, the 8B validation log is written, every carried unknown is resolved or accepted with a reason and the decision owner (the Accountable party where the Overall rating is Med or High) has approved the packet versions by name and date. Packets are re-issued at status **Released** only then.
 
-So the sequence is: approve the design → export Draft packets → run the tests → approve the release. The earlier wording, which asked at Stage 7.5 for gates "tested" and a "sign-off captured" before any test had run, was circular, and it is one of the items an external review of the 6 September 2026 release identified.
+So the sequence is: approve the design → export Draft packets → run the tests → approve the release. The earlier wording, which asked at Stage 7.5 for gates "tested" and a "sign-off captured" before any test had run, was circular; it is one of the items an external review of the 6 September 2026 release identified.
 
 Approvals are recorded, not implied. There are four approvals of record (Risk and RACI, Data Handling, Design, Release), each consisting of approver, artifact and version, date and the word "approved". A change to an approved artifact reopens its stage and invalidates every later approval until re-test and re-approval; the [invalidation table](risk-and-approval-rules.md#4-invalidation-what-reopens-what) says which change reopens what. The rules in full, including the risk matrix, the blocking unknowns and a Workflow Record template, are in [risk-and-approval-rules.md](risk-and-approval-rules.md).
 
@@ -83,30 +83,9 @@ The method operationalizes the three doctrines that run through this account:
 
 Use the Origami Method when you are designing a specific repeatable workflow, particularly one built from custom GPT components. For the broader 12-step governed AI methodology from individual task discipline to institutional program governance, use [slow-ai-kitchen](https://github.com/rolldabones/slow-ai-kitchen). For the question of whether an AI system should be deployed at all, run the [AI-Impact-Assessment-Tool](https://github.com/rolldabones/AI-Impact-Assessment-Tool).
 
-## Fold history and proposed folds
+## Fold history
 
-Observations about the GPT configuration up to its conversion, recorded per the method's own discipline, each typed with the method's fold vocabulary. Until 1 October 2026 a fold was applied by changing production first, testing with the regression suite, then updating this file and the changelog. From this release a fold is applied as under [Change control](#change-control); the mechanism is in [candidate-instructions.md](candidate-instructions.md).
-
-**Applied 17 September 2026**, each tested on the GPT configuration of that date before the mirror was refreshed:
-
-1. **Refactor.** Quick Start Stage 1 read "We want to use custom GPTs..." while the Stage 1 template read "We will use custom GPTs...". Aligned on "We will".
-2. **Lock.** Scope was carried by the role definition alone. An explicit scope hard stop now declines deliverable and execution requests in one sentence and returns to the current stage (RS-02).
-5. **Refactor.** The Stage 5 prose read intake → production → review → revision → approval against a template and a README reading intake → draft → self-check → review → finalize. One canonical flow, with the revision loop and the final approval stated.
-6. **Lock.** The export and validation sequence: Stage 7.5 requires design sign-off and produces packets at Draft; 8C Release Approval is recorded only when every 8A case is P; packets become Released, and the workflow ready to use, only then (RS-07, RS-08, RS-10).
-7. **Lock.** The thirteen Builder Packet fields and a one-line Workflow Record in the ready-to-copy artifacts (RS-09).
-8. **Refactor.** The matrix rule and the data floor at Stage 3; the definition of an approval of record in the operating discipline (RS-08).
-9. **Refactor.** Single-workflow mode now asks which workflow comes first rather than choosing. Run 1 showed the guide choosing; the order is the human's decision (RS-11).
-10. **Lock.** Any change or correction to an approved artifact (role, packet, crease or gate) is a fold, logged at Stage 9 before re-test, and reopens its stage. Run 1 showed a Producer correction being treated as outside the fold log (RS-07).
-11. **Lock.** A sample of the deliverable is the deliverable: the scope hard stop now names it, and the role definition ends "You never generate images." Cut after RS-15 showed the guide producing a marketing image on request; a heading trim paid for it. It holds where the model reads the block, which the Thinking-off run of RS-15 showed, and it did not reach the Thinking 5.6 routing, which is why Image Generation was also disabled and RS-15 stayed open (RS-02, RS-15).
-
-**Closed 17 September 2026**, neither of them instruction text:
-
-3. **Audit.** Tool access can tempt drift into the execution work the instructions exclude. Tested by Run 2 of the regression suite, one invitation per capability then enabled as the first message of a fresh session (RS-14 to RS-17): Web Search, Code Interpreter and Canvas held; Image Generation did not, and the guide produced the deliverable. Image Generation was disabled the same evening, which removed the output and not the routing: under Thinking 5.6 the request still goes to image generation and returns a platform error, on the v2 block and on the two cuts that followed, while the same block with Thinking off declines and opens Stage 0. Closed as an audit; its finding is open as RS-15 against the model setting, with the residual stated in the suite.
-4. **Expose (optional).** Conversation starters such as "Start Stage 0." and "Enable Expert Mode." would make the entry points visible. Withdrawn by the maintainer on 17 September 2026: none were configured and none will be added; the entry points stay in the instructions.
-
-Nothing is proposed.
-
-Folds 5 to 8 came from an external review of the 6 September 2026 release, received 17 September 2026. Folds 9 and 10 came from Run 1 of the regression suite the same day, and fold 11 from Run 2 the same evening; folds 3 and 4 were closed that evening, one by Run 2 and one by decision. The block is 7,890 characters. The GPT Builder ceiling, reported at 8,000 and not found in official documentation, no longer binds; the check script keeps its warning line at 7,900 as this repository's size discipline, so the next fold still pays for itself in characters or does not enter.
+The eleven folds applied to the instructions on 17 September 2026, the two closed that day and the standing note that nothing is proposed are recorded under [Fold history](candidate-instructions.md#fold-history) in candidate-instructions.md, the file where the next fold is cut.
 
 ## Maintenance and release checks
 
@@ -145,7 +124,7 @@ Nearest neighbors:
 
 ## How to Cite
 
-> Paik, Son-U Michael. *Origami Method*, v1.5.1. GRC Solutions Korea, 2026. https://github.com/rolldabones/origami-method
+> Paik, Son-U Michael. *Origami Method*, v1.5.2. GRC Solutions Korea, 2026. https://github.com/rolldabones/origami-method
 
 A machine-readable citation is in [CITATION.cff](CITATION.cff).
 
@@ -155,6 +134,6 @@ Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International ([CC BY-
 
 ---
 
-**v1.5.1 · 18 October 2026 · License: [CC BY-NC-SA 4.0](LICENSE) · Changes: [CHANGELOG.md](CHANGELOG.md)**
+**v1.5.2 · 18 October 2026 · License: [CC BY-NC-SA 4.0](LICENSE) · Changes: [CHANGELOG.md](CHANGELOG.md)**
 
 Final Liability rests with the Human.

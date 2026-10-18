@@ -2,6 +2,26 @@
 
 All notable changes to this repository are documented here. Versioning follows [Semantic Versioning](https://semver.org/). The README and this file version in lockstep; prior versions are superseded, never silently overwritten.
 
+## v1.5.2 (2026-10-18)
+
+Front-door patch: the fold history leaves the README for the candidate file. Session T7 of the whole-account review of 15 October 2026 (KST), doc section 9, change 3 ("fold history to the candidate file"); reviewer report 12, item C1 (the change-control loop and the file where the next fold is cut). No instruction, rule, case or packet field changes.
+
+### Changed
+- **`README.md`** (21,604 bytes to 17,544): the section "Fold history and proposed folds" is moved out, sliced programmatically, and a three-line `## Fold history` stub points to its new place. Line 52 (the export sequence paragraph) loses a comma the account guard read as a serial comma; the sentence is the author's, not deployed text.
+- **`candidate-instructions.md`, last changed in v1.5.2, dated amendment note:** gains `## Fold history` before `## Release procedure`, the README section's text unchanged apart from three link targets rewired for the new location (Change control now linked as `README.md#change-control`; "this file" and "the README" where the moved text pointed at itself or at the README). The candidate block, the status line and the release procedure do not change.
+- **`regression-suite.md`:** RS-05's note reads "inferred, not stated; it is recorded as such" (the account guard's F6 line at :31, author prose in a table cell). The masthead moves to v1.5.2 because `tools/check_release.py` check 1 requires a changed companion to name the current release; no case, result or expected value changes.
+- README masthead, footer and How to Cite, `CITATION.cff` and this file move to v1.5.2 in lockstep. `instructions.md`, `tests.md`, `risk-and-approval-rules.md`, `builder-packet-template.md`, `worked-example.md`, `tools/` and `evidence/` are unchanged byte for byte. `python3 tools/check_release.py` exits 0.
+
+### Findings by class
+- Confirmed and edited: doc section 9 change 3 (fold history to the candidate file); report 12 item C1 as far as it concerns where the fold record lives; the account guard's two F6 lines (README.md:52, regression-suite.md:31).
+- Already fixed: report 12 item C1's re-targeting of the procedure at a named successor, and the one logged run, were done at v1.5.0 and v1.5.1 (T4 and T5).
+- Not reproducible: none.
+- Outside the review: none edited.
+- Unknown: none.
+
+### Deferred
+- The v1.5.1 deferrals stand (the maintainer's ruling on the Run 3 rows; the re-run of RS-03, RS-07 and RS-09; the worked example's Target and Context Packet mismatch).
+
 ## v1.5.1 (2026-10-18)
 
 Records-only patch: Run 3 logged (13 of 17 on the scorer's proposal, not accepted), unpublished evidence declared not recoverable, the text-only limit of the tool-invitation cases stated. Session T5 of the whole-account review of 15 October 2026 (KST), doc section 5 (origami-method row: "Run 3 on the successor configuration (section 4) or state that no accepted configuration exists after 1 October; publish the pasted sessions under `evidence/`"), under ruling 9; reviewer report 12, items A8 and B2. Dates are KST. No wording of the instruction block changes and no case changes; `instructions.md` is unchanged byte for byte (7,890 characters, SHA-256 `951378a5d59dfd9fa80962ac4db80a9415fcd2bbe1a481a124ebfca258929d81`).

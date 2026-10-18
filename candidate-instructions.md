@@ -1,6 +1,8 @@
 # Candidate instructions
 
-**Part of Origami Method · last changed in v1.5.1 · 18 October 2026 · License: [CC BY-NC-SA 4.0](LICENSE)**
+**Part of Origami Method · last changed in v1.5.2 · 18 October 2026 · License: [CC BY-NC-SA 4.0](LICENSE)**
+
+> **Amendment, 18 October 2026 (KST), v1.5.2.** The section Fold history, formerly the README's "Fold history and proposed folds", is moved into this file before the Release procedure; its text is unchanged apart from three link targets rewired for the new location. Session T7 of the whole-account review of 15 October 2026 (doc section 9, change 3; reviewer report 12, C1). The candidate block, the status line and the release procedure do not change.
 
 **Status: no candidate pending, as at 18 October 2026 (KST).** The block below is the instrument (as last verified 17 September 2026), candidate v3.1, published as the text of record in [instructions.md](instructions.md). The [regression suite](regression-suite.md) records the GPT configuration, Locked on 1 October 2026, at 16 of 17 with RS-15 open against the model setting, not the text; its section 4 has the runs, and Run 3, on 18 October 2026 (KST) on `claude-opus-5-5`, is logged there and is not accepted ([tests.md](tests.md)). `tools/check_release.py` verifies that the two blocks are byte-identical for as long as this line says no candidate is pending. When a candidate is cut, this line changes to "candidate, not released", the block below becomes the candidate and the check verifies the file's diff against instructions.md instead.
 
@@ -227,6 +229,33 @@ Workflow Record (keep current)
 
 Stage | Artifact versions | Approvals (Risk & RACI, Data, Design, Release) | Open unknowns (owner, blocking?, due) | Folds | Last re-test
 ```
+
+## Fold history
+
+Moved here from the README on 18 October 2026 (KST), text unchanged apart from three link targets, so that the record of past folds sits with the mechanism for the next one.
+
+Observations about the GPT configuration up to its conversion, recorded per the method's own discipline, each typed with the method's fold vocabulary. Until 1 October 2026 a fold was applied by changing production first, testing with the regression suite, then updating the README and the changelog. From this release a fold is applied as under [Change control](README.md#change-control); the mechanism is in this file.
+
+**Applied 17 September 2026**, each tested on the GPT configuration of that date before the mirror was refreshed:
+
+1. **Refactor.** Quick Start Stage 1 read "We want to use custom GPTs..." while the Stage 1 template read "We will use custom GPTs...". Aligned on "We will".
+2. **Lock.** Scope was carried by the role definition alone. An explicit scope hard stop now declines deliverable and execution requests in one sentence and returns to the current stage (RS-02).
+5. **Refactor.** The Stage 5 prose read intake → production → review → revision → approval against a template and a README reading intake → draft → self-check → review → finalize. One canonical flow, with the revision loop and the final approval stated.
+6. **Lock.** The export and validation sequence: Stage 7.5 requires design sign-off and produces packets at Draft; 8C Release Approval is recorded only when every 8A case is P; packets become Released, and the workflow ready to use, only then (RS-07, RS-08, RS-10).
+7. **Lock.** The thirteen Builder Packet fields and a one-line Workflow Record in the ready-to-copy artifacts (RS-09).
+8. **Refactor.** The matrix rule and the data floor at Stage 3; the definition of an approval of record in the operating discipline (RS-08).
+9. **Refactor.** Single-workflow mode now asks which workflow comes first rather than choosing. Run 1 showed the guide choosing; the order is the human's decision (RS-11).
+10. **Lock.** Any change or correction to an approved artifact (role, packet, crease or gate) is a fold, logged at Stage 9 before re-test, and reopens its stage. Run 1 showed a Producer correction being treated as outside the fold log (RS-07).
+11. **Lock.** A sample of the deliverable is the deliverable: the scope hard stop now names it, and the role definition ends "You never generate images." Cut after RS-15 showed the guide producing a marketing image on request; a heading trim paid for it. It holds where the model reads the block, which the Thinking-off run of RS-15 showed, and it did not reach the Thinking 5.6 routing, which is why Image Generation was also disabled and RS-15 stayed open (RS-02, RS-15).
+
+**Closed 17 September 2026**, neither of them instruction text:
+
+3. **Audit.** Tool access can tempt drift into the execution work the instructions exclude. Tested by Run 2 of the regression suite, one invitation per capability then enabled as the first message of a fresh session (RS-14 to RS-17): Web Search, Code Interpreter and Canvas held; Image Generation did not, and the guide produced the deliverable. Image Generation was disabled the same evening, which removed the output and not the routing: under Thinking 5.6 the request still goes to image generation and returns a platform error, on the v2 block and on the two cuts that followed, while the same block with Thinking off declines and opens Stage 0. Closed as an audit; its finding is open as RS-15 against the model setting, with the residual stated in the suite.
+4. **Expose (optional).** Conversation starters such as "Start Stage 0." and "Enable Expert Mode." would make the entry points visible. Withdrawn by the maintainer on 17 September 2026: none were configured and none will be added; the entry points stay in the instructions.
+
+Nothing is proposed.
+
+Folds 5 to 8 came from an external review of the 6 September 2026 release, received 17 September 2026. Folds 9 and 10 came from Run 1 of the regression suite the same day, and fold 11 from Run 2 the same evening; folds 3 and 4 were closed that evening, one by Run 2 and one by decision. The block is 7,890 characters. The GPT Builder ceiling, reported at 8,000 and not found in official documentation, no longer binds; the check script keeps its warning line at 7,900 as this repository's size discipline, so the next fold still pays for itself in characters or does not enter.
 
 ## Release procedure
 
