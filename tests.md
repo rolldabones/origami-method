@@ -1,6 +1,6 @@
 # Tests
 
-**Part of Origami Method · last changed in v1.5.1 · 18 October 2026 · License: [CC BY-NC-SA 4.0](LICENSE)**
+**Part of Origami Method · last changed in v1.5.3 · 19 October 2026 · License: [CC BY-NC-SA 4.0](LICENSE)**
 
 ## Cases
 
@@ -36,7 +36,7 @@ LLM scoring is developer testing, not independent assurance. The session review 
 
 **Counts.** Scorer: 13 PASS, 3 FAIL, 1 UNSCORABLE, 0 truncated. Session review of the four not PASS: 1 concur, model behavior; 3 case defects; no dissent; no instrument defect.
 
-**Acceptance (regression-suite.md section 2).** **Not accepted: open cases RS-15 (F) and RS-03, RS-07, RS-09 (not exercised). Reviewer: pending (Michael Paik).** No configuration is accepted after 1 October 2026 as at 18 October 2026 (KST).
+**Acceptance (regression-suite.md section 2).** **Not accepted: open cases RS-15 (F) and RS-03, RS-07, RS-09 (not exercised). Reviewer: Michael Paik, 19 October 2026 (KST), concurs.** No configuration is accepted after 1 October 2026 as at 19 October 2026 (KST).
 
 History, GPT era: every logged run was made on 17 September 2026 on the GPT configuration now Locked (model displayed in GPT Builder as Thinking 5.6). Run 1 in walk-through form scored 11 of 13; three isolated re-runs on candidate v2 closed it at 13 of 13; Run 2 on the four tool-invitation cases scored 3 of 4; re-runs 2a to 2c left the configuration at 16 of 17 with RS-15 open. The rows, evidence and rulings are in [regression-suite.md](regression-suite.md) section 4. Under that suite's section 5 a logged run more than 90 days old counts as no run, so these runs lapse on 16 December 2026; they are not evidence about any successor configuration.
 

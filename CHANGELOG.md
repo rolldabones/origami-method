@@ -2,6 +2,13 @@
 
 All notable changes to this repository are documented here. Versioning follows [Semantic Versioning](https://semver.org/). The README and this file version in lockstep; prior versions are superseded, never silently overwritten.
 
+## v1.5.3 (2026-10-19)
+
+Patch, from the weekly maintenance sweep of 19 October 2026 (KST) and Michael Paik's review of the T5 runs, completed 19 October 2026 (KST), on which he concurs with the scoring as recorded. No change to `instructions.md` or `candidate-instructions.md`.
+
+- **Run 3 reviewed.** The seventeen Run 3 rows of `regression-suite.md` section 4 carry the reviewer and "reviewer concurs" in place of "pending"; the tally line records the review, the scorer's line between RS-17 and RS-15 included. `tests.md` Acceptance records the review. Not accepted, as before: RS-15 F; RS-03, RS-07 and RS-09 not exercised.
+- Companion mastheads of `regression-suite.md` and `tests.md` to v1.5.3. README masthead and footer, How to Cite and `CITATION.cff` to v1.5.3. The Run 3 configuration line names the reviewer.
+
 ## v1.5.2 (2026-10-18)
 
 Front-door patch: the fold history leaves the README for the candidate file. Session T7 of the whole-account review of 15 October 2026 (KST), doc section 9, change 3 ("fold history to the candidate file"); reviewer report 12, item C1 (the change-control loop and the file where the next fold is cut). No instruction, rule, case or packet field changes.
