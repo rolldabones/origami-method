@@ -1,8 +1,8 @@
 # Origami Method
 
-**Version 1.5.4 · 20 October 2026 · Instrument, formerly the Origami Workflow Guide custom GPT (retired 1 October 2026) · Instructions last verified against the GPT on 17 September 2026, before the conversion · License: [CC BY-NC-SA 4.0](LICENSE)**
+**Version 1.5.4 · 20 October 2026 · Instrument, formerly the Origami Workflow Guide custom GPT (retired by the author on 1 October 2026 by conversion and Lock; OpenAI's retirement date for custom GPTs is 11 December 2026) · Instructions last verified against the GPT on 17 September 2026, before the conversion · License: [CC BY-NC-SA 4.0](LICENSE)**
 
-> **Retired 1 October 2026 (KST).** The Origami Workflow Guide custom GPT was retired on 1 October 2026 and converted to a private plug-in on the OpenAI platform. The instructions published in this repository are the text of record and suffice for anyone who wants to build their own. History and sources: [RETIREMENT.md](https://github.com/rolldabones/rolldabones/blob/main/RETIREMENT.md).
+> **Retired by the author 1 October 2026, Korea Standard Time (KST).** The author retired the Origami Workflow Guide custom GPT on 1 October 2026 by converting it to a private plug-in on the OpenAI platform and Locking its configuration. That is not OpenAI's retirement date for custom GPTs, which is 11 December 2026; until then a migrated GPT stays usable but read-only. The instructions published in this repository are the text of record and suffice for anyone who wants to build their own. History and sources: [RETIREMENT.md](https://github.com/rolldabones/rolldabones/blob/main/RETIREMENT.md).
 
 ## What it does
 
@@ -18,7 +18,7 @@ This repository is the method reference (the stages, the rules that make approva
 
 ## The method in brief
 
-The assistant works one stage at a time on purpose. Each stage produces a concrete artifact (a Target Statement, Context Packet, risk and RACI assignment, data-handling plan, input and output schemas, gates and role permissions) and it does not proceed until the user confirms. This enforces clarity, prevents hidden assumptions and makes gaps explicit ("Unknown / Insufficient data") rather than letting the system invent requirements. Changes to a working workflow are controlled "folds": minimal, recorded and re-tested instead of ad hoc rewrites.
+The assistant works one stage at a time on purpose. Each stage produces a concrete artifact (a Target Statement, Context Packet, risk and RACI (Responsible, Accountable, Consulted, Informed) assignment, data-handling plan, input and output schemas, gates and role permissions) and it does not proceed until the user confirms. This enforces clarity, prevents hidden assumptions and makes gaps explicit ("Unknown / Insufficient data") rather than letting the system invent requirements. Changes to a working workflow are controlled "folds": minimal, recorded and re-tested instead of ad hoc rewrites.
 
 It works this way because workflows fail under pressure when they are clever but underspecified: missing constraints, unclear decision ownership, weak data handling and no validation plan. By front-loading creases (input and output rules), gates (pass/fail checks) and testing (cases plus validation logs), the method produces systems that behave predictably, are easier to audit and can scale across teams without drifting into unsafe or inconsistent outputs.
 
@@ -28,7 +28,7 @@ Twelve gated steps, run strictly in order, one confirmed artifact per step: ten 
 - **1. Target Statement**: the whole workflow in one sentence
 - **2. Context Packet**: objective, decision owner, background, inputs, boundaries, definition of done, known unknowns
 - **3. Risk level and RACI**: Impact × Likelihood classification read from the [risk matrix](risk-and-approval-rules.md#1-risk-matrix), mitigations, escalation triggers
-- **3.5 Data Handling Review**: sensitivity class, PII/PHI/financial presence, locality and retention, processors, redaction plan, approval owner
+- **3.5 Data Handling Review**: sensitivity class, presence of personally identifiable information (PII), protected health information (PHI) or financial data, locality and retention, processors, redaction plan, approval owner
 - **4. Creases**: input rules and output skeleton
 - **5. Base A workflow**: the conservative five-step baseline, intake → draft → self-check → review → finalize; a review failure routes back to draft, and finalize requires the decision owner's approval
 - **6. Gates**: pass/fail checks with fail routing, automated and human
@@ -59,7 +59,7 @@ Approvals are recorded, not implied. There are four approvals of record (Risk an
 
 | File | What it is |
 |---|---|
-| [README.md](README.md) | This file: method reference, how to run it, fold history, change control, release checks |
+| [README.md](README.md) | This file: method reference, how to run it, change control, release checks |
 | [instructions.md](instructions.md) | The instructions, text of record: candidate v3.1 as last verified against the GPT on 17 September 2026, with its character count and SHA-256 |
 | [builder-packet-template.md](builder-packet-template.md) | The thirteen required fields of a Builder Packet, each tied to the stage that produces it; a copy-ready template; a completeness check; the mapping from packet to the settings of an assistant, with GPT Builder kept as a historical example |
 | [worked-example.md](worked-example.md) | The whole method run on one fictional workflow, public meeting notes to a reviewed action list: every stage artifact, three Draft packets, a test that failed, the fold that fixed it, the re-test and Release Approval |

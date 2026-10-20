@@ -16,8 +16,11 @@ What it checks, and why each check exists:
      Companion files are different: their masthead names the release in which the file's
      substance last changed, so the check is that the named release exists in CHANGELOG.md
      with the same date, does not exceed the README version, and equals the README version
-     when the file has changed since the last tag or in the working tree. That last part
-     needs git and is reported NOT CHECKED without it.
+     when the file has changed since the last tag or in the working tree. Run on a tagged
+     commit, the last tag is the previous one, since a diff against HEAD's own tag is empty.
+     That last part needs git and is reported NOT CHECKED without it; when HEAD is tagged and
+     no earlier tag is present (a shallow clone), only working-tree changes are tested and the
+     report says so.
   2. Internal links and heading anchors, outside fenced code blocks, in every markdown file
      except the verbatim run records under evidence/. A link to a file that is not there, or
      to a heading that is not there, is a defect. A transcript under evidence/ is copied byte
@@ -123,9 +126,13 @@ def vtuple(v):
 
 
 def changed_since_release(root):
-    """Names of files at the repository root changed since the latest tag or in the working
-    tree. None when git is unavailable or the root is not a git work tree; the caller reports
-    NOT CHECKED rather than passing."""
+    """Names of files at the repository root changed since the last release, or in the working
+    tree, with a label for what was compared. The last release is the highest tag, unless that
+    tag points at HEAD: then the check is being run on the release commit itself, a diff against
+    it would be empty and prove nothing, so the previous tag is used. When HEAD is tagged and no
+    earlier tag is present (a shallow clone), only working-tree changes are returned and the
+    label says so. Returns (None, reason) when git is unavailable or the root is not a git work
+    tree; the caller reports NOT CHECKED rather than passing."""
     import subprocess
     def git(*args):
         r = subprocess.run(["git", "-C", root] + list(args), capture_output=True, text=True)
@@ -138,14 +145,24 @@ def changed_since_release(root):
         for line in git("status", "--porcelain").splitlines():
             if len(line) > 3:
                 names.add(os.path.basename(line[3:].strip().strip('"')))
-        tags = [t for t in git("tag", "--list").split() if re.fullmatch(r"v\d+\.\d+\.\d+", t)]
+        tags = sorted((t for t in git("tag", "--list").split() if re.fullmatch(r"v\d+\.\d+\.\d+", t)),
+                      key=lambda t: vtuple(t[1:]))
+        base = None
         if tags:
-            latest = max(tags, key=lambda t: vtuple(t[1:]))
-            for line in git("diff", "--name-only", latest, "HEAD").splitlines():
+            at_head = set(git("tag", "--points-at", "HEAD").split())
+            base = tags[-1]
+            if base in at_head:
+                earlier = [t for t in tags if t not in at_head]
+                if not earlier:
+                    # A shallow clone: only working-tree changes can be seen.
+                    return names, (f"in the working tree only (HEAD is tagged {base} and no earlier "
+                                   f"release tag is present, as in a shallow clone)")
+                base = earlier[-1]
+            for line in git("diff", "--name-only", base, "HEAD").splitlines():
                 names.add(os.path.basename(line.strip()))
-        return names
+        return names, (f"since {base}" if base else "in the working tree (no release tag present)")
     except (RuntimeError, FileNotFoundError, OSError):
-        return None
+        return None, "no git history available"
 
 
 def main(root):
@@ -238,7 +255,7 @@ def main(root):
                             if f.endswith(".md") and f not in ("README.md", "CHANGELOG.md"))
         if not companions:
             fail("no companion .md files found; the build kit is missing")
-        changed = changed_since_release(root)
+        changed, base = changed_since_release(root)
         for c in companions:
             text = read(os.path.join(root, c))
             pm = re.search(r"^\*\*Part of Origami Method · last changed in v(\d+\.\d+\.\d+) · (\d{1,2}) (\w+) (\d{4}) · ", text, re.M)
@@ -256,14 +273,14 @@ def main(root):
             if changed is not None and c in changed and cver != ver:
                 fail(f"{c}: changed since the last release but its masthead names v{cver}, not v{ver}")
         if changed is None:
-            notes.append(f"companions checked: {len(companions)}; substance test NOT CHECKED (no git history available)")
+            notes.append(f"companions checked: {len(companions)}; substance test NOT CHECKED ({base})")
         else:
             hit = sorted(c for c in companions if c in changed)
             if hit:
-                notes.append(f"companions checked: {len(companions)}; changed since the last release: {len(hit)} "
-                             f"({', '.join(hit)}), each naming v{ver}")
+                notes.append(f"companions checked: {len(companions)}; changed {base}: {len(hit)} "
+                             f"({', '.join(hit)}), each required to name v{ver}")
             else:
-                notes.append(f"companions checked: {len(companions)}; none changed since the last release")
+                notes.append(f"companions checked: {len(companions)}; none changed {base}")
 
     # ---- 2. internal links and anchors ---------------------------------------------------
     md_files = []

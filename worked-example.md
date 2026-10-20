@@ -18,7 +18,7 @@ Progress marker: Stage 0 complete. Next: Stage 1, Target.
 
 ## Stage 1: Target Statement
 
-> We will use custom GPTs to produce a reviewed action list from published meeting notes so that the Committee Clerk can decide which actions to circulate to members, and by when, using the published notes and the member roster under public-data-only, no-inference and two-business-day boundaries.
+> We will use custom GPTs to produce a reviewed action list from published meeting notes so that the Committee Clerk can decide which actions to circulate to members, and by when, using the published notes, the member roster and the previous meeting's published action list under public-data-only, no-inference and two-business-day boundaries.
 
 Confirmed by the Clerk. Target Statement v1.
 
@@ -27,7 +27,7 @@ Confirmed by the Clerk. Target Statement v1.
 - **Objective:** turn each set of published notes of the Corvane Parks Advisory Committee into a list of actions, each with an owner, a due date and a source reference, ready for the Clerk's review within two business days of publication.
 - **Decision owner:** the Committee Clerk.
 - **Background:** the committee meets monthly; notes are published on the town website within five days of the meeting; actions are extracted by hand today; two misattributions this year, both from hedged language read as assignments.
-- **Inputs available:** the published notes (PDF or web text) carrying the meeting date and attendee list; the current member and staff roster (public); the previous meeting's action list.
+- **Inputs available:** the published notes (PDF or web text) carrying the meeting date and attendee list; the current member and staff roster (public); the previous meeting's action list, published on the town website with that meeting's notes (public).
 - **Boundaries:** privacy: public data only, and names only of people acting in a public role; jurisdiction: none relied on, this is public-record handling and nothing in the workflow turns on a legal rule; time: two business days from publication; tone: plain, no commentary.
 - **Definition of done:** every action in the table traceable to an agenda item and a quoted trigger phrase in the notes; every owner from the roster or marked Unknown; a due date only where the notes state one, otherwise Unknown; reviewed and approved by the Clerk; status REVIEWED.
 - **Known unknowns:** (a) retention period for generated drafts, owner the Clerk, due Stage 3.5, carried; (b) whether the town's records policy treats generated drafts as records, owner the Clerk, due before Release Approval, carried.
@@ -40,7 +40,7 @@ Neither unknown is blocking at Stage 2: the decision owner, the definition of do
 - **Likelihood: Med.** Note formats vary month to month and hedged language ("the Chair suggested members might consider") is common; the hand process has already failed twice on exactly this.
 - **Overall: Med**, read from the matrix (Med × Med). The data is a published record, expected to class as Public at Stage 3.5 and confirmed there, so no data floor applies. The output is read by the Clerk before anyone acts on it, so the unread-output floor does not apply.
 - **Controls the Med rating requires** (risk-and-approval-rules.md section 1.4): the self-check step; an automated gate at intake; human review by someone other than the requester; Release Approval by the Accountable party. All four appear in Stages 5 to 8 below.
-- **RACI:** R = Producer GPT, operated by the support assistant; A = the Clerk; C = the Committee Chair, for any action touching spending, a contract, personnel or a legal matter; I = committee members, on circulation.
+- **RACI:** R = the support assistant, using Producer GPT as a tool; A = the Clerk; C = the Committee Chair, for any action touching spending, a contract, personnel or a legal matter; I = committee members, on circulation.
 - **Mitigations:** traceability requirement (every row cites its trigger phrase); roster-only owners; the no-inference rule with a holding section for hedged items; Clerk review before circulation.
 - **Escalation triggers:** an action implying spending, a contract, personnel or a legal matter escalates from the Clerk to the Chair before circulation; notes lacking a date or attendee list go back to the publisher.
 
@@ -61,7 +61,7 @@ Neither unknown is blocking at Stage 2: the decision owner, the definition of do
 
 **Input Rules v1**
 
-- Accepted sources: published notes from the town website, as PDF or pasted text, carrying the meeting date and the attendee list; the current roster; the previous action list.
+- Accepted sources: published notes from the town website, as PDF or pasted text, carrying the meeting date and the attendee list; the current roster; the previous action list, as published on the town website.
 - Forbidden sources: draft notes, recordings, transcripts, emails, anything not yet published, anything the requester recalls from the meeting.
 - Required fields in the notes: meeting date; attendees; agenda items under numbered headings.
 - Definition of an action, v1: a sentence in the notes that assigns a task to a person or group.
@@ -98,7 +98,7 @@ Confirmed. Base A v1.
 | G2 | Schema | auto (Producer self-check) | Output matches the skeleton section by section | Producer redrafts |
 | G3 | Traceability | auto (Producer self-check) | Every row carries an agenda item and a quoted trigger phrase | Row without a source moved to Unknowns; Producer redrafts |
 | G4 | Roster match | auto (Producer self-check) | Every owner is on the roster | Owner set to Unknown and flagged; row kept |
-| G5 | No inference | Red-Team GPT, reported to a Human | Each row's trigger phrase is an assignment, not a suggestion | Row moved to Possible actions for the Clerk's decision |
+| G5 | No inference | Red-Team GPT, reported to a human | Each row's trigger phrase is an assignment, not a suggestion | Row moved to Possible actions for the Clerk's decision |
 | G6 | Clerk sign-off | human | Clerk approves the list for circulation | Return to Draft with comments; escalate per the Stage 3 triggers |
 
 Confirmed. Gates v1.
@@ -147,7 +147,7 @@ Three packets, one per role, all thirteen fields, status Draft, version 0.1.
 6. **Handoffs:** receives the notes and roster from the support assistant as a paste or upload. Passes the validated package to Producer GPT as text. Trigger: G1 pass.
 7. **Gates enforced:** G1 Input validity, auto: published source carrying date and attendee list; roster present.
 8. **Failure routing:** G1 fail: return to the requester naming the missing element; nothing passes to Producer. Input that breaks a rule (an unpublished source): reject, cite the rule. Unknown: write "Unknown / Insufficient data" and stop at intake.
-9. **Approval boundaries:** may decide alone: whether the input passes G1. Requires a Human: any decision to accept a source not on the accepted list (the Clerk).
+9. **Approval boundaries:** may decide alone: whether the input passes G1. Requires a human: any decision to accept a source not on the accepted list (the Clerk).
 10. **Escalation:** notes lacking a date or attendee list escalate to the publisher via the Clerk.
 11. **Data handling:** Public. Minimization: none at intake; the package carries the full text unaltered so that Producer can quote from it. Retention: package discarded when Producer confirms receipt.
 12. **Test cases assigned:** T5.
@@ -163,7 +163,7 @@ Three packets, one per role, all thirteen fields, status Draft, version 0.1.
 6. **Handoffs:** receives the validated package from Intake GPT as text. Passes the draft list to Red-Team GPT as text, then, with Red-Team's report attached, to the Clerk. Trigger: self-check complete with G2 to G4 marked.
 7. **Gates enforced:** G2 Schema, G3 Traceability, G4 Roster match, all auto in the self-check step.
 8. **Failure routing:** G2 fail: redraft. G3 fail: move the unsourced row to Unknowns, redraft. G4 fail: set Owner to Unknown, flag the row, keep it. A review failure returned from G5 or G6: redraft the rows named, leave the rest. Unknown: write "Unknown / Insufficient data" in the row and list it in Unknowns.
-9. **Approval boundaries:** may decide alone: which rows fail G2 to G4 and how to redraft them. Requires a Human: whether a hedged item is an action (the Clerk, after Red-Team's G5 report); any escalation trigger (the Clerk, then the Chair).
+9. **Approval boundaries:** may decide alone: which rows fail G2 to G4 and how to redraft them. Requires a human: whether a hedged item is an action (the Clerk, after Red-Team's G5 report); any escalation trigger (the Clerk, then the Chair).
 10. **Escalation:** any action implying spending, a contract, personnel or a legal matter is flagged in the row for Clerk-to-Chair escalation before circulation.
 11. **Data handling:** Public. Minimization: roster names only; no private individual's name; no commentary. Retention: drafts kept 90 days and then deleted.
 12. **Test cases assigned:** T1, T2, T3, T4.
@@ -179,13 +179,13 @@ Three packets, one per role, all thirteen fields, status Draft, version 0.1.
 6. **Handoffs:** receives the draft and the package from Producer GPT as text. Passes the G5 report to the Clerk, attached to the draft. Trigger: every row addressed.
 7. **Gates enforced:** G5 No inference, reported to the Clerk for the decision.
 8. **Failure routing:** a row with a suggestion verdict: recommend moving it to Possible actions. A row it cannot source: report it to the Clerk as unsourced. Unknown: say so in the verdict; do not guess.
-9. **Approval boundaries:** may decide alone: nothing that changes the list; it reports. Requires a Human: every move and every removal (the Clerk).
+9. **Approval boundaries:** may decide alone: nothing that changes the list; it reports. Requires a human: every move and every removal (the Clerk).
 10. **Escalation:** any row whose trigger phrase touches spending, a contract, personnel or a legal matter and is not already flagged by Producer: flag it in the report for the Clerk.
 11. **Data handling:** Public. Minimization: quotes only what the verdict needs. Retention: report kept with the draft, 90 days.
 12. **Test cases assigned:** T2 (the G5 verdict), T4.
 13. **Provenance and closing line:** Workflow Record "Parks action list" v1. Cut from Target v1 | Context Packet v1 | Risk and RACI v1 | Data Handling Review v1 | Creases v1 | Base A v1 | Gates v1 | Roles v1. Owner: the Clerk. Date: 10 September 2026. Every session ends with: "Final Liability rests with the Human."
 
-Each packet passes the completeness check in builder-packet-template.md at Draft: thirteen fields, a forbidden capability in field 5, a receiving party for every output in field 6, fail routing for every gate, a named Human in field 9, at least one test case per gate in field 12, the closing line in field 13.
+Each packet passes the completeness check in builder-packet-template.md at Draft: thirteen fields, a forbidden capability in field 5, a receiving party for every output in field 6, fail routing for every gate, a named human in field 9, at least one test case per gate in field 12, the closing line in field 13.
 
 ## Stage 8: Testing and validation
 

@@ -72,7 +72,7 @@ BUILDER PACKET
 
 9. Approval boundaries (Stage 3 RACI, Stage 6 human checks)
    May decide alone: …
-   Requires a Human: … (who: …)
+   Requires a human: … (who: …)
 
 10. Escalation (Stage 3)
    Triggers: …

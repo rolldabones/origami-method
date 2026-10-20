@@ -19,7 +19,7 @@ Until 1 October 2026 the README's rule was that if the mirror and the deployed G
 | v3 | v2 plus fold 11 in its first form: the scope hard stop extended with "a sample of it" and a standalone rule "No image generation."; the heading "Stages (0–9) — inputs → artifacts → confirmation" trimmed to "Stages (0–9)" to pay for it | 7,885 characters | Two isolated runs (RS-15, RS-02), Thinking 5.6 | RS-02 P; RS-15 F, the same platform error as 2a |
 | v3.1 | v3 with the image rule moved into the role definition as "You never generate images." and the standalone line removed | 7,890 characters | RS-15 twice: Thinking off, then Thinking 5.6 | P with Thinking off; F with Thinking 5.6. Deployed on the maintainer's ruling with RS-15 open |
 
-Fold numbers follow the "Fold history and proposed folds" section of the README. Folds 3 and 4 were closed on 17 September 2026, one by Run 2 and one by decision; fold 11 came out of Run 2. The capability change (Image Generation disabled) preceded the v3 paste and was tested on its own, as the procedure below requires; each paste was then tested on its own.
+Fold numbers follow the [Fold history](#fold-history) section of this file. Folds 3 and 4 were closed on 17 September 2026, one by Run 2 and one by decision; fold 11 came out of Run 2. The capability change (Image Generation disabled) preceded the v3 paste and was tested on its own, as the procedure below requires; each paste was then tested on its own.
 
 ## Size
 
