@@ -1,6 +1,6 @@
 # Builder Packet template
 
-**Part of Origami Method · last changed in v1.5.0 · 18 October 2026 · License: [CC BY-NC-SA 4.0](LICENSE)**
+**Part of Origami Method · last changed in v1.5.5 · 20 October 2026 · License: [CC BY-NC-SA 4.0](LICENSE)**
 
 ## What a Builder Packet is
 

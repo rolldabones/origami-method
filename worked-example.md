@@ -1,6 +1,6 @@
 # Worked example: public meeting notes to a reviewed action list
 
-**Part of Origami Method · last changed in v1.5.0 · 18 October 2026 · License: [CC BY-NC-SA 4.0](LICENSE)**
+**Part of Origami Method · last changed in v1.5.5 · 20 October 2026 · License: [CC BY-NC-SA 4.0](LICENSE)**
 
 Everything in this example is fictional: the municipality, the committee, the roster, the meeting, the dates and the people, who appear by role only. It exists to show every artifact of the method on one small workflow, from the Target Statement to Release Approval, including one test that failed and the fold that fixed it.
 
@@ -42,7 +42,7 @@ Neither unknown is blocking at Stage 2: the decision owner, the definition of do
 - **Controls the Med rating requires** (risk-and-approval-rules.md section 1.4): the self-check step; an automated gate at intake; human review by someone other than the requester; Release Approval by the Accountable party. All four appear in Stages 5 to 8 below.
 - **RACI:** R = the support assistant, using Producer GPT as a tool; A = the Clerk; C = the Committee Chair, for any action touching spending, a contract, personnel or a legal matter; I = committee members, on circulation.
 - **Mitigations:** traceability requirement (every row cites its trigger phrase); roster-only owners; the no-inference rule with a holding section for hedged items; Clerk review before circulation.
-- **Escalation triggers:** an action implying spending, a contract, personnel or a legal matter escalates from the Clerk to the Chair before circulation; notes lacking a date or attendee list go back to the publisher.
+- **Escalation triggers:** an action implying spending, a contract, personnel or a legal matter escalates from the Clerk to the Chair before circulation; notes lacking a date or attendee list go back to the requester, naming the missing element (G1).
 
 **Approval of record (Risk and RACI):** the Clerk, as Accountable party | Risk and RACI v1 | 9 September 2026 | approved.
 
@@ -148,7 +148,7 @@ Three packets, one per role, all thirteen fields, status Draft, version 0.1.
 7. **Gates enforced:** G1 Input validity, auto: published source carrying date and attendee list; roster present.
 8. **Failure routing:** G1 fail: return to the requester naming the missing element; nothing passes to Producer. Input that breaks a rule (an unpublished source): reject, cite the rule. Unknown: write "Unknown / Insufficient data" and stop at intake.
 9. **Approval boundaries:** may decide alone: whether the input passes G1. Requires a human: any decision to accept a source not on the accepted list (the Clerk).
-10. **Escalation:** notes lacking a date or attendee list escalate to the publisher via the Clerk.
+10. **Escalation:** none at intake: notes lacking a date or attendee list are returned to the requester under field 8, not escalated.
 11. **Data handling:** Public. Minimization: none at intake; the package carries the full text unaltered so that Producer can quote from it. Retention: package discarded when Producer confirms receipt.
 12. **Test cases assigned:** T5.
 13. **Provenance and closing line:** Workflow Record "Parks action list" v1. Cut from Target v1 | Context Packet v1 | Risk and RACI v1 | Data Handling Review v1 | Creases v1 | Base A v1 | Gates v1 | Roles v1. Owner: the Clerk. Date: 10 September 2026. Every session ends with: "Final Liability rests with the Human."
@@ -210,7 +210,7 @@ One case at F. By the Stage 6 fail routing, the row was moved to Possible action
 | Refactor | Input Rules v2: an action is a sentence in which a named owner is bound by an assignment verb from a fixed list ("will", "shall", "is to", "agreed to", "resolved that … will"). Sentences using "suggested", "might", "could", "may wish to", "consider" are never actions and go to Possible actions | The v1 definition, "assigns a task", asked Producer to judge intent. The test showed it judging wrong in exactly the way the hand process had. A verb list is checkable; intent is not | 4 (Input Rules), 6 (G5 pass criteria now cite the verb list), 7 (BP-PRODUCER fields 3 and 4; BP-RED-TEAM field 4), 8 | See below |
 | Expose | Producer prints, in the Source cell of every row, the assignment verb that qualified it, beside the quoted phrase | Makes G5 a one-glance check for Red-Team and the Clerk, and makes a wrong row explain itself | 4 (Output Skeleton), 7 (BP-PRODUCER field 4), 8 | See below |
 
-Per the invalidation table in risk-and-approval-rules.md section 4, a Refactor to an approved artifact reopens the stages it names and invalidates the Design approval and, had one existed, the Release approval. Creases move to v2, Gates to v2 (G5 wording), Roles unchanged in substance, the affected packets to v0.2 at Draft. **The Clerk re-recorded Design Approval** on 12 September 2026 over the changed versions.
+Per the invalidation table in risk-and-approval-rules.md section 4, each fold here changes an artifact the table names, so that artifact's row governs: the Refactor changes G5's pass criteria (the gate row) and the Expose fold changes the Output Skeleton (the output-skeleton row). Each row reopens the stages it names and invalidates the Design approval and, had one existed, the Release approval. Creases move to v2, Gates to v2 (G5 wording), Roles unchanged in substance, the affected packets to v0.2 at Draft. **The Clerk re-recorded Design Approval** on 12 September 2026 over the changed versions.
 
 The Overall rating is Med, so the rule requires re-running the impacted cases; all five were re-run because the run is cheap and a full re-run answers the regression question outright.
 

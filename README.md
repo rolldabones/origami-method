@@ -1,6 +1,6 @@
 # Origami Method
 
-**Version 1.5.4 · 20 October 2026 · Instrument, formerly the Origami Workflow Guide custom GPT (retired by the author on 1 October 2026 by conversion and Lock; OpenAI's retirement date for custom GPTs is 11 December 2026) · Instructions last verified against the GPT on 17 September 2026, before the conversion · License: [CC BY-NC-SA 4.0](LICENSE)**
+**Version 1.5.5 · 20 October 2026 · Instrument, formerly the Origami Workflow Guide custom GPT (retired by the author on 1 October 2026 by conversion and Lock; OpenAI's retirement date for custom GPTs is 11 December 2026) · Instructions last verified against the GPT on 17 September 2026, before the conversion · License: [CC BY-NC-SA 4.0](LICENSE)**
 
 > **Retired by the author 1 October 2026, Korea Standard Time (KST).** The author retired the Origami Workflow Guide custom GPT on 1 October 2026 by converting it to a private plug-in on the OpenAI platform and Locking its configuration. That is not OpenAI's retirement date for custom GPTs, which is 11 December 2026; until then a migrated GPT stays usable but read-only. The instructions published in this repository are the text of record and suffice for anyone who wants to build their own. History and sources: [RETIREMENT.md](https://github.com/rolldabones/rolldabones/blob/main/RETIREMENT.md).
 
@@ -12,7 +12,7 @@ This repository is the method reference (the stages, the rules that make approva
 
 ## Run it in three steps
 
-1. Paste the fenced block in [instructions.md](instructions.md) into the system prompt, custom instructions or project instructions of any current assistant. There is no reference file.
+1. Paste the fenced block in [instructions.md](instructions.md) into the system prompt, custom instructions or project instructions of any current assistant. There is no reference file. No configuration has been accepted since the GPT configuration was Locked on 1 October 2026: the one logged run on a successor configuration (Run 3, `claude-opus-5-5`) was not accepted, so check the assistant you use against the suite before relying on it ([tests.md](tests.md)).
 2. Give it the inputs it asks for: it opens at Stage 0 with two questions. To see the whole method on one workflow first, start from the seed in [worked-example.md](worked-example.md).
 3. Review the output yourself and check the assistant's behavior against the cases in [tests.md](tests.md). You own sign-off.
 
@@ -75,8 +75,8 @@ Approvals are recorded, not implied. There are four approvals of record (Risk an
 
 The method operationalizes the three doctrines that run through this account:
 
-- The stage gates and mandatory confirmations are **Informed Intent** in miniature: nothing proceeds without prior authorization carrying the elements and conditions stated in [DOCTRINE.md](https://github.com/rolldabones/rolldabones/blob/main/DOCTRINE.md#8-short-forms).
-- The "Unknown / Insufficient data" rule is **Slow AI**: evidence over assurances, gaps declared rather than guessed.
+- The stage gates and mandatory confirmations apply **Informed Intent** in miniature, as stated in [DOCTRINE.md](https://github.com/rolldabones/rolldabones/blob/main/DOCTRINE.md), the account's single normative statement of the three doctrines.
+- The "Unknown / Insufficient data" rule applies **Slow AI**, as stated in [DOCTRINE.md](https://github.com/rolldabones/rolldabones/blob/main/DOCTRINE.md), the account's single normative statement of the three doctrines.
 - The mandatory session closing line is the third doctrine verbatim: **Final Liability rests with the Human.**
 
 ## When to use this
@@ -99,7 +99,7 @@ python3 tools/check_release.py
 
 It exits non-zero and names the line on any of: a version or date that disagrees across the README masthead, footer and How to Cite block, the newest CHANGELOG.md entry and CITATION.cff; a companion masthead naming a release that is not in the changelog, or naming an earlier release when the file has changed since the last tag; an internal link or heading anchor that does not resolve (the verbatim run records in evidence/ are not link-checked); a packet in the worked example missing any of the thirteen fields, or the template disagreeing with the example on what they are; an instruction block in instructions.md whose bytes disagree with the character count or SHA-256 stated there; a candidate block at or above 7,900 characters, or whose stated size or diff has gone stale; a markdown file whose last line is not the closing line. It reads; it never writes. It exists because this repository's changelog records the README's footer version lagging its masthead twice, both found by reading.
 
-Companion files carry "last changed in vX.Y.Z" rather than the current version, because a version line records the release in which a file's substance last changed; moving it on a release that did not touch the file would be a false claim. The README, CHANGELOG.md and CITATION.cff move on every release. The substance test needs git history; without it the script says NOT CHECKED rather than passing that part.
+Companion files carry "last changed in vX.Y.Z" rather than the current version, because a version line records the release in which a file's substance last changed; moving it on a release that did not touch the file would be a false claim. The README, CHANGELOG.md and CITATION.cff move on every release. The substance test needs git history; without it the script says NOT CHECKED rather than passing that part. Run on a tagged commit, it compares with the previous tag, since a diff against the commit's own tag is empty; in a shallow clone with no earlier tag it tests working-tree changes only and says so.
 
 ## Regulatory and standards note
 
@@ -124,7 +124,7 @@ Nearest neighbors:
 
 ## How to Cite
 
-> Paik, Son-U Michael. *Origami Method*, v1.5.4. GRC Solutions Korea, 2026. https://github.com/rolldabones/origami-method
+> Paik, Son-U Michael. *Origami Method*, v1.5.5. GRC Solutions Korea, 2026. https://github.com/rolldabones/origami-method
 
 A machine-readable citation is in [CITATION.cff](CITATION.cff).
 
@@ -134,6 +134,6 @@ Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International ([CC BY-
 
 ---
 
-**v1.5.4 · 20 October 2026 · License: [CC BY-NC-SA 4.0](LICENSE) · Changes: [CHANGELOG.md](CHANGELOG.md)**
+**v1.5.5 · 20 October 2026 · License: [CC BY-NC-SA 4.0](LICENSE) · Changes: [CHANGELOG.md](CHANGELOG.md)**
 
 Final Liability rests with the Human.

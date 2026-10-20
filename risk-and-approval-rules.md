@@ -1,6 +1,6 @@
 # Risk and approval rules
 
-**Part of Origami Method · last changed in v1.5.0 · 18 October 2026 · License: [CC BY-NC-SA 4.0](LICENSE)**
+**Part of Origami Method · last changed in v1.5.5 · 20 October 2026 · License: [CC BY-NC-SA 4.0](LICENSE)**
 
 The instructions ([instructions.md](instructions.md)) classify risk as Impact × Likelihood, each Low, Med or High, and require approvals at Stage 3, Stage 3.5, Stage 7.5 and, from this version of the method, at release. They do not say how the two ratings combine, which unknowns hold a gate, what an approval consists of or what undoes one. This file says so. It is method reference; a compact form of the matrix and the Confidential/Restricted floor entered the instructions on 17 September 2026 as folds 6 and 8 (the cuts are in [candidate-instructions.md](candidate-instructions.md)).
 
@@ -88,20 +88,21 @@ Each approval of record consists of five things, written into the Workflow Recor
 
 ## 4. Invalidation: what reopens what
 
-Any change to an approved artifact invalidates the approval of the stage that produced it and every approval of record downstream of that stage. Re-approval follows re-test. The table names the common cases so that nobody has to reason it out under pressure.
+Any change to an approved artifact invalidates the approval of the stage that produced it and every approval of record downstream of that stage. Re-approval follows re-test. The table names the common cases so that nobody has to reason it out under pressure. Its rows do not overlap: a fold that changes an artifact another row names (an input, the output skeleton, a gate, a role, a tool) is governed by that row, and the two fold rows cover only folds that change nothing else the table names. A new data class reopens Stage 3 because the data floor in section 1.3 is applied there.
 
 | Change | Stages reopened | Approvals invalidated |
 |---|---|---|
 | Deliverable, decision owner or the decision changes | 1 and everything after it | All four |
-| A new input source, file type or data class is introduced, including confidential or restricted data reaching a workflow designed for public or internal data | 3.5, 4, 6, 7, 8 | Data Handling, Design, Release |
+| A new input source or file type is introduced within the data class already approved | 3.5, 4, 6, 7, 8 | Data Handling, Design, Release |
+| A new data class is introduced, including confidential or restricted data reaching a workflow designed for public or internal data | 3, 3.5, 4, 6, 7, 8 | Risk and RACI, Data Handling, Design, Release |
 | A boundary changes (privacy, jurisdiction, time, tone) | 2, 3, 3.5, 8 | Risk and RACI, Data Handling, Design, Release |
 | Impact or Likelihood is re-rated | 3, 6, 8 | Risk and RACI, Design, Release |
 | The output skeleton or its acceptance criteria change | 4, 6, 8 | Design, Release |
 | A gate's pass criteria or fail routing change | 6, 8 | Design, Release |
 | A tool, capability, permission or third-party processor is added | 3.5, 7, 6, 8 | Data Handling, Design, Release |
 | A role is added or removed, or an escalation rule changes | 7, 6, 8 | Design, Release |
-| A fold of type Compress, Refactor or Invert is applied | The stages the fold log names, then 8 | Release, until the re-test passes and Release Approval is recorded again |
-| A fold of type Expose, Lock or Audit is applied | 8 | Release, re-confirmed by the decision owner on the re-test result |
+| A fold of type Compress, Refactor or Invert is applied that changes no artifact another row names | The stages the fold log names, then 8 | Release, until the re-test passes and Release Approval is recorded again |
+| A fold of type Expose, Lock or Audit is applied that changes no artifact another row names | 8 | Release, re-confirmed by the decision owner on the re-test result |
 | The underlying model or platform changes version | 8 | Release |
 | The Accountable party or decision owner is replaced | 3 | Risk and RACI; Design and Release stand only if the new party re-confirms them by name |
 
