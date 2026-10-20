@@ -1,6 +1,6 @@
 # Origami Method
 
-**Version 1.5.3 · 19 October 2026 · Instrument, formerly the Origami Workflow Guide custom GPT (retired 1 October 2026) · Instructions last verified against the GPT on 17 September 2026, before the conversion · License: [CC BY-NC-SA 4.0](LICENSE)**
+**Version 1.5.4 · 20 October 2026 · Instrument, formerly the Origami Workflow Guide custom GPT (retired 1 October 2026) · Instructions last verified against the GPT on 17 September 2026, before the conversion · License: [CC BY-NC-SA 4.0](LICENSE)**
 
 > **Retired 1 October 2026 (KST).** The Origami Workflow Guide custom GPT was retired on 1 October 2026 and converted to a private plug-in on the OpenAI platform. The instructions published in this repository are the text of record and suffice for anyone who wants to build their own. History and sources: [RETIREMENT.md](https://github.com/rolldabones/rolldabones/blob/main/RETIREMENT.md).
 
@@ -124,7 +124,7 @@ Nearest neighbors:
 
 ## How to Cite
 
-> Paik, Son-U Michael. *Origami Method*, v1.5.3. GRC Solutions Korea, 2026. https://github.com/rolldabones/origami-method
+> Paik, Son-U Michael. *Origami Method*, v1.5.4. GRC Solutions Korea, 2026. https://github.com/rolldabones/origami-method
 
 A machine-readable citation is in [CITATION.cff](CITATION.cff).
 
@@ -134,6 +134,6 @@ Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International ([CC BY-
 
 ---
 
-**v1.5.3 · 19 October 2026 · License: [CC BY-NC-SA 4.0](LICENSE) · Changes: [CHANGELOG.md](CHANGELOG.md)**
+**v1.5.4 · 20 October 2026 · License: [CC BY-NC-SA 4.0](LICENSE) · Changes: [CHANGELOG.md](CHANGELOG.md)**
 
 Final Liability rests with the Human.
