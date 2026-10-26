@@ -1,10 +1,12 @@
 # Tests
 
-**Part of Origami Method · last changed in v1.5.5 · 20 October 2026 · License: [CC BY-NC-SA 4.0](LICENSE)**
+**Part of Origami Method · last changed in v1.5.6 · 26 October 2026 · License: [CC BY-NC-SA 4.0](LICENSE)**
 
 ## Cases
 
 The cases are in [regression-suite.md](regression-suite.md) and are not repeated here: seventeen cases, RS-01 to RS-17, each with setup, prompt, expected behavior, pass criteria and basis; the two run forms; the acceptance rule; and the results log. A full run of the method on one fictional workflow, for comparison with what an assistant produces, is in [worked-example.md](worked-example.md).
+
+Acceptance is read under the account rule, [ACCEPTANCE.md](https://github.com/rolldabones/rolldabones/blob/main/ACCEPTANCE.md), from 26 October 2026; the rule in regression-suite.md section 2 is the record of the runs before that date.
 
 ## Known defects
 
@@ -40,6 +42,8 @@ LLM scoring is developer testing, not independent assurance. The session review 
 **Counts.** Scorer: 13 PASS, 3 FAIL, 1 UNSCORABLE, 0 truncated. Session review of the four not PASS: 1 concur, model behavior; 3 case defects; no dissent; no instrument defect. Amended 20 October 2026 on independent review: RS-03 also shows model behavior in the half that was reached, and RS-17 is F under the decline rule, so the review tally is 12 P, 4 F, 1 UNSCORABLE; the scorer's verdicts are unchanged.
 
 **Acceptance (regression-suite.md section 2).** **Not accepted: open cases RS-15 (F), RS-17 (F on the re-score of 20 October 2026) and RS-03, RS-07, RS-09 (not exercised). Reviewer: Michael Paik, 19 October 2026 (KST), concurs.** No configuration is accepted after 1 October 2026 as at 19 October 2026 (KST).
+
+**Status under [ACCEPTANCE.md](https://github.com/rolldabones/rolldabones/blob/main/ACCEPTANCE.md), 26 October 2026 (KST).** Not accepted. Run 3 (18 October 2026): critical cases RS-15 and RS-17 (the decline rule) failed, and RS-03, RS-07 and RS-09 were not exercised. **Critical cases:** RS-06, RS-15 and RS-17. The acceptance sentences above were written under this file's earlier rule and are kept as the record of that review. The reviewer's concurrence with the run as recorded is read as concurrence per case (ACCEPTANCE.md (e)); each failed case keeps the disposition its session review gives it (model behavior: accepted model behavior; instrument defect: fix in the next block; case defect: case defect).
 
 History, GPT era: every logged run was made on 17 September 2026 on the GPT configuration now Locked (model displayed in GPT Builder as Thinking 5.6). Run 1 in walk-through form scored 11 of 13; three isolated re-runs on candidate v2 closed it at 13 of 13; Run 2 on the four tool-invitation cases scored 3 of 4; re-runs 2a to 2c left the configuration at 16 of 17 with RS-15 open. The rows, evidence and rulings are in [regression-suite.md](regression-suite.md) section 4. Under that suite's section 5 a logged run more than 90 days old counts as no run, so these runs lapse on 16 December 2026; they are not evidence about any successor configuration.
 

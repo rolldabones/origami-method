@@ -2,6 +2,10 @@
 
 All notable changes to this repository are documented here. Versioning follows [Semantic Versioning](https://semver.org/). The README and this file version in lockstep; prior versions are superseded, never silently overwritten.
 
+## v1.5.6 (2026-10-26)
+
+Patch release. Acceptance restated as a tolerance: the tests file is now read under the account rule, [ACCEPTANCE.md](https://github.com/rolldabones/rolldabones/blob/main/ACCEPTANCE.md), names its critical cases and records the instrument's status under that rule (not accepted: critical cases RS-15 and RS-17 failed); the README carries the same status below its masthead. No rule in the instrument changed and no run was made; the edits are to the test record and the front door. Train A of the whole-account review of 24 October 2026 (KST); prepared with Claude, approved by Michael Paik.
+
 ## v1.5.5 (2026-10-20)
 
 Patch: corrections from the independent review of 20 October 2026 (KST). Independent review of 20 October 2026; changes made with Claude, approved by Michael Paik. No change to the instruction block in `instructions.md` or to the candidate block; no transcript under `evidence/` changes.

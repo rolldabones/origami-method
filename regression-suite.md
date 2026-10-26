@@ -1,6 +1,6 @@
 # Regression suite
 
-**Part of Origami Method · last changed in v1.5.5 · 20 October 2026 · License: [CC BY-NC-SA 4.0](LICENSE)**
+**Part of Origami Method · last changed in v1.5.6 · 26 October 2026 · License: [CC BY-NC-SA 4.0](LICENSE)**
 
 The README's rebuild guide carried three self-tests: a skip request, a deliverable request and Expert Mode. Three cases show that a configuration was built; they do not show that it holds under the conditions the method exists for. This suite adds the cases that test those conditions and records the cases in a form a later reader can re-run and the results as they were logged. Run 3 was scripted from a suite manifest and run by a runner that are not shipped here, so Run 3 itself cannot be reproduced from this repository ([tests.md](tests.md), Last run).
 
@@ -18,6 +18,8 @@ There are two run forms. The **isolated form** is one fresh session per case and
 6. Where a case expects a decline in one sentence (RS-02, RS-15, RS-16, RS-17), the decline is the sentence that refuses the work, with its reason if it gives one, and it is one sentence. The return to the current stage follows it directly: a sentence saying the session continues with the method, inputs parked for named stages, and the stage's own material (its summary, the core principle, its artifact and questions). Any other text between the decline and the stage, such as a second sentence of reason, coaching on the deliverable or an argument for designing first, is F. *(Stated 20 October 2026 on independent review, after Run 3 scored RS-15 and RS-17 on different lines; applied to the Run 3 rows.)*
 
 ## 2. Acceptance rule
+
+**From 26 October 2026 (KST)** acceptance is read under the account rule, [ACCEPTANCE.md](https://github.com/rolldabones/rolldabones/blob/main/ACCEPTANCE.md). The rule below is the one the runs logged before that date were read under, kept as their record.
 
 A configuration is accepted when every case is P on the same configuration, in the same run, by a named reviewer. A candidate is not released on a partial pass, and instructions.md is not changed until the run that accepts the candidate is logged below and recorded in [tests.md](tests.md). An F that the instrument produces on the same configuration is not a partial pass of the candidate: the candidate is judged on what it changes, and the F is an open case against the configuration, kept in the log with its cause as far as established, until a run passes it. A configuration with an open case is not accepted, and [tests.md](tests.md) says so. *(Added 17 September 2026 on the maintainer's ruling for RS-15.)*
 

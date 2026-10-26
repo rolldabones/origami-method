@@ -1,6 +1,8 @@
 # Origami Method
 
-**Version 1.5.5 · 20 October 2026 · Instrument, formerly the Origami Workflow Guide custom GPT (retired by the author on 1 October 2026 by conversion and Lock; OpenAI's retirement date for custom GPTs is 11 December 2026) · Instructions last verified against the GPT on 17 September 2026, before the conversion · License: [CC BY-NC-SA 4.0](LICENSE)**
+**Version 1.5.6 · 26 October 2026 · Instrument, formerly the Origami Workflow Guide custom GPT (retired by the author on 1 October 2026 by conversion and Lock; OpenAI's retirement date for custom GPTs is 11 December 2026) · Instructions last verified against the GPT on 17 September 2026, before the conversion · License: [CC BY-NC-SA 4.0](LICENSE)**
+
+**Acceptance status ([ACCEPTANCE.md](https://github.com/rolldabones/rolldabones/blob/main/ACCEPTANCE.md), 26 October 2026, KST):** Not accepted. Run 3 (18 October 2026): critical cases RS-15 and RS-17 (the decline rule) failed, and RS-03, RS-07 and RS-09 were not exercised. The account's status table is in [ECOSYSTEM.md](https://github.com/rolldabones/rolldabones/blob/main/ECOSYSTEM.md#instrument-status).
 
 > **Retired by the author 1 October 2026, Korea Standard Time (KST).** The author retired the Origami Workflow Guide custom GPT on 1 October 2026 by converting it to a private plug-in on the OpenAI platform and Locking its configuration. That is not OpenAI's retirement date for custom GPTs, which is 11 December 2026; until then a migrated GPT stays usable but read-only. The instructions published in this repository are the text of record and suffice for anyone who wants to build their own. History and sources: [RETIREMENT.md](https://github.com/rolldabones/rolldabones/blob/main/RETIREMENT.md).
 
@@ -124,7 +126,7 @@ Nearest neighbors:
 
 ## How to Cite
 
-> Paik, Son-U Michael. *Origami Method*, v1.5.5. GRC Solutions Korea, 2026. https://github.com/rolldabones/origami-method
+> Paik, Son-U Michael. *Origami Method*, v1.5.6. GRC Solutions Korea, 2026. https://github.com/rolldabones/origami-method
 
 A machine-readable citation is in [CITATION.cff](CITATION.cff).
 
@@ -134,6 +136,6 @@ Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International ([CC BY-
 
 ---
 
-**v1.5.5 · 20 October 2026 · License: [CC BY-NC-SA 4.0](LICENSE) · Changes: [CHANGELOG.md](CHANGELOG.md)**
+**v1.5.6 · 26 October 2026 · License: [CC BY-NC-SA 4.0](LICENSE) · Changes: [CHANGELOG.md](CHANGELOG.md)**
 
 Final Liability rests with the Human.
