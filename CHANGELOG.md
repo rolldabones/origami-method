@@ -2,6 +2,11 @@
 
 All notable changes to this repository are documented here. Versioning follows [Semantic Versioning](https://semver.org/). The README and this file version in lockstep; prior versions are superseded, never silently overwritten.
 
+## v1.5.7 (2026-11-03)
+
+- README masthead to 38 words from 56: the retirement parenthetical ("retired by the author on 1 October 2026 by conversion and Lock; OpenAI's retirement date for custom GPTs is 11 December 2026") reads "retired 1 October 2026", the account form; both facts stand in the retirement notice below it.
+- README and `CITATION.cff` to v1.5.7; no instrument, case or run record changed; acceptance unchanged. Train C of the improvement rotation (review of 24 October 2026). Prepared with Claude, approved by Michael Paik.
+
 ## v1.5.6 (2026-10-26)
 
 Patch release. Acceptance restated as a tolerance: the tests file is now read under the account rule, [ACCEPTANCE.md](https://github.com/rolldabones/rolldabones/blob/main/ACCEPTANCE.md), names its critical cases and records the instrument's status under that rule (not accepted: critical cases RS-15 and RS-17 failed); the README carries the same status below its masthead. No rule in the instrument changed and no run was made; the edits are to the test record and the front door. Train A of the whole-account review of 24 October 2026 (KST); prepared with Claude, approved by Michael Paik.
