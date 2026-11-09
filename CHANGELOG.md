@@ -2,6 +2,13 @@
 
 All notable changes to this repository are documented here. Versioning follows [Semantic Versioning](https://semver.org/). The README and this file version in lockstep; prior versions are superseded, never silently overwritten.
 
+## v1.5.8 (2026-11-09)
+
+Patch release. Train D of the improvement rotation (review of 24 October 2026). Prepared with Claude, approved by Michael Paik.
+
+- README, License: one line points to `rolldabones/LICENSING.md` (v1.0.0, new), which states once what the account's two licenses permit, that a Client's use in its own operations may fall outside NonCommercial, how to ask and why the two licenses do not mix.
+- README and `CITATION.cff` to v1.5.8; no other file changed.
+
 ## v1.5.7 (2026-11-03)
 
 - README masthead to 38 words from 56: the retirement parenthetical ("retired by the author on 1 October 2026 by conversion and Lock; OpenAI's retirement date for custom GPTs is 11 December 2026") reads "retired 1 October 2026", the account form; both facts stand in the retirement notice below it.
