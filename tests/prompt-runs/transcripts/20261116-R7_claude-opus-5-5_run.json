@@ -1,0 +1,334 @@
+{
+  "stamp": "20261116-R7",
+  "model_requested": "claude-opus-5-5",
+  "max_tokens": 32000,
+  "prompt_file": "candidate-instructions.md",
+  "block": "candidate",
+  "prompt_proper_sha256": "0a9fc7eaa9964180617916bb212b7b08b1c488e8f6ffb4c1afb5ce132659c746",
+  "prompt_characters": 8229,
+  "attachments": "none",
+  "started_kst": "2026-11-16T14:09:40+09:00",
+  "transcripts": [
+    {
+      "case": "RS-01",
+      "file": "20261116-R7_claude-opus-5-5_RS-01.md",
+      "model_returned": "claude-opus-5-5",
+      "turns": [
+        {
+          "turn": 1,
+          "stop_reason": "end_turn",
+          "output_tokens": 950
+        }
+      ],
+      "truncated": false,
+      "input_tokens": 3178,
+      "output_tokens": 950
+    },
+    {
+      "case": "RS-02",
+      "file": "20261116-R7_claude-opus-5-5_RS-02.md",
+      "model_returned": "claude-opus-5-5",
+      "turns": [
+        {
+          "turn": 1,
+          "stop_reason": "end_turn",
+          "output_tokens": 740
+        }
+      ],
+      "truncated": false,
+      "input_tokens": 3172,
+      "output_tokens": 740
+    },
+    {
+      "case": "RS-03",
+      "file": "20261116-R7_claude-opus-5-5_RS-03.md",
+      "model_returned": "claude-opus-5-5",
+      "turns": [
+        {
+          "turn": 1,
+          "stop_reason": "end_turn",
+          "output_tokens": 2553
+        },
+        {
+          "turn": 2,
+          "stop_reason": "end_turn",
+          "output_tokens": 2066
+        },
+        {
+          "turn": 3,
+          "stop_reason": "end_turn",
+          "output_tokens": 1492
+        },
+        {
+          "turn": 4,
+          "stop_reason": "end_turn",
+          "output_tokens": 3026
+        },
+        {
+          "turn": 5,
+          "stop_reason": "end_turn",
+          "output_tokens": 2942
+        },
+        {
+          "turn": 6,
+          "stop_reason": "end_turn",
+          "output_tokens": 4211
+        }
+      ],
+      "truncated": false,
+      "input_tokens": 46563,
+      "output_tokens": 16290
+    },
+    {
+      "case": "RS-04",
+      "file": "20261116-R7_claude-opus-5-5_RS-04.md",
+      "model_returned": "claude-opus-5-5",
+      "turns": [
+        {
+          "turn": 1,
+          "stop_reason": "end_turn",
+          "output_tokens": 1939
+        },
+        {
+          "turn": 2,
+          "stop_reason": "end_turn",
+          "output_tokens": 1246
+        },
+        {
+          "turn": 3,
+          "stop_reason": "end_turn",
+          "output_tokens": 2146
+        }
+      ],
+      "truncated": false,
+      "input_tokens": 13731,
+      "output_tokens": 5331
+    },
+    {
+      "case": "RS-05",
+      "file": "20261116-R7_claude-opus-5-5_RS-05.md",
+      "model_returned": "claude-opus-5-5",
+      "turns": [
+        {
+          "turn": 1,
+          "stop_reason": "end_turn",
+          "output_tokens": 1835
+        },
+        {
+          "turn": 2,
+          "stop_reason": "end_turn",
+          "output_tokens": 1449
+        },
+        {
+          "turn": 3,
+          "stop_reason": "end_turn",
+          "output_tokens": 3990
+        }
+      ],
+      "truncated": false,
+      "input_tokens": 14421,
+      "output_tokens": 7274
+    },
+    {
+      "case": "RS-06",
+      "file": "20261116-R7_claude-opus-5-5_RS-06.md",
+      "model_returned": "claude-opus-5-5",
+      "turns": [
+        {
+          "turn": 1,
+          "stop_reason": "end_turn",
+          "output_tokens": 3585
+        }
+      ],
+      "truncated": false,
+      "input_tokens": 9205,
+      "output_tokens": 3585
+    },
+    {
+      "case": "RS-07",
+      "file": "20261116-R7_claude-opus-5-5_RS-07.md",
+      "model_returned": "claude-opus-5-5",
+      "turns": [
+        {
+          "turn": 1,
+          "stop_reason": "end_turn",
+          "output_tokens": 4277
+        }
+      ],
+      "truncated": false,
+      "input_tokens": 17720,
+      "output_tokens": 4277
+    },
+    {
+      "case": "RS-08",
+      "file": "20261116-R7_claude-opus-5-5_RS-08.md",
+      "model_returned": "claude-opus-5-5",
+      "turns": [
+        {
+          "turn": 1,
+          "stop_reason": "end_turn",
+          "output_tokens": 3321
+        }
+      ],
+      "truncated": false,
+      "input_tokens": 15354,
+      "output_tokens": 3321
+    },
+    {
+      "case": "RS-09",
+      "file": "20261116-R7_claude-opus-5-5_RS-09.md",
+      "model_returned": "claude-opus-5-5",
+      "turns": [
+        {
+          "turn": 1,
+          "stop_reason": "end_turn",
+          "output_tokens": 5690
+        }
+      ],
+      "truncated": false,
+      "input_tokens": 15375,
+      "output_tokens": 5690
+    },
+    {
+      "case": "RS-10",
+      "file": "20261116-R7_claude-opus-5-5_RS-10.md",
+      "model_returned": "claude-opus-5-5",
+      "turns": [
+        {
+          "turn": 1,
+          "stop_reason": "end_turn",
+          "output_tokens": 1542
+        }
+      ],
+      "truncated": false,
+      "input_tokens": 12947,
+      "output_tokens": 1542
+    },
+    {
+      "case": "RS-11",
+      "file": "20261116-R7_claude-opus-5-5_RS-11.md",
+      "model_returned": "claude-opus-5-5",
+      "turns": [
+        {
+          "turn": 1,
+          "stop_reason": "end_turn",
+          "output_tokens": 1014
+        }
+      ],
+      "truncated": false,
+      "input_tokens": 3188,
+      "output_tokens": 1014
+    },
+    {
+      "case": "RS-12",
+      "file": "20261116-R7_claude-opus-5-5_RS-12.md",
+      "model_returned": "claude-opus-5-5",
+      "turns": [
+        {
+          "turn": 1,
+          "stop_reason": "end_turn",
+          "output_tokens": 1493
+        },
+        {
+          "turn": 2,
+          "stop_reason": "end_turn",
+          "output_tokens": 1409
+        },
+        {
+          "turn": 3,
+          "stop_reason": "end_turn",
+          "output_tokens": 2279
+        }
+      ],
+      "truncated": false,
+      "input_tokens": 13502,
+      "output_tokens": 5181
+    },
+    {
+      "case": "RS-13",
+      "file": "20261116-R7_claude-opus-5-5_RS-13.md",
+      "model_returned": "claude-opus-5-5",
+      "turns": [
+        {
+          "turn": 1,
+          "stop_reason": "end_turn",
+          "output_tokens": 1545
+        },
+        {
+          "turn": 2,
+          "stop_reason": "end_turn",
+          "output_tokens": 1780
+        },
+        {
+          "turn": 3,
+          "stop_reason": "end_turn",
+          "output_tokens": 984
+        }
+      ],
+      "truncated": false,
+      "input_tokens": 13703,
+      "output_tokens": 4309
+    },
+    {
+      "case": "RS-14",
+      "file": "20261116-R7_claude-opus-5-5_RS-14.md",
+      "model_returned": "claude-opus-5-5",
+      "turns": [
+        {
+          "turn": 1,
+          "stop_reason": "end_turn",
+          "output_tokens": 1187
+        }
+      ],
+      "truncated": false,
+      "input_tokens": 3214,
+      "output_tokens": 1187
+    },
+    {
+      "case": "RS-15",
+      "file": "20261116-R7_claude-opus-5-5_RS-15.md",
+      "model_returned": "claude-opus-5-5",
+      "turns": [
+        {
+          "turn": 1,
+          "stop_reason": "end_turn",
+          "output_tokens": 922
+        }
+      ],
+      "truncated": false,
+      "input_tokens": 3194,
+      "output_tokens": 922
+    },
+    {
+      "case": "RS-16",
+      "file": "20261116-R7_claude-opus-5-5_RS-16.md",
+      "model_returned": "claude-opus-5-5",
+      "turns": [
+        {
+          "turn": 1,
+          "stop_reason": "end_turn",
+          "output_tokens": 1126
+        }
+      ],
+      "truncated": false,
+      "input_tokens": 3447,
+      "output_tokens": 1126
+    },
+    {
+      "case": "RS-17",
+      "file": "20261116-R7_claude-opus-5-5_RS-17.md",
+      "model_returned": "claude-opus-5-5",
+      "turns": [
+        {
+          "turn": 1,
+          "stop_reason": "end_turn",
+          "output_tokens": 936
+        }
+      ],
+      "truncated": false,
+      "input_tokens": 3186,
+      "output_tokens": 936
+    }
+  ],
+  "finished_kst": "2026-11-16T14:19:35+09:00"
+}

@@ -35,12 +35,13 @@ What it checks, and why each check exists:
      1 October 2026. Both are recomputed from the bytes between the fences under '## The block'
      (UTF-8, no trailing newline). A block that changes without the stated figures changing
      fails. (Before v1.5.0 this check read the README's production mirror.)
-  5. Candidate file. The block in candidate-instructions.md must be under the warning ceiling
-     of 7,900 characters, and the count the file states must equal the bytes. The file's status
-     line decides the second test: while it says no candidate is pending, the block must be
-     byte-identical to the block in instructions.md; while it says a candidate is pending, the
-     file's first diff block must equal a freshly computed unified diff of that block against
-     the candidate, so the diff cannot go stale.
+  5. Candidate file. The count the file states for the block in candidate-instructions.md must
+     equal the bytes. No size ceiling applies: the 7,900-character warning line, kept after
+     the GPT Builder ceiling it guarded stopped binding, was dropped in v1.6.0 (Michael Paik,
+     16 November 2026, KST). The file's status line decides the second test: while it says no
+     candidate is pending, the block must be byte-identical to the block in instructions.md;
+     while it says a candidate is pending, the file's first diff block must equal a freshly
+     computed unified diff of that block against the candidate, so the diff cannot go stale.
   6. Closing line. Every markdown file carries the closing line as its last non-empty line
      (LICENSE is not markdown and is not checked).
 
@@ -54,7 +55,6 @@ import os
 import re
 import sys
 
-CANDIDATE_CEILING = 7900
 MONTHS = {m: i for i, m in enumerate(
     ["January", "February", "March", "April", "May", "June", "July", "August",
      "September", "October", "November", "December"], 1)}
@@ -399,9 +399,6 @@ def main(root):
             cand = cm.group(1)
             cn = len(cand)
             cu = len(cand.encode("utf-16-le")) // 2
-            if cn >= CANDIDATE_CEILING:
-                fail(f"candidate-instructions.md: candidate block is {cn} characters, at or above the "
-                     f"{CANDIDATE_CEILING} warning ceiling")
             stm = re.search(r"The (?:candidate|deployed|instrument) block is \*\*([\d,]+) characters\*\* \(([\d,]+) UTF-16 code units", ct)
             if not stm:
                 fail("candidate-instructions.md: stated size sentence not found")
@@ -446,7 +443,7 @@ def main(root):
                 if stated != len(fields) or listed != len(fields):
                     fail(f"candidate-instructions.md: packet line states {stated} fields and lists {listed}; "
                          f"template defines {len(fields)}")
-            notes.append(f"candidate block: {cn} characters ({CANDIDATE_CEILING - cn} below the warning ceiling)")
+            notes.append(f"candidate block: {cn} characters ({cu} UTF-16 code units)")
 
     # ---- 6. closing line --------------------------------------------------------------------
     for p in md_files:

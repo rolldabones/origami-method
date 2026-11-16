@@ -1,8 +1,8 @@
 # Origami Method
 
-**Version 1.5.9 · 16 November 2026 · Instrument, formerly the Origami Workflow Guide custom GPT (retired 1 October 2026) · Instructions last verified against the GPT on 17 September 2026, before the conversion · License: [CC BY-NC-SA 4.0](LICENSE)**
+**Version 1.6.0 · 16 November 2026 · Instrument, formerly the Origami Workflow Guide custom GPT (retired 1 October 2026) · Instructions last verified against the GPT on 17 September 2026, before the conversion · License: [CC BY-NC-SA 4.0](LICENSE)**
 
-**Acceptance status ([ACCEPTANCE.md](https://github.com/rolldabones/rolldabones/blob/main/ACCEPTANCE.md), 26 October 2026, KST):** Not accepted. Run 3 (18 October 2026): critical cases RS-15 and RS-17 (the decline rule) failed, and RS-03, RS-07 and RS-09 were not exercised. The account's status table is in [ECOSYSTEM.md](https://github.com/rolldabones/rolldabones/blob/main/ECOSYSTEM.md#instrument-status).
+**Acceptance status ([ACCEPTANCE.md](https://github.com/rolldabones/rolldabones/blob/main/ACCEPTANCE.md), 16 November 2026, KST):** Accepted with residuals on `claude-opus-5-5`. Run 7 of the published block (candidate v4.2) passed all eight critical cases, one on the Human reviewer's ruling, and 8 of 9 others; RS-08 (the data floor not restated) is the residual. The account's status table is in [ECOSYSTEM.md](https://github.com/rolldabones/rolldabones/blob/main/ECOSYSTEM.md#instrument-status).
 
 > **Retired by the author 1 October 2026, Korea Standard Time (KST).** The author retired the Origami Workflow Guide custom GPT on 1 October 2026 by converting it to a private plug-in on the OpenAI platform and Locking its configuration. That is not OpenAI's retirement date for custom GPTs, which is 11 December 2026; until then a migrated GPT stays usable but read-only (OpenAI's custom GPT retirement and migration FAQ, as read 16 November 2026, KST). The instructions published in this repository are the text of record and suffice for anyone who wants to build their own. History and sources: [RETIREMENT.md](https://github.com/rolldabones/rolldabones/blob/main/RETIREMENT.md).
 
@@ -14,7 +14,7 @@ This repository is the method reference (the stages, the rules that make approva
 
 ## Run it in three steps
 
-1. Paste the fenced block in [instructions.md](instructions.md) into the system prompt, custom instructions or project instructions of any current assistant. There is no reference file. No configuration has been accepted since the GPT configuration was Locked on 1 October 2026: the one logged run on a successor configuration (Run 3, `claude-opus-5-5`) was not accepted, so check the assistant you use against the suite before relying on it ([tests.md](tests.md)).
+1. Paste the fenced block in [instructions.md](instructions.md) into the system prompt, custom instructions or project instructions of any current assistant. There is no reference file. The block is accepted with one residual on `claude-opus-5-5` (Run 7, 16 November 2026); on any other assistant, run the suite in [tests/](tests/scripted-turns.md) before relying on it, and review the results yourself: an AI scorer is evidence, the decision is yours ([tests.md](tests.md)).
 2. Give it the inputs it asks for: it opens at Stage 0 with two questions. To see the whole method on one workflow first, start from the seed in [worked-example.md](worked-example.md).
 3. Review the output yourself and check the assistant's behavior against the cases in [tests.md](tests.md). You own sign-off.
 
@@ -62,15 +62,16 @@ Approvals are recorded, not implied. There are four approvals of record (Risk an
 | File | What it is |
 |---|---|
 | [README.md](README.md) | This file: method reference, how to run it, change control, release checks |
-| [instructions.md](instructions.md) | The instructions, text of record: candidate v3.1 as last verified against the GPT on 17 September 2026, with its character count and SHA-256 |
+| [instructions.md](instructions.md) | The instructions, text of record: candidate v4.2, accepted with one residual on 16 November 2026, with its character count and SHA-256 |
 | [builder-packet-template.md](builder-packet-template.md) | The thirteen required fields of a Builder Packet, each tied to the stage that produces it; a copy-ready template; a completeness check; the mapping from packet to the settings of an assistant, with GPT Builder kept as a historical example |
 | [worked-example.md](worked-example.md) | The whole method run on one fictional workflow, public meeting notes to a reviewed action list: every stage artifact, three Draft packets, a test that failed, the two folds that fixed it, the re-test and Release Approval |
 | [risk-and-approval-rules.md](risk-and-approval-rules.md) | The risk matrix and its floors, which unknowns hold a gate, what an approval of record is, what changes invalidate which approvals and the Workflow Record template |
-| [regression-suite.md](regression-suite.md) | Seventeen cases with setup, expected behavior, pass criteria and basis, and the results log: Run 1 of 17 September 2026 (walk-through form, 11 of 13), the three isolated re-runs on a second candidate (no single run passed all thirteen, so the configuration was not accepted under the rule as written), and Run 2 the same evening with its re-runs (the four tool-invitation cases: three passed; RS-15 was open on the GPT configuration when it was Locked), with the share links as evidence where published; and Run 3 of 18 October 2026, the first on a successor configuration (`claude-opus-5-5`), not accepted |
+| [regression-suite.md](regression-suite.md) | Seventeen cases with setup, expected behavior, pass criteria and basis, and the results log: Run 1 of 17 September 2026 (walk-through form, 11 of 13), the three isolated re-runs on a second candidate (no single run passed all thirteen, so the configuration was not accepted under the rule as written), and Run 2 the same evening with its re-runs (the four tool-invitation cases: three passed; RS-15 was open on the GPT configuration when it was Locked), with the share links as evidence where published; Run 3 of 18 October 2026, the first on a successor configuration (`claude-opus-5-5`), not accepted; and Runs 4 to 7 of 16 November 2026, Run 7 accepted with one residual |
 | [evidence/](evidence/transcripts-2026-10-18-T5/README.md) | Run transcripts copied byte for byte: Run 3 of 18 October 2026 in `transcripts-2026-10-18-T5/`, with the runner's summary and an index |
-| [tests.md](tests.md) | Pointer to the regression suite, the known defects and the Last run record for the successor configuration |
-| [candidate-instructions.md](candidate-instructions.md) | The candidate mechanism: how an instruction change is cut, run as a system prompt on a current frontier model against the regression suite with a logged run that meets [ACCEPTANCE.md](https://github.com/rolldabones/rolldabones/blob/main/ACCEPTANCE.md), and only then copied into instructions.md. No candidate is pending; the file carries the instrument block, verified identical to instructions.md by the check script, the four cuts of 17 September 2026 and their diffs, and the procedure for the next change |
-| [tools/check_release.py](tools/check_release.py) | Release consistency check, no dependencies beyond Python 3: version and date lockstep across README, CHANGELOG.md and CITATION.cff; each companion masthead naming a release that exists, and this release if the file changed since the last tag; internal links and anchors, outside the verbatim run records in evidence/; the thirteen packet fields in the template and in every packet of the example; the instrument block's stated character count and SHA-256 in instructions.md against its bytes; the candidate block's size, and its identity with instructions.md while no candidate is pending or its diff while one is; the closing line as the last line of every markdown file |
+| [tests.md](tests.md) | Status, known defects and the Last run record, Run 7 |
+| [tests/scripted-turns.md](tests/scripted-turns.md) | The literal turns of the seventeen cases, the [seed and history fixtures](tests/seed/history-to-stage-7.5.txt), the harness ([runner](tests/run_prompt_cases.py), [scorer](tests/score_prompt_cases.py)) and the [run records](tests/prompt-runs/README.md) of Runs 4 to 7 |
+| [candidate-instructions.md](candidate-instructions.md) | The candidate mechanism: how an instruction change is cut, run as a system prompt on a current frontier model against the regression suite with a logged run that meets [ACCEPTANCE.md](https://github.com/rolldabones/rolldabones/blob/main/ACCEPTANCE.md), and only then copied into instructions.md. No candidate is pending; the file carries the instrument block, verified identical to instructions.md by the check script, the cuts of 17 September and 16 November 2026 and their diffs, and the procedure for the next change |
+| [tools/check_release.py](tools/check_release.py) | Release consistency check, no dependencies beyond Python 3: version and date lockstep across README, CHANGELOG.md and CITATION.cff; each companion masthead naming a release that exists, and this release if the file changed since the last tag; internal links and anchors, outside the verbatim run records in evidence/; the thirteen packet fields in the template and in every packet of the example; the instrument block's stated character count and SHA-256 in instructions.md against its bytes; the candidate block's stated size, and its identity with instructions.md while no candidate is pending or its diff while one is; the closing line as the last line of every markdown file |
 | [CHANGELOG.md](CHANGELOG.md), [CITATION.cff](CITATION.cff), [LICENSE](LICENSE) | Release history, citation metadata, CC BY-NC-SA 4.0 |
 
 ## Doctrine connections
@@ -87,7 +88,7 @@ Use the Origami Method when you are designing a specific repeatable workflow, pa
 
 ## Fold history
 
-The nine folds applied to the instructions on 17 September 2026, the two closed that day and the standing note that nothing is proposed are recorded under [Fold history](candidate-instructions.md#fold-history) in candidate-instructions.md, the file where the next fold is cut.
+The nine folds applied to the instructions on 17 September 2026, the two closed that day and the six applied on 16 November 2026 (folds 12 to 17, released in v1.6.0) are recorded under [Fold history](candidate-instructions.md#fold-history) in candidate-instructions.md, the file where the next fold is cut.
 
 ## Maintenance and release checks
 
@@ -99,7 +100,7 @@ Before every commit:
 python3 tools/check_release.py
 ```
 
-It exits non-zero and names the line on any of: a version or date that disagrees across the README masthead, footer and How to Cite block, the newest CHANGELOG.md entry and CITATION.cff; a companion masthead naming a release that is not in the changelog, or naming an earlier release when the file has changed since the last tag; an internal link or heading anchor that does not resolve (the verbatim run records in evidence/ are not link-checked); a packet in the worked example missing any of the thirteen fields, or the template disagreeing with the example on what they are; an instruction block in instructions.md whose bytes disagree with the character count or SHA-256 stated there; a candidate block at or above 7,900 characters, or whose stated size or diff has gone stale; a markdown file whose last line is not the closing line. It reads; it never writes. It exists because this repository's changelog records the README's footer version lagging its masthead twice, both found by reading.
+It exits non-zero and names the line on any of: a version or date that disagrees across the README masthead, footer and How to Cite block, the newest CHANGELOG.md entry and CITATION.cff; a companion masthead naming a release that is not in the changelog, or naming an earlier release when the file has changed since the last tag; an internal link or heading anchor that does not resolve (the verbatim run records in evidence/ are not link-checked); a packet in the worked example missing any of the thirteen fields, or the template disagreeing with the example on what they are; an instruction block in instructions.md whose bytes disagree with the character count or SHA-256 stated there; a candidate block whose stated size or diff has gone stale; a markdown file whose last line is not the closing line. It reads; it never writes. It exists because this repository's changelog records the README's footer version lagging its masthead twice, both found by reading.
 
 Companion files carry "last changed in vX.Y.Z" rather than the current version, because a version line records the release in which a file's substance last changed; moving it on a release that did not touch the file would be a false claim. The README, CHANGELOG.md and CITATION.cff move on every release. The substance test needs git history; without it the script says NOT CHECKED rather than passing that part. Run on a tagged commit, it compares with the previous tag, since a diff against the commit's own tag is empty; in a shallow clone with no earlier tag it tests working-tree changes only and says so.
 
@@ -126,7 +127,7 @@ Nearest neighbors:
 
 ## How to Cite
 
-> Paik, Son-U Michael. *Origami Method*, v1.5.9. GRC Solutions Korea, 2026. https://github.com/rolldabones/origami-method
+> Paik, Son-U Michael. *Origami Method*, v1.6.0. GRC Solutions Korea, 2026. https://github.com/rolldabones/origami-method
 
 A machine-readable citation is in [CITATION.cff](CITATION.cff).
 
@@ -138,6 +139,6 @@ Commercial use, including a Client's use in its own operations, is set out in [L
 
 ---
 
-**v1.5.9 · 16 November 2026 · License: [CC BY-NC-SA 4.0](LICENSE) · Changes: [CHANGELOG.md](CHANGELOG.md)**
+**v1.6.0 · 16 November 2026 · License: [CC BY-NC-SA 4.0](LICENSE) · Changes: [CHANGELOG.md](CHANGELOG.md)**
 
 Final Liability rests with the Human.
