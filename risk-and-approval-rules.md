@@ -1,6 +1,6 @@
 # Risk and approval rules
 
-**Part of Origami Method · last changed in v1.5.5 · 20 October 2026 · License: [CC BY-NC-SA 4.0](LICENSE)**
+**Part of Origami Method · last changed in v1.5.9 · 16 November 2026 · License: [CC BY-NC-SA 4.0](LICENSE)**
 
 The instructions ([instructions.md](instructions.md)) classify risk as Impact × Likelihood, each Low, Med or High, and require approvals at Stage 3, Stage 3.5, Stage 7.5 and, from this version of the method, at release. They do not say how the two ratings combine, which unknowns hold a gate, what an approval consists of or what undoes one. This file says so. It is method reference; a compact form of the matrix and the Confidential/Restricted floor entered the instructions on 17 September 2026 as folds 6 and 8 (the cuts are in [candidate-instructions.md](candidate-instructions.md)).
 
@@ -82,9 +82,9 @@ An approval is recorded, not implied. A confirmation in the session ("continue",
 | Design | 7.5 | The decision owner | The whole design as it stands: the versions of every artifact from Stage 1 to Stage 7, the Stage 8A test table with expected values filled and actual values empty |
 | Release | after 8 | The decision owner, or the Accountable party where the Overall rating is Med or High | The Stage 8A table with every case at P, the Stage 8B validation log, the fold log and the Builder Packets at the versions being released |
 
-Each approval of record consists of five things, written into the Workflow Record: the approver's name and role; the artifact and version approved; the date; the word "approved", or "approved with conditions" followed by the conditions; and, for Release Approval, the packet versions. An approval missing any of the five is not an approval.
+Each approval of record consists of four things, and for Release Approval a fifth, written into the Workflow Record: the approver's name and role; the artifact and version approved; the date; the word "approved", or "approved with conditions" followed by the conditions; and, for Release Approval, the packet versions. An approval missing any required element is not an approval.
 
-**Design Approval is what makes a workflow ready to export.** Builder Packets may be generated once it is recorded, at status Draft. **Release Approval is what makes a workflow ready to use.** Packets are re-issued at status Released once it is recorded, and not before. A Draft packet built into a GPT is a test configuration, not a working one, and the packet says so on its face.
+**Design Approval is what makes a workflow ready to export.** Builder Packets may be generated once it is recorded, at status Draft. **Release Approval is what makes a workflow ready to use.** Packets are re-issued at status Released once it is recorded, and not before. A Draft packet built into an assistant is a test configuration, not a working one, and the packet says so on its face.
 
 ## 4. Invalidation: what reopens what
 
@@ -99,8 +99,8 @@ Any change to an approved artifact invalidates the approval of the stage that pr
 | Impact or Likelihood is re-rated | 3, 6, 8 | Risk and RACI, Design, Release |
 | The output skeleton or its acceptance criteria change | 4, 6, 8 | Design, Release |
 | A gate's pass criteria or fail routing change | 6, 8 | Design, Release |
-| A tool, capability, permission or third-party processor is added | 3.5, 7, 6, 8 | Data Handling, Design, Release |
-| A role is added or removed, or an escalation rule changes | 7, 6, 8 | Design, Release |
+| A tool, capability, permission or third-party processor is added | 3.5, 6, 7, 8 | Data Handling, Design, Release |
+| A role is added or removed, or an escalation rule changes | 6, 7, 8 | Design, Release |
 | A fold of type Compress, Refactor or Invert is applied that changes no artifact another row names | The stages the fold log names, then 8 | Release, until the re-test passes and Release Approval is recorded again |
 | A fold of type Expose, Lock or Audit is applied that changes no artifact another row names | 8 | Release, re-confirmed by the decision owner on the re-test result |
 | The underlying model or platform changes version | 8 | Release |

@@ -1,14 +1,14 @@
 # Origami Method
 
-**Version 1.5.8 · 9 November 2026 · Instrument, formerly the Origami Workflow Guide custom GPT (retired 1 October 2026) · Instructions last verified against the GPT on 17 September 2026, before the conversion · License: [CC BY-NC-SA 4.0](LICENSE)**
+**Version 1.5.9 · 16 November 2026 · Instrument, formerly the Origami Workflow Guide custom GPT (retired 1 October 2026) · Instructions last verified against the GPT on 17 September 2026, before the conversion · License: [CC BY-NC-SA 4.0](LICENSE)**
 
 **Acceptance status ([ACCEPTANCE.md](https://github.com/rolldabones/rolldabones/blob/main/ACCEPTANCE.md), 26 October 2026, KST):** Not accepted. Run 3 (18 October 2026): critical cases RS-15 and RS-17 (the decline rule) failed, and RS-03, RS-07 and RS-09 were not exercised. The account's status table is in [ECOSYSTEM.md](https://github.com/rolldabones/rolldabones/blob/main/ECOSYSTEM.md#instrument-status).
 
-> **Retired by the author 1 October 2026, Korea Standard Time (KST).** The author retired the Origami Workflow Guide custom GPT on 1 October 2026 by converting it to a private plug-in on the OpenAI platform and Locking its configuration. That is not OpenAI's retirement date for custom GPTs, which is 11 December 2026; until then a migrated GPT stays usable but read-only. The instructions published in this repository are the text of record and suffice for anyone who wants to build their own. History and sources: [RETIREMENT.md](https://github.com/rolldabones/rolldabones/blob/main/RETIREMENT.md).
+> **Retired by the author 1 October 2026, Korea Standard Time (KST).** The author retired the Origami Workflow Guide custom GPT on 1 October 2026 by converting it to a private plug-in on the OpenAI platform and Locking its configuration. That is not OpenAI's retirement date for custom GPTs, which is 11 December 2026; until then a migrated GPT stays usable but read-only (OpenAI's custom GPT retirement and migration FAQ, as read 16 November 2026, KST). The instructions published in this repository are the text of record and suffice for anyone who wants to build their own. History and sources: [RETIREMENT.md](https://github.com/rolldabones/rolldabones/blob/main/RETIREMENT.md).
 
 ## What it does
 
-The instructions in [instructions.md](instructions.md) make any current assistant a structured instructor for designing repeatable, safe AI workflows, especially workflows that use custom GPTs as components. Instead of generating the user's final deliverable (a report, deck or memo), it guides the user through a disciplined sequence of stages that define the goal, gather the needed context, set boundaries and specify exactly what inputs and outputs should look like. The result is a workflow blueprint: templates, checklists, role definitions, gates and test cases that can be implemented reliably.
+The instructions in [instructions.md](instructions.md) make any current assistant a structured instructor for designing repeatable, safe AI workflows, including workflows whose steps are run by assistant roles. Instead of generating the user's final deliverable (a report, deck or memo), it guides the user through a disciplined sequence of stages that define the goal, gather the needed context, set boundaries and specify exactly what inputs and outputs should look like. The result is a workflow blueprint: templates, checklists, role definitions, gates and test cases that can be implemented reliably.
 
 This repository is the method reference (the stages, the rules that make approvals and risk ratings reproducible, a Builder Packet template, a worked example and a regression suite, listed under [Build kit](#build-kit)) and the text of record of the instructions.
 
@@ -22,7 +22,7 @@ This repository is the method reference (the stages, the rules that make approva
 
 The assistant works one stage at a time on purpose. Each stage produces a concrete artifact (a Target Statement, Context Packet, risk and RACI (Responsible, Accountable, Consulted, Informed) assignment, data-handling plan, input and output schemas, gates and role permissions) and it does not proceed until the user confirms. This enforces clarity, prevents hidden assumptions and makes gaps explicit ("Unknown / Insufficient data") rather than letting the system invent requirements. Changes to a working workflow are controlled "folds": minimal, recorded and re-tested instead of ad hoc rewrites.
 
-It works this way because workflows fail under pressure when they are clever but underspecified: missing constraints, unclear decision ownership, weak data handling and no validation plan. By front-loading creases (input and output rules), gates (pass/fail checks) and testing (cases plus validation logs), the method produces systems that behave predictably, are easier to audit and can scale across teams without drifting into unsafe or inconsistent outputs.
+It works this way because workflows fail under pressure when they are clever but underspecified: missing constraints, unclear decision ownership, weak data handling and no validation plan. By front-loading creases (input and output rules), gates (pass/fail checks) and testing (cases plus validation logs), the method produces systems that behave predictably and are easier to audit.
 
 Twelve gated steps, run strictly in order, one confirmed artifact per step: ten numbered stages (0 to 9) and two checkpoints (3.5 and 7.5).
 
@@ -47,7 +47,7 @@ Core vocabulary: **Sheet** (project materials), **Creases** (input and output ru
 
 Two states that earlier versions of this method left to inference are now named.
 
-**Ready to export** means Design Approval has been recorded at Stage 7.5: every artifact from Stage 1 to Stage 7 is at a confirmed version, the Stage 8A test table has its inputs and expected values filled and the decision owner has signed the design off by name and date. Builder Packets may then be generated, one per role, at status **Draft**. A Draft packet built into a GPT is a test configuration.
+**Ready to export** means Design Approval has been recorded at Stage 7.5: every artifact from Stage 1 to Stage 7 is at a confirmed version, the Stage 8A test table has its inputs and expected values filled and the decision owner has signed the design off by name and date. Builder Packets may then be generated, one per role, at status **Draft**. A Draft packet built into an assistant is a test configuration.
 
 **Ready to use** means Release Approval (8C) has been recorded: every 8A case is at P on the same built configuration in the same run, the 8B validation log is written, every carried unknown is resolved or accepted with a reason and the decision owner (the Accountable party where the Overall rating is Med or High) has approved the packet versions by name and date. Packets are re-issued at status **Released** only then.
 
@@ -64,12 +64,12 @@ Approvals are recorded, not implied. There are four approvals of record (Risk an
 | [README.md](README.md) | This file: method reference, how to run it, change control, release checks |
 | [instructions.md](instructions.md) | The instructions, text of record: candidate v3.1 as last verified against the GPT on 17 September 2026, with its character count and SHA-256 |
 | [builder-packet-template.md](builder-packet-template.md) | The thirteen required fields of a Builder Packet, each tied to the stage that produces it; a copy-ready template; a completeness check; the mapping from packet to the settings of an assistant, with GPT Builder kept as a historical example |
-| [worked-example.md](worked-example.md) | The whole method run on one fictional workflow, public meeting notes to a reviewed action list: every stage artifact, three Draft packets, a test that failed, the fold that fixed it, the re-test and Release Approval |
+| [worked-example.md](worked-example.md) | The whole method run on one fictional workflow, public meeting notes to a reviewed action list: every stage artifact, three Draft packets, a test that failed, the two folds that fixed it, the re-test and Release Approval |
 | [risk-and-approval-rules.md](risk-and-approval-rules.md) | The risk matrix and its floors, which unknowns hold a gate, what an approval of record is, what changes invalidate which approvals and the Workflow Record template |
-| [regression-suite.md](regression-suite.md) | Seventeen cases with setup, expected behavior, pass criteria and basis, and the results log: Run 1 of 17 September 2026 (walk-through form, 11 of 13), the three isolated re-runs that closed it at 13 of 13, and Run 2 the same evening with its re-runs (the four tool-invitation cases: three passed; RS-15 was open on the GPT configuration when it was Locked), with the share links as evidence where published; and Run 3 of 18 October 2026, the first on a successor configuration (`claude-opus-5-5`), not accepted |
+| [regression-suite.md](regression-suite.md) | Seventeen cases with setup, expected behavior, pass criteria and basis, and the results log: Run 1 of 17 September 2026 (walk-through form, 11 of 13), the three isolated re-runs on a second candidate (no single run passed all thirteen, so the configuration was not accepted under the rule as written), and Run 2 the same evening with its re-runs (the four tool-invitation cases: three passed; RS-15 was open on the GPT configuration when it was Locked), with the share links as evidence where published; and Run 3 of 18 October 2026, the first on a successor configuration (`claude-opus-5-5`), not accepted |
 | [evidence/](evidence/transcripts-2026-10-18-T5/README.md) | Run transcripts copied byte for byte: Run 3 of 18 October 2026 in `transcripts-2026-10-18-T5/`, with the runner's summary and an index |
 | [tests.md](tests.md) | Pointer to the regression suite, the known defects and the Last run record for the successor configuration |
-| [candidate-instructions.md](candidate-instructions.md) | The candidate mechanism: how an instruction change is cut, run as a system prompt on a current frontier model against the regression suite with one logged run, and only then copied into instructions.md. No candidate is pending; the file carries the instrument block, verified identical to instructions.md by the check script, the four cuts of 17 September 2026 and their diffs, and the procedure for the next change |
+| [candidate-instructions.md](candidate-instructions.md) | The candidate mechanism: how an instruction change is cut, run as a system prompt on a current frontier model against the regression suite with a logged run that meets [ACCEPTANCE.md](https://github.com/rolldabones/rolldabones/blob/main/ACCEPTANCE.md), and only then copied into instructions.md. No candidate is pending; the file carries the instrument block, verified identical to instructions.md by the check script, the four cuts of 17 September 2026 and their diffs, and the procedure for the next change |
 | [tools/check_release.py](tools/check_release.py) | Release consistency check, no dependencies beyond Python 3: version and date lockstep across README, CHANGELOG.md and CITATION.cff; each companion masthead naming a release that exists, and this release if the file changed since the last tag; internal links and anchors, outside the verbatim run records in evidence/; the thirteen packet fields in the template and in every packet of the example; the instrument block's stated character count and SHA-256 in instructions.md against its bytes; the candidate block's size, and its identity with instructions.md while no candidate is pending or its diff while one is; the closing line as the last line of every markdown file |
 | [CHANGELOG.md](CHANGELOG.md), [CITATION.cff](CITATION.cff), [LICENSE](LICENSE) | Release history, citation metadata, CC BY-NC-SA 4.0 |
 
@@ -77,17 +77,17 @@ Approvals are recorded, not implied. There are four approvals of record (Risk an
 
 The method operationalizes the three doctrines that run through this account:
 
-- The stage gates and mandatory confirmations apply **Informed Intent** in miniature, as stated in [DOCTRINE.md](https://github.com/rolldabones/rolldabones/blob/main/DOCTRINE.md), the account's single normative statement of the three doctrines.
+- The stage gates and the four approvals of record apply **Informed Intent** in miniature, as stated in [DOCTRINE.md](https://github.com/rolldabones/rolldabones/blob/main/DOCTRINE.md), the account's single normative statement of the three doctrines.
 - The "Unknown / Insufficient data" rule applies **Slow AI**, as stated in [DOCTRINE.md](https://github.com/rolldabones/rolldabones/blob/main/DOCTRINE.md), the account's single normative statement of the three doctrines.
-- The mandatory session closing line is the third doctrine verbatim: **Final Liability rests with the Human.**
+- The mandatory session closing line carries the name of the third doctrine, **Final Liability rests with the Human**, as stated in [DOCTRINE.md](https://github.com/rolldabones/rolldabones/blob/main/DOCTRINE.md), the account's single normative statement of the three doctrines.
 
 ## When to use this
 
-Use the Origami Method when you are designing a specific repeatable workflow, particularly one built from custom GPT components. For the broader 12-step governed AI methodology from individual task discipline to institutional program governance, use [slow-ai-kitchen](https://github.com/rolldabones/slow-ai-kitchen). For the question of whether an AI system should be deployed at all, run the [AI-Impact-Assessment-Tool](https://github.com/rolldabones/AI-Impact-Assessment-Tool).
+Use the Origami Method when you are designing a specific repeatable workflow, particularly one whose steps are run by assistant roles. For the broader 12-step governed AI methodology from individual task discipline to institutional program governance, use [slow-ai-kitchen](https://github.com/rolldabones/slow-ai-kitchen). For the question of whether an AI system should be deployed at all, run the [AI-Impact-Assessment-Tool](https://github.com/rolldabones/AI-Impact-Assessment-Tool).
 
 ## Fold history
 
-The eleven folds applied to the instructions on 17 September 2026, the two closed that day and the standing note that nothing is proposed are recorded under [Fold history](candidate-instructions.md#fold-history) in candidate-instructions.md, the file where the next fold is cut.
+The nine folds applied to the instructions on 17 September 2026, the two closed that day and the standing note that nothing is proposed are recorded under [Fold history](candidate-instructions.md#fold-history) in candidate-instructions.md, the file where the next fold is cut.
 
 ## Maintenance and release checks
 
@@ -105,11 +105,11 @@ Companion files carry "last changed in vX.Y.Z" rather than the current version, 
 
 ## Regulatory and standards note
 
-This repository makes no regulatory or standards alignment claims. RACI, PII/PHI and data-sensitivity vocabulary is used generically as workflow-design prompts, not as compliance representations. Reviewed 17 September 2026 (KST), covering the companion files added earlier that day and the changes of the two releases since; the worked example relies on no legal rule and says so at its Stage 2 boundaries, and the regression suite's fixtures are invented.
+This repository makes no regulatory or standards alignment claims. RACI, PII/PHI and data-sensitivity vocabulary is used generically as workflow-design prompts, not as compliance representations. Re-read 16 November 2026 (KST) at the rotation slot, every file of v1.5.8; the worked example relies on no legal rule and says so at its Stage 2 boundaries, and the regression suite's fixtures are invented.
 
 ## Change control
 
-The GPT configuration is Locked as of 1 October 2026, Lock being the method's own fold type: it is archived in [CHANGELOG.md](CHANGELOG.md) under the release that retired the GPT and no longer changes. Changes are made in [instructions.md](instructions.md) under this repository's version rule: a change to the block is a minor release, as when production changed on 17 September 2026. A changed block is accepted only after one logged run of the published instructions as a system prompt on a current frontier model, recorded in [tests.md](tests.md) with the model string and date. The procedure is in [candidate-instructions.md](candidate-instructions.md): cut a candidate there, run it against the [regression suite](regression-suite.md), log the run and only then copy it into instructions.md in the next release. Never the other way round. While no candidate is pending, the check script verifies that the block in that file is identical to instructions.md; while one is, it verifies the file's diff against instructions.md from the bytes.
+The GPT configuration is Locked as of 1 October 2026, Lock being the method's own fold type: it is archived in [CHANGELOG.md](CHANGELOG.md) in the entry of 18 October 2026 and no longer changes. Changes are made in [instructions.md](instructions.md) under this repository's version rule: a change to the block is a minor release, as when production changed on 17 September 2026. A changed block is accepted only after a logged run of the published instructions as a system prompt on a current frontier model that meets [ACCEPTANCE.md](https://github.com/rolldabones/rolldabones/blob/main/ACCEPTANCE.md), recorded in [tests.md](tests.md) with the model string and date. The procedure is in [candidate-instructions.md](candidate-instructions.md): cut a candidate there, run it against the [regression suite](regression-suite.md), log the run and only then copy it into instructions.md in the next release. Never the other way round. While no candidate is pending, the check script verifies that the block in that file is identical to instructions.md; while one is, it verifies the file's diff against instructions.md from the bytes.
 
 ## Part of the ecosystem
 
@@ -119,14 +119,14 @@ The three doctrines are used in this repository as stated in [DOCTRINE.md](https
 
 Nearest neighbors:
 - [slow-ai-kitchen](https://github.com/rolldabones/slow-ai-kitchen): the 12-step governed AI methodology; Origami is the workflow-design discipline within that larger arc
-- [grc](https://github.com/rolldabones/grc): the GRCnext™ primitives this method's vocabulary maps to, with creases as Tolerances, gates as Switches and folds as controlled change
+- [grc](https://github.com/rolldabones/grc): the OCEG foundation; this method's creases, gates and folds map to the GRCnext™ Tolerances, Switches and controlled change that GRCnext-Copilot runs
 - [AI-Impact-Assessment-Tool](https://github.com/rolldabones/AI-Impact-Assessment-Tool): the pre-deployment gate; run it on what Origami designs
 - [AI-Governance-Academy](https://github.com/rolldabones/AI-Governance-Academy): prompt templates for client-facing governance engagements built with this kind of method
 - [computational-drafting](https://github.com/rolldabones/computational-drafting): the specification layer whose eight-element artifact the Context Packet and folds carry into a workflow
 
 ## How to Cite
 
-> Paik, Son-U Michael. *Origami Method*, v1.5.8. GRC Solutions Korea, 2026. https://github.com/rolldabones/origami-method
+> Paik, Son-U Michael. *Origami Method*, v1.5.9. GRC Solutions Korea, 2026. https://github.com/rolldabones/origami-method
 
 A machine-readable citation is in [CITATION.cff](CITATION.cff).
 
@@ -138,6 +138,6 @@ Commercial use, including a Client's use in its own operations, is set out in [L
 
 ---
 
-**v1.5.8 · 9 November 2026 · License: [CC BY-NC-SA 4.0](LICENSE) · Changes: [CHANGELOG.md](CHANGELOG.md)**
+**v1.5.9 · 16 November 2026 · License: [CC BY-NC-SA 4.0](LICENSE) · Changes: [CHANGELOG.md](CHANGELOG.md)**
 
 Final Liability rests with the Human.

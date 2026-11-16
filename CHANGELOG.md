@@ -2,6 +2,21 @@
 
 All notable changes to this repository are documented here. Versioning follows [Semantic Versioning](https://semver.org/). The README and this file version in lockstep; prior versions are superseded, never silently overwritten.
 
+## v1.5.9 (2026-11-16)
+
+Patch release. The rotation slot of 16 November 2026 (KST), cycle 3, row 3, on Michael Paik's rulings of that day. Prepared with Claude, approved by Michael Paik. No change to the instruction block in `instructions.md` or to the candidate block; no transcript under `evidence/` changes; acceptance unchanged: not accepted.
+
+- **The record of 17 September 2026.** `regression-suite.md` section 4 keeps the line that states acceptance at 13 of 13 and adds a dated amendment: no single run passed all thirteen, so the configuration was not accepted under section 2 as written. The suite's opening summary, the README Build kit row, the cuts table in `candidate-instructions.md` and the GPT-era paragraph of `tests.md` say the same.
+- **Acceptance stated under ACCEPTANCE.md** in README Change control and the Build kit, `instructions.md` How to use and `candidate-instructions.md` (the rationale and release procedure steps 3 to 5), in place of one logged run and every case at P.
+- **`tests.md`.** RS-17 is model behavior, as RS-15. The critical cases widen to RS-01, RS-02, RS-04, RS-06, RS-10, RS-15, RS-16 and RS-17; the five added cases passed in Run 3, so its status does not change. Known defect 2 (packet status Tested) closed by the template edit below. Known defect 3 no longer names the maintainer's folders. The GPT-era runs lapse on 17 December 2026, the first day they are more than 90 days old.
+- **`builder-packet-template.md`.** Status Tested removed (field 1, field 12 and the version rules); a packet configures an assistant role.
+- **README.** The fold count corrected to nine applied and two closed; the closing-line bullet in the pointer form of DOCTRINE.md section 8; Informed Intent tied to the gates and the four approvals of record, not to chat confirmations; the grc neighbor line describes grc as the OCEG foundation, with the GRCnext™ primitives run in GRCnext-Copilot; the archive named by its entry of 18 October 2026; the regulatory and standards note re-read at this slot; the OpenAI statement dated to the FAQ as read on 16 November 2026; the method no longer described as being for custom GPT components; the worked example's two folds; one closing tricolon cut.
+- **`risk-and-approval-rules.md`.** An approval of record has four elements, and Release Approval a fifth; the stages a change reopens listed in ascending order; a Draft packet is built into an assistant.
+- **`regression-suite.md`.** The share-link sentence limited to the GPT-era runs, with one link checked on 16 November 2026 and their survival after 11 December 2026 Unknown; two present-tense statements about the retired GPT dated.
+- **`worked-example.md`.** The Data Handling condition is due by Stage 7.5, where it is resolved.
+- **Evidence README.** A reading note on the scorer's judgment calls, RS-17's re-score and the case headers; no transcript changed.
+- Mastheads of `builder-packet-template.md`, `candidate-instructions.md`, `instructions.md`, `regression-suite.md`, `risk-and-approval-rules.md`, `tests.md` and `worked-example.md` to v1.5.9. README masthead, footer and How to Cite, and `CITATION.cff` to v1.5.9. Candidate v4 of the block, the size-ceiling change in `tools/check_release.py`, literal scripted turns and Run 4 follow as v1.6.0.
+
 ## v1.5.8 (2026-11-09)
 
 Patch release. Train D of the improvement rotation (review of 24 October 2026). Prepared with Claude, approved by Michael Paik.

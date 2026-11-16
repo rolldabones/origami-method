@@ -1,6 +1,6 @@
 # Worked example: public meeting notes to a reviewed action list
 
-**Part of Origami Method · last changed in v1.5.5 · 20 October 2026 · License: [CC BY-NC-SA 4.0](LICENSE)**
+**Part of Origami Method · last changed in v1.5.9 · 16 November 2026 · License: [CC BY-NC-SA 4.0](LICENSE)**
 
 Everything in this example is fictional: the municipality, the committee, the roster, the meeting, the dates and the people, who appear by role only. It exists to show every artifact of the method on one small workflow, from the Target Statement to Release Approval, including one test that failed and the fold that fixed it.
 
@@ -55,7 +55,7 @@ Neither unknown is blocking at Stage 2: the decision owner, the definition of do
 - **Third-party processors:** the custom GPT platform. The inputs are already public, so the exposure is nil; recorded because the field must be filled, not because it changes anything.
 - **Approval owner and date:** the Clerk, 9 September 2026.
 
-**Approval of record (Data Handling):** the Clerk | Data Handling Review v1 | 9 September 2026 | approved with conditions: retention period to be decided before Release Approval.
+**Approval of record (Data Handling):** the Clerk | Data Handling Review v1 | 9 September 2026 | approved with conditions: retention period to be decided by Stage 7.5.
 
 ## Stage 4: Creases
 

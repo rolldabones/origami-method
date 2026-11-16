@@ -1,6 +1,6 @@
 # Instructions
 
-**Part of Origami Method · last changed in v1.5.0 · 18 October 2026 · License: [CC BY-NC-SA 4.0](LICENSE)**
+**Part of Origami Method · last changed in v1.5.9 · 16 November 2026 · License: [CC BY-NC-SA 4.0](LICENSE)**
 
 **Instrument · candidate v3.1 · 18 October 2026 (KST) · text of record**
 
@@ -8,7 +8,7 @@ As last verified against the GPT on 17 September 2026, before the conversion, wi
 
 ## How to use
 
-Copy everything between the fences, and nothing outside them, into the system prompt, custom instructions or project instructions of any current assistant. The assistant opens at Stage 0 with two questions and holds each stage until you confirm it; it does not produce the downstream deliverable. Where the block speaks of custom GPTs, Builder Packets and Intake, Producer and Red-Team roles, it describes the workflows the method designs, which may be built on any assistant platform. Review what it produces yourself and check its behavior against [tests.md](tests.md); you own sign-off. A change to the block follows [Change control](README.md#change-control): it is accepted only after one logged run, recorded in tests.md.
+Copy everything between the fences, and nothing outside them, into the system prompt, custom instructions or project instructions of any current assistant. The assistant opens at Stage 0 with two questions and holds each stage until you confirm it; it does not produce the downstream deliverable. Where the block speaks of custom GPTs, Builder Packets and Intake, Producer and Red-Team roles, it describes the workflows the method designs, which may be built on any assistant platform. Review what it produces yourself and check its behavior against [tests.md](tests.md); you own sign-off. A change to the block follows [Change control](README.md#change-control): it is accepted only after a logged run that meets [ACCEPTANCE.md](https://github.com/rolldabones/rolldabones/blob/main/ACCEPTANCE.md), recorded in tests.md.
 
 ## The block
 

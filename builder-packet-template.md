@@ -1,12 +1,12 @@
 # Builder Packet template
 
-**Part of Origami Method · last changed in v1.5.5 · 20 October 2026 · License: [CC BY-NC-SA 4.0](LICENSE)**
+**Part of Origami Method · last changed in v1.5.9 · 16 November 2026 · License: [CC BY-NC-SA 4.0](LICENSE)**
 
 ## What a Builder Packet is
 
-A Builder Packet is the export artifact of the Origami Method: everything a builder needs to configure one custom GPT role, Intake, Producer or Red-Team, without re-reading the design session. One packet per role. A packet carries no field the design stages did not produce, and every field below names the stage it comes from, so a blank field points at an unfinished stage rather than at a missing idea.
+A Builder Packet is the export artifact of the Origami Method: everything a builder needs to configure one assistant role, such as Intake, Producer or Red-Team, without re-reading the design session. One packet per role. A packet carries no field the design stages did not produce, and every field below names the stage it comes from, so a blank field points at an unfinished stage rather than at a missing idea.
 
-Packets are generated at status **Draft** once Design Approval (Stage 7.5) is recorded, and re-issued at status **Released** only after the Stage 8 tests pass and Release Approval is recorded. A Draft packet built into a GPT is a test configuration, not a working one. The sequence is in [README.md](README.md#approvals-and-the-export-sequence); what the two approvals require is in [risk-and-approval-rules.md](risk-and-approval-rules.md) section 3.
+Packets are generated at status **Draft** once Design Approval (Stage 7.5) is recorded, and re-issued at status **Released** only after the Stage 8 tests pass and Release Approval is recorded. A Draft packet built into an assistant is a test configuration, not a working one. The sequence is in [README.md](README.md#approvals-and-the-export-sequence); what the two approvals require is in [risk-and-approval-rules.md](risk-and-approval-rules.md) section 3.
 
 ## The thirteen required fields
 
@@ -14,7 +14,7 @@ Every packet carries all thirteen. A field with nothing to put in it reads "Unkn
 
 | # | Field | Source stage | What goes in it |
 |---|---|---|---|
-| 1 | Packet ID, version and status | Export | `BP-<ROLE>`, a version and one of Draft, Tested or Released |
+| 1 | Packet ID, version and status | Export | `BP-<ROLE>`, a version and one of Draft or Released |
 | 2 | Role and purpose | 7 and 1 | The role's name; one sentence on what it produces and for whom, derived from the Target Statement |
 | 3 | Inputs | 4 (Input Rules) | Accepted sources, formats and schemas; required and forbidden fields; forbidden sources |
 | 4 | Outputs | 4 (Output Skeleton) | The sections and required fields the role must produce; the acceptance criteria |
@@ -25,7 +25,7 @@ Every packet carries all thirteen. A field with nothing to put in it reads "Unkn
 | 9 | Approval boundaries | 3 (RACI) and 6 (human checks) | What the role may decide alone; what requires a human; which human |
 | 10 | Escalation | 3 | The triggers and the person they escalate to |
 | 11 | Data handling | 3.5 | Sensitivity class; redaction and minimization rules the role applies; retention rule for anything it keeps |
-| 12 | Test cases assigned | 8A | The case IDs this role must pass before the packet can be marked Tested |
+| 12 | Test cases assigned | 8A | The case IDs this role must pass before Release Approval can be recorded |
 | 13 | Provenance and closing line | Workflow Record | The Workflow Record name and version; the artifact versions the packet was cut from; owner; date; and the mandatory session closing line the role's instructions must carry |
 
 ## Copy-ready template
@@ -122,8 +122,7 @@ The packet is the specification. The configuration of each role's assistant is d
 
 ## Version and status rules
 
-- **Draft** is the status a packet is born with, after Design Approval. It may be built into a GPT for testing only.
-- **Tested** is recorded by whoever runs Stage 8 when every case in field 12 is at P on the built configuration. It is a note on the packet, not an approval.
+- **Draft** is the status a packet is born with, after Design Approval. It may be built into an assistant for testing only.
 - **Released** is recorded only when Release Approval is in the Workflow Record. Version moves to 1.0.
 - Any change to any field is a fold: it is logged at Stage 9, the version increments, the status returns to Draft and the assigned cases are re-run. The invalidation table in [risk-and-approval-rules.md](risk-and-approval-rules.md) section 4 says which other approvals the change undoes.
 

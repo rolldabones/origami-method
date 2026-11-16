@@ -10,6 +10,8 @@ Models: tested `claude-opus-5-5`; scored by `claude-sonnet-5-5`, a different mod
 
 How produced: the session T5 runner (`t5_run.py`, a session tool, not shipped in this repository) run by Michael Paik in his Terminal; the suite manifest was written in session T5 from this repository's test cases. Each transcript here is the runner's output copied byte for byte; the only change is the closing line appended at the end of each file. `summary.json` is copied unchanged. Model output is verbatim and is not edited for house style. The session review of each verdict and the acceptance result are in [tests.md](../../tests.md).
 
+Reading notes, 16 November 2026 (KST), v1.5.9: the judgment calls that RS-08 and RS-16 refer to are in the scorer's JSON, which is not shipped; RS-17's verdict below is the scorer's PASS, re-scored F on 20 October 2026 ([tests.md](../../tests.md)); and each case header quotes the suite as it stood at the run, so RS-11 and RS-14 read "the Human's" where the suite's Basis now reads "the human's".
+
 | Case | Scorer verdict |
 |---|---|
 | [RS-01](RS-01.md) | PASS |
