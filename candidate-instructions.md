@@ -1,12 +1,12 @@
 # Candidate instructions
 
-**Part of Origami Method · last changed in v1.6.0 · 16 November 2026 · License: [CC BY-NC-SA 4.0](LICENSE)**
+**Part of Origami Method · last changed in v1.6.1 · 17 November 2026 · License: [CC BY-NC-SA 4.0](LICENSE)**
 
 > **Amendment, 18 October 2026 (KST), v1.5.2.** The section Fold history, formerly the README's "Fold history and proposed folds", is moved into this file before the Release procedure; its text is unchanged apart from three link targets rewired for the new location. The candidate block, the status line and the release procedure do not change.
 
 **In short:** no candidate is pending; the block below is identical to instructions.md; candidate v4.2, released in v1.6.0, is accepted with one residual on `claude-opus-5-5` (Run 7, 16 November 2026).
 
-**Status: no candidate pending, as at 16 November 2026 (KST).** The block below is the instrument, candidate v4.2, published as the text of record in [instructions.md](instructions.md) in v1.6.0 after Run 7 of 16 November 2026 (KST), on `claude-opus-5-5` scored by `claude-sonnet-5-5`, met [ACCEPTANCE.md](https://github.com/rolldabones/rolldabones/blob/main/ACCEPTANCE.md) with one residual ([tests.md](tests.md)). `tools/check_release.py` verifies that the two blocks are byte-identical for as long as this line says no candidate is pending. When a candidate is cut, this line changes to "candidate, not released", the block below becomes the candidate and the check verifies the file's diff against instructions.md instead.
+**Status: no candidate pending, as at 17 November 2026 (KST).** The block below is the instrument, candidate v4.2, published as the text of record in [instructions.md](instructions.md) in v1.6.0 after Run 7 of 16 November 2026 (KST), on `claude-opus-5-5` scored by `claude-sonnet-5-5`, met [ACCEPTANCE.md](https://github.com/rolldabones/rolldabones/blob/main/ACCEPTANCE.md) with one residual ([tests.md](tests.md)). `tools/check_release.py` verifies that the two blocks are byte-identical for as long as this line says no candidate is pending. When a candidate is cut, this line changes to "candidate, not released", the block below becomes the candidate and the check verifies the file's diff against instructions.md instead.
 
 ## Why a candidate file rather than an edited instrument
 
@@ -236,7 +236,7 @@ Stage | Artifact versions | Approvals (Risk & RACI, Data, Design, Release) | Ope
 
 ## Candidate v3.1 to v4.2, released in v1.6.0
 
-Generated from the bytes at the cut, 16 November 2026; a historical record now, like the diffs of the four cuts below (the check script compares the first diff block only while a candidate is pending). Each change maps to a fold of 16 November 2026 in the Fold history: 12 the Target template (Quick Start and Stage 1), 13 the Stage 8A columns, 14 the scope hard stop, 15 the Roles heading and the role names in the Stage 5 template and the Export phase, 16 every other line (house style: no em dash, no en dash, no serial comma), 17 the sentence after the missing-item rule.
+Generated from the bytes at the cut, 16 November 2026; a historical record now, like the diffs of the four cuts below (the check script compares the first diff block only while the status line reads "candidate, not released"). Each change maps to a fold of 16 November 2026 in the Fold history: 12 the Target template (Quick Start and Stage 1), 13 the Stage 8A columns, 14 the scope hard stop, 15 the Roles heading and the role names in the Stage 5 template and the Export phase, 16 every other line (house style: no em dash, no en dash, no serial comma), 17 the sentence after the missing-item rule.
 
 ```diff
 --- instrument (instructions.md)

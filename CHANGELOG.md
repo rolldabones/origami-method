@@ -2,6 +2,13 @@
 
 All notable changes to this repository are documented here. Versioning follows [Semantic Versioning](https://semver.org/). The README and this file version in lockstep; prior versions are superseded, never silently overwritten.
 
+## v1.6.1 (2026-11-17)
+
+Patch release on Michael Paik's ruling of 17 November 2026 (KST). Prepared with Claude, approved by Michael Paik. No change to the instruction block in `instructions.md` or to the candidate block, which stay byte-identical; no rule changes, so acceptance carries forward under ACCEPTANCE.md (f): accepted with residuals on `claude-opus-5-5`, Run 7.
+
+- **`candidate-instructions.md`, the note above the diff of candidate v3.1 to v4.2.** The parenthesis "only while a candidate is pending" now reads "only while the status line reads "candidate, not released"", the words that line carries once a candidate is cut. From 17 November 2026 the account's sweep read the earlier wording, beside the date of the cut, as forward-looking wording whose date had passed (class A1, HIGH). The sentence was accurate and states a condition; it is reworded, and what it says does not change. The Status line is re-dated from 16 to 17 November 2026: no candidate is pending, as `tools/check_release.py` reads the two blocks on this release. Masthead to v1.6.1.
+- README masthead, footer and How to Cite and `CITATION.cff` to v1.6.1. No other file changes.
+
 ## v1.6.0 (2026-11-16)
 
 Minor release: the instruction block. The remediation session of 16 November 2026 (KST) for the improvement rotation's origami-method slot (cycle 3, row 3), on Michael Paik's rulings Q4, Q5, Q7 and Q8 of that day and the rulings C, F, G, J and K made on the runs. Prepared with Claude; reviewed and approved by Michael Paik.
