@@ -1,8 +1,10 @@
 # Origami Method
 
-**Version 1.6.1 · 17 November 2026 · Instrument, formerly the Origami Workflow Guide custom GPT (retired 1 October 2026) · Instructions last verified against the GPT on 17 September 2026, before the conversion · License: [CC BY-NC-SA 4.0](LICENSE)**
+> **Archived edition of 26 November 2026.** This repository is archived and read-only. It receives no corrections, legal ones included: verify every statement of law, regulation or standard against a current primary source before you rely on it. What I maintain, and why this repository is not part of it, is in [DISPOSITION.md](https://github.com/rolldabones/rolldabones/blob/main/DISPOSITION.md). Cite this edition as *Origami Method*, v1.6.2 (26 November 2026). The license and [LICENSING.md](https://github.com/rolldabones/rolldabones/blob/main/LICENSING.md) still apply. Reach me at sonupaik@gmail.com. Its last test is stated under Last test below.
 
-**Acceptance status ([ACCEPTANCE.md](https://github.com/rolldabones/rolldabones/blob/main/ACCEPTANCE.md), 16 November 2026, KST):** Accepted with residuals on `claude-opus-5-5`. Run 7 of the published block (candidate v4.2) passed all eight critical cases, one on the Human reviewer's ruling, and 8 of 9 others; RS-08 (the data floor not restated) is the residual. The account's status table is in [ECOSYSTEM.md](https://github.com/rolldabones/rolldabones/blob/main/ECOSYSTEM.md#instrument-status).
+**Version 1.6.2 · 26 November 2026 · Archived edition · Instrument, formerly the Origami Workflow Guide custom GPT (retired 1 October 2026) · Instructions last verified against the GPT on 17 September 2026, before the conversion · License: [CC BY-NC-SA 4.0](LICENSE)**
+
+**Last test, as this edition (v1.6.2) records it ([ACCEPTANCE.md](https://github.com/rolldabones/rolldabones/blob/main/ACCEPTANCE.md), 16 November 2026, KST):** Accepted with residuals on `claude-opus-5-5`. Run 7 of the published block (candidate v4.2) passed all eight critical cases, one on the Human reviewer's ruling, and 8 of 9 others; RS-08 (the data floor not restated) is the residual. Run on `claude-opus-5-5` and scored by `claude-sonnet-5-5`. No later run exists and none will be made. The run record and the known defects are in [`tests.md`](tests.md), and the transcripts stay in this repository where that file links them, frozen at tag v1.6.2; ask at sonupaik@gmail.com. The account's status table is in [ECOSYSTEM.md](https://github.com/rolldabones/rolldabones/blob/main/ECOSYSTEM.md#instrument-status).
 
 > **Retired by the author 1 October 2026, Korea Standard Time (KST).** The author retired the Origami Workflow Guide custom GPT on 1 October 2026 by converting it to a private plug-in on the OpenAI platform and Locking its configuration. That is not OpenAI's retirement date for custom GPTs, which is 11 December 2026; until then a migrated GPT stays usable but read-only (OpenAI's custom GPT retirement and migration FAQ, as read 16 November 2026, KST). The instructions published in this repository are the text of record and suffice for anyone who wants to build their own. History and sources: [RETIREMENT.md](https://github.com/rolldabones/rolldabones/blob/main/RETIREMENT.md).
 
@@ -127,7 +129,7 @@ Nearest neighbors:
 
 ## How to Cite
 
-> Paik, Son-U Michael. *Origami Method*, v1.6.1. GRC Solutions Korea, 2026. https://github.com/rolldabones/origami-method
+> Paik, Son-U Michael. *Origami Method*, v1.6.2. GRC Solutions Korea, 2026. https://github.com/rolldabones/origami-method
 
 A machine-readable citation is in [CITATION.cff](CITATION.cff).
 
@@ -139,6 +141,6 @@ Commercial use, including a Client's use in its own operations, is set out in [L
 
 ---
 
-**v1.6.1 · 17 November 2026 · License: [CC BY-NC-SA 4.0](LICENSE) · Changes: [CHANGELOG.md](CHANGELOG.md)**
+**v1.6.2 · 26 November 2026 · Archived edition · License: [CC BY-NC-SA 4.0](LICENSE) · Changes: [CHANGELOG.md](CHANGELOG.md)**
 
 Final Liability rests with the Human.
